@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../../../hooks/use-auth";
 import { checkMembership, leaveCommunity } from "../../Community/Community Services/communityService";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 const LeaveButton = () => {
@@ -10,6 +10,7 @@ const LeaveButton = () => {
   const { communityId } = useParams();
   const [isMember, setIsMember] = useState(false);
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (user) {
@@ -29,7 +30,10 @@ const LeaveButton = () => {
   const handleLeaveCommunity = async () => {
     try {
       const left = await leaveCommunity(user.id, communityId);
-      if (left) setIsMember(false);
+      if (left) {
+        setIsMember(false);
+        navigate("/worldcommunity"); // Navega para a rota especificada
+      }
     } catch (error) {
       console.error("Erro ao sair da comunidade:", error);
     }
