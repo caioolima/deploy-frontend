@@ -500,5 +500,6 @@
   "confirm_delete_account": "Você realmente deseja excluir sua conta? A conta será desativada após 30 dias.",
   "yes": "Sim",
   "no": "Não",
-  "end_message": "Você chegou no fim"
+  "end_message": "Você chegou no fim",
+   "leaveCommunity": "Sair da Comunidade"
   }

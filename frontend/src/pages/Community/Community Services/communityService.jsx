@@ -29,3 +29,19 @@ export const checkMembership = async (userId, communityId) => {
     }
   };
   
+  export const leaveCommunity = async (userId, communityId) => {
+    try {
+      const response = await fetch(`https://connecter-server-033a278d1512.herokuapp.com/communities/comunidade/sair/${userId}/${communityId}`, {
+        method: "POST",
+      });
+      if (response.ok) {
+        return true;
+      } else {
+        throw new Error("Falha ao sair da comunidade");
+      }
+    } catch (error) {
+      console.error("Erro ao sair da comunidade:", error);
+      throw error;
+    }
+  };
+  

@@ -485,5 +485,6 @@
     "confirm_delete_account": "¿Estás seguro de que deseas eliminar tu cuenta? La cuenta será desactivada después de 30 días.",
     "yes": "Sí",
     "no": "No",
-    "end_message": "Has llegado al final"
+    "end_message": "Has llegado al final",
+    "leaveCommunity": "Salir de la Comunidad"
 }
