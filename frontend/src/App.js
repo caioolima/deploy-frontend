@@ -44,9 +44,11 @@ function App() {
         path="/home"
         element={
           <PrivateRoute>
-            <AuthLayout>
-              <HomeScreen />
-            </AuthLayout>
+            <PublicRoute>
+              <AuthLayout>
+                <HomeScreen />
+              </AuthLayout>
+            </PublicRoute>
           </PrivateRoute>
         }
       />
