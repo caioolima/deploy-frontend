@@ -1,0 +1,152 @@
+@charset "UTF-8";
+
+.sidebar {
+    height: 100%;
+    width: 180px; /* Largura do menu lateral */
+    position: fixed;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-dark); /* Cor de fundo do menu (black) */
+    padding-top: 100px;
+    text-align: left; /* Alinhe o texto à esquerda */
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid rgb(75, 75, 75); /*Adicione uma borda vertical à direita*/
+}
+
+.sidebar a,
+.sidebar button {
+    text-decoration: none;
+    color: rgb(161, 160, 160);
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    transition: color 0.3s ease; /* Adicione a regra de transição para a cor */
+}
+
+.sidebar a:hover,
+.sidebar button:hover .sidebar-link {
+    color: var(--color-details); /* Cor (verde) desejada ao passar o mouse */
+}
+
+.sidebar button .sidebar-link {
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease; /* Adicione a regra de transição para a cor */
+}
+
+.sidebar button {
+    background: none;
+    border: none;
+    color: rgb(161, 160, 160);
+    cursor: pointer;
+    font-family: "Raleway", sans-serif;
+    font-weight: bold;
+}
+
+.sidebar-link-out{
+    margin-top: 400px;
+    position: relative;
+}
+.sidebar button span {
+    font-size: 15px;
+    margin-left: 20px; /* Ajuste o espaçamento entre o ícone e o texto conforme necessário */
+}
+
+.desktop-logo {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-left: 17px;
+    color: #fff;
+}
+.sidebar span {
+    font-size: 15px; /* Ajuste o tamanho do texto conforme necessário */
+    margin-left: 20px; /* Espaço entre o ícone e o texto */
+    margin-top: 25px;
+}
+
+.sidebar-link-out {
+    margin-top: auto; /* Garante que o botão "Sair" fique no final do sidebar */
+    position: relative;
+}
+
+.sidebar svg {
+    margin-bottom: 1px;
+    width: 20px; /* Ajuste a largura do ícone para o seu design específico */
+    height: 20px; /* Ajuste a altura do ícone para o seu design específico */
+    margin-left: 20px; /* Espaço entre o ícone e o texto */
+    margin-top: 25px;
+}
+
+.sidebar-link.active {
+    color: var(--color-primary); /* Cor (rosa) para indicar a página ativa */
+    font-weight: 700;
+}
+.sidebar-link {
+    cursor: pointer;
+}
+
+.logo {
+    font-weight: bold;
+    display: flex;
+    align-items: center; /* Alinha os itens verticalmente */
+}
+
+.logo a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.logo a:hover {
+    text-decoration: none;
+    color: #ffffff;
+    transition: transparent 0.3s ease;
+}
+
+.logo-bar {
+    font-weight: bold;
+    display: flex;
+    align-items: center; /* Alinha os itens verticalmente */
+}
+
+.logo-bar span {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+@media screen and (max-width: 1000px) {
+    
+    .sidebar {
+        height: 45px;
+        width: 100%; /* Largura do menu lateral */
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        padding: 0;
+        display: flex;
+        z-index: 99;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .sidebar span {
+        display: none;
+    }
+    
+    .sidebar svg {
+        margin: 0;
+        padding: 0;
+    }
+    
+    .sidebar a {
+        margin: 0;
+    }
+    
+    .-bar {
+        display: none;
+    }
+}

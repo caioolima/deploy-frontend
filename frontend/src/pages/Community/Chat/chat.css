@@ -1,0 +1,422 @@
+/* chat.css */
+
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,400;0,500;0,600;0,700;1,500;1,600&display=swap");
+
+.chat-screen {
+  width: 100vw;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-white);
+}
+
+.chat-name {
+  margin: 100px auto;
+  color: var(--color-details); /* Cor primária para o nome do chat */
+  font-size: 30px;
+}
+
+.message-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Alinha as mensagens à esquerda */
+  justify-content: flex-end; /* Alinha as mensagens na parte inferior */
+  width: 50%; /* Ocupa 60% da largura do chat-screen */
+  margin-bottom: 120px;
+}
+
+.message {
+  max-width: 80%;
+  color: var(--color-dark);
+  margin-bottom: 10px;
+  padding: 15px;
+  border-radius: 8px;
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+}
+
+.message.left {
+  align-self: flex-start;
+  margin-bottom: 20px;
+}
+
+.message.right {
+  align-self: flex-end;
+  margin-bottom: 20px;
+}
+
+.message-content {
+  max-width: auto;
+  margin-bottom: 10px;
+  padding: 12px;
+  border-radius: 8px;
+  position: relative; /* Adicionado para posicionar a cauda do balão de fala */
+  margin-left: 8px;
+  margin-top: 20px;
+}
+
+.user-color-random-1 {
+  background-color: #16bb1f; /* Verde - cor detalhes */
+}
+
+.user-color-random-2 {
+  background-color: #0d7813; /* Verde mais escuro - cor detalhes hover */
+}
+
+.user-color-random-3 {
+  background-color: #41ee4a; /* Verde claro - cor detalhes foco */
+}
+
+.user-color-random-4 {
+  background-color: #ea4f97; /* Rosa - cor primária */
+}
+
+.user-color-random-5 {
+  background-color: #f291be; /* Rosa mais claro - cor primária hover */
+}
+
+.user-color-random-6 {
+  background-color: #f70073; /* Rosa mais escuro - cor primária foco */
+}
+
+.user-color-random-7 {
+  background-color: #4bc5f5; /* Azul - cor link */
+}
+
+/* Adicione mais classes .user-color-random-X conforme necessário para mais cores */
+
+.message-content.left {
+  margin: 10px auto;
+  margin-bottom: 20px;
+  border-radius: 20px; /* Borda arredondada para mensagens do lado esquerdo */
+  margin-left: 12px;
+  margin-right: 0;
+  z-index: 0;
+}
+
+.message-content.right {
+  background-color: #e1e1e1; /* Cor de fundo para mensagens do lado direito (cor do Telegram) */
+  margin: 10px auto;
+  margin-bottom: 20px;
+  border-radius: 20px; /* Borda arredondada para mensagens do lado direito */
+  margin-right: 0; /* Remove a margem à direita para as mensagens do lado direito */
+  margin-left: 12px;
+  position: relative;
+}
+/* Adicionando a cauda do balão de fala para mensagens do lado esquerdo */
+.message-content.left::after {
+  content: "";
+  width: 20px; /* Comprimento do "rabinho" */
+  height: 10px; /* Altura do "rabinho" */
+  position: absolute;
+  background-color: inherit; /* Cor da cauda (cor do balão de fala) */
+  clip-path: polygon(100% 0, 0 100%, 100% 100%); /* Ajusta a forma da cauda */
+  left: -10px; /* Ajusta a posição horizontal da cauda */
+  bottom: -3px; /* Ajusta a posição vertical da cauda */
+  transform: rotate(-30deg); /* Rotaciona a cauda */
+  z-index: 10; /* Coloca a cauda atrás do balão de fala */
+}
+
+/* Removendo a cauda do balão de fala para mensagens do lado direito */
+.message-content.right::before {
+  display: none;
+}
+
+.name-info-chat {
+  position: absolute; /* Define o posicionamento absoluto para o nome do usuário */
+  bottom: 100%; /* Ajusta a posição vertical do nome do usuário */
+  margin-bottom: 5px; /* Adiciona margem entre o nome do usuário e o conteúdo da mensagem */
+  font-size: 14px; /* Tamanho da fonte */
+  font-weight: 600; /* Peso da fonte */
+  color: #333; /* Cor do texto */
+  margin-bottom: 5px; /* Espaçamento inferior */
+}
+
+/* Adiciona uma margem ao nome de usuário para separá-lo do conteúdo da mensagem */
+.message-content .name-info-chat {
+  margin-right: 8px;
+}
+
+.message-time {
+  font-size: 12px;
+  color: #999;
+  font-weight: 500;
+}
+
+.message-input {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 40px;
+  background-color: var(--color-dark);
+  border-top: 1px solid #ccc;
+  font-family: "Raleway", sans-serif;
+}
+
+.message-input input[type="text"] {
+  padding: 10px;
+  border: 1px solid transparent; /* Adiciona uma borda transparente */
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  width: 80%;
+  max-width: 50%;
+  margin-right: 10px;
+  transition: border-color 0.3s ease; /* Adiciona uma transição suave para a cor da borda */
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+}
+
+.message-input input[type="text"]:focus {
+  color: #333; /* Cor do texto quando o input é clicado */
+  border-color: #16bb1f; /* Cor da borda quando o input é clicado */
+  box-shadow: 0 0 5px rgba(22, 187, 31, 0.5); /* Adiciona uma sombra suave quando o input é clicado */
+}
+
+.message-input input {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  width: 80%; /* Reduz a largura do input */
+  max-width: 50%; /* Define um máximo para o input */
+  margin-right: 10px;
+}
+
+.message-input button {
+  padding: 10px 20px;
+  background-color: #16bb1f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+}
+
+.message-input button:hover {
+  background-color: #0d7813;
+}
+
+.hidden-message-photo {
+  display: none;
+}
+
+.message-input input::placeholder {
+  color: #999;
+  font-family: "Raleway", sans-serif;
+  font-style: italic;
+}
+
+.unread-messages {
+  color: var(--color-alert);
+  font-weight: bold;
+  margin-bottom: 10px;
+  position: absolute; /* Alterado para posição absoluta */
+  top: -30px; /* Ajustado para ficar acima do input */
+  cursor: pointer;
+}
+
+.rounded-image-message {
+  width: 80px; /* Ajuste a largura da imagem redonda conforme necessário */
+  height: 80px; /* Ajuste a altura da imagem redonda conforme necessário */
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.9); /* Adiciona uma sombra suave */
+}
+
+.camera-icon {
+  color: white;
+  font-size: 40px;
+  margin-right: 20px;
+}
+
+.media-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Cor de fundo semi-transparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999; /* Garante que o modal apareça sobre o conteúdo */
+}
+
+.media-modal-content {
+  position: relative;
+  background-color: #f0f0f0; /* Cor de fundo cinza */
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%; /* Aumenta a largura do modal */
+  max-width: 600px; /* Define um máximo para a largura do modal */
+  margin-bottom: 20px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.9); /* Adiciona uma sombra suave */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza o conteúdo na vertical */
+}
+
+.media-modal-content input[type="file"] {
+  display: none; /* Esconde o input padrão */
+}
+
+.close-media-modal {
+  position: absolute;
+  top: 2px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 35px;
+  color: var(--color-alert);
+}
+
+.close-media-modal:hover {
+  color: #333;
+}
+
+.custom-file-upload-media {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px 0;
+  margin-bottom: 40px;
+  border: 2px solid var(--color-dark);
+  border-radius: 10px;
+  color: var(--color-dark);
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.9); /* Adiciona uma sombra suave */
+  width: 100%;
+}
+
+.upload-name-media {
+  text-align: center;
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  color: var(--color-dark);
+  margin-bottom: 40px;
+}
+.camera-icon-media {
+  font-size: 35px;
+  color: var(--color-primary);
+}
+
+.upload-midia-name {
+  margin: 10px auto; /* Espaçamento entre o ícone e o texto */
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.custom-file-upload-media:hover {
+  background-color: rgba(87, 87, 87, 0.1); /* Fundo claro ao passar o mouse */
+}
+
+.attached-media {
+  max-width: 100%; /* Garante que a mídia não ultrapasse a largura do modal */
+  max-height: 400px; /* Define uma altura máxima para a mídia */
+  margin-bottom: 20px; /* Adiciona espaço abaixo da mídia */
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.9); /* Adiciona uma sombra suave */
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between; /* Distribui os botões igualmente */
+  margin-top: 20px; /* Adiciona um espaço entre os botões e a mídia */
+}
+
+.cancel-button {
+  padding: 10px 20px;
+  background-color: var(--color-primary); /* Cor do botão Cancelar */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+}
+
+.send-button {
+  padding: 10px 20px;
+  background-color: #16bb1f; /* Cor do botão Enviar */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+}
+
+.cancel-button:hover {
+  background-color: var(
+    --color-primary-hover
+  ); /* Cor do botão Cancelar ao passar o mouse */
+}
+
+.send-button:hover {
+  background-color: #0d7813; /* Cor do botão Enviar ao passar o mouse */
+}
+
+.send-button:disabled {
+  background-color: #dedede; /* Cor de fundo para o botão desativado */
+  cursor: not-allowed;
+  opacity: 0.6;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+}
+
+.send-button:disabled:hover {
+  background-color: #dedede;/* Cor de fundo para o botão desativado */
+}
+
+@media (max-width: 768px) {
+  .message-list {
+    width: 90%; /* Ajusta a largura da lista de mensagens para telas menores */
+  }
+
+  .message-input input[type="text"] {
+    width: 60%; /* Ajusta a largura do input para telas menores */
+  }
+
+  .media-modal-content {
+    width: 80%; /* Ajusta a largura do modal para telas menores */
+  }
+
+  .message-input{
+    width: 100%;
+  }
+
+  .name-info-chat{
+    margin: -10px auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .message-input input[type="text"] {
+    width: 80%; /* Ajusta a largura do input para telas muito pequenas */
+  }
+
+  .message-input{
+    margin: 30px auto;
+    width: 100%;
+  }
+
+  .message {
+    font-size: 12px; /* Reduz o tamanho da fonte das mensagens para telas muito pequenas */
+  }
+
+  .media-modal-content {
+    width: 90%; /* Ajusta a largura do modal para telas muito pequenas */
+  }
+}

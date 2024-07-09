@@ -1,0 +1,121 @@
+body {
+  font-family: "Raleway", sans-serif;
+  background-color: #f0f2f5;
+}
+
+.logoTerm {
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 4em;
+  margin-top: 30px;
+}
+
+.logoTerm a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.logoTerm:hover {
+  text-decoration: none;
+  color: #000000;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 20px 0;
+}
+
+.highlight {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.paragraph {
+  color: #191919;
+  font-size: 28px;
+  text-align: left;
+  margin-left: -1%;
+  font-weight: bold;
+  margin: 0 auto;
+}
+
+.descriptionText {
+  font-size: 16px;
+  line-height: 2;
+  color: #191919;
+  text-align: left;
+  margin-top: 50px;
+  margin-bottom: 70px;
+}
+
+.descriptionText p {
+  margin-bottom: 20px;
+  color: #191919;
+  font-weight: 500;
+}
+
+.section {
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+.section h2 {
+  color: #191919;
+  font-size: 24px;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+.section p {
+  color: #191919;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.acknowledgment {
+  color: #191919;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 90px;
+  font-weight: 600;
+  margin-bottom: 80px;
+}
+
+@media screen and (max-width: 600px) {
+  .highlight {
+    padding: 15px;
+  }
+
+  .paragraph {
+    font-size: 24px;
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .descriptionText {
+    font-size: 14px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+  }
+
+  .descriptionText p {
+    margin-bottom: 15px;
+  }
+
+  .section h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .section p {
+    font-size: 14px;
+  }
+
+  .acknowledgment {
+    font-size: 12px;
+    margin-top: 60px;
+    margin-bottom: 50px;
+  }
+}

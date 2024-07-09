@@ -1,0 +1,313 @@
+/* FeedPage.css */
+
+/* Adiciona uma cor de fundo mais sutil para o shimmer */
+.shimmer {
+  background: #f0f0f0;
+  position: relative;
+  overflow: hidden; /* Garante que o efeito shimmer não ultrapasse o contêiner */
+}
+
+.shimmer::before {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 100%);
+  animation: shimmer 1.5s infinite; /* Ajuste o tempo para uma animação mais suave */
+}
+
+/* Define a animação do efeito shimmer */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Adiciona um efeito shimmer aos elementos */
+.shimmer-element {
+  background: #e0e0e0; /* Cor de fundo dos elementos em loading */
+  border-radius: 4px; /* Bordas arredondadas para um visual mais suave */
+  height: 100%; /* Ocupa toda a altura do contêiner */
+}
+
+.feed-page {
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.welcome-explore {
+  text-align: center;
+  font-size: 25px; /* Tamanho de fonte adequado */
+  font-weight: bold; /* Negrito para destacar */
+  margin-top: 20px; /* Margem superior para separação */
+  color: var(--color-dark); /* Cor do texto */
+  margin-bottom: 50px;
+}
+.end-explore {
+  text-align: center;
+  font-weight: 400; /* Negrito para destacar */
+  font-size: 17px; /* Tamanho de fonte adequado */
+  margin-top: 20px; /* Margem superior para separação */
+  color: var(--color-gray); /* Cor do texto */
+}
+
+.loading,
+.error,
+.no-posts {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 18px;
+  color: #555;
+}
+
+.post {
+  max-width: 600px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  margin: 0 auto;
+  overflow: hidden;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  margin-bottom: 50px;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.profile-image-feed {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover; /* Garantir que a imagem mantenha a proporção correta */
+  margin-right: 10px;
+}
+
+.username-feed {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--color-dark);
+}
+
+.post-image {
+  width: 100%;
+  height: auto;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.post-info {
+  padding: 10px;
+}
+
+.post-date-feed,
+.post-likes {
+  margin: 1px 25px;
+  color: #585858;
+  font-size: 12px;
+}
+
+/* Adicione uma animação para o botão de curtir */
+.contain-like-feed {
+  display: flex;
+}
+
+.contain-like-feed button {
+  background: none; /* Remover o fundo */
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+}
+
+.like-feed {
+  font-size: 38px;
+  transition: color 0.3s ease; /* Transição suave da cor */
+  margin: 15px 15px;
+}
+
+.like-feed:hover {
+  color: var(--color-gray);
+}
+
+.like.filled {
+  color: #ff8008; /* Gradiente laranja para simular fogo */
+  margin: 15px 15px;
+}
+
+.view-likes-button {
+  background-color: transparent;
+  border: none;
+  color: var(--color-dark); /* Cor principal */
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  padding: 10px;
+  margin: 1px 15px;
+  transition: color 0.3s ease;
+  font-family: "Raleway", sans-serif;
+}
+
+.post-actions {
+  display: flex;
+  align-items: center;
+  margin: 15px 5px;
+}
+
+.comment-icon {
+  font-size: 38px;
+  transition: color 0.3s ease; /* Transição suave da cor */
+}
+
+.comment-icon:hover {
+  color: var(--color-gray);
+}
+
+.view-likes-button:hover {
+  color: var(--color-gray);
+}
+
+.view-likes-button:focus {
+  color: var(--color-gray);
+}
+
+.view-likes-button:active {
+  color: var(--color-gray); /* Cor ao clicar */
+}
+
+.no-likes {
+  font-size: 1rem;
+  color: #666;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.save-icon {
+  font-size: 28px;
+  cursor: pointer;
+  float: right;
+  margin: -10px 10px;
+}
+
+.save-icon:hover {
+  color: var(--color-gray);
+}
+
+.saved {
+  color: var(--color-details); /* Cor do ícone quando salvo */
+}
+
+.feed-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.modal-content-feed {
+  background: var(--color-dark);
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.close-feed-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 30px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 38px;
+  color: var(--color-primary-focus);
+}
+
+.feed-modal-title {
+  font-size: 16px;
+  color: #ffffff;
+  text-align: center;
+  margin-top: 30px;
+}
+.rounded-image-message-feed {
+  width: 60px; /* Ajuste a largura da imagem redonda conforme necessário */
+  height: 60px; /* Ajuste a altura da imagem redonda conforme necessário */
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.9); /* Adiciona uma sombra suave */
+  margin: 10px;
+  color: gray;
+}
+
+.feed-modal ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: var(--color-details);
+  max-height: 400px; /* Defina a altura máxima para a lista */
+  overflow-y: auto; /* Adicione rolagem vertical quando necessário */
+}
+
+.feed-modal li {
+  display: flex; /* Adicionado para alinhar o conteúdo */
+  align-items: center; /* Alinha os itens verticalmente */
+  margin: 10px 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.feed-modal li img {
+  margin-right: 10px; /* Adiciona espaço entre a imagem e o texto */
+}
+
+.post-caption-container {
+  position: relative; /* Necessário para o posicionamento absoluto do pseudo-elemento */
+}
+
+.post-background-caption{
+  display: none;
+}
+
+/* Container da legenda */
+.post-background-color-caption {
+  display: flex;
+  flex-direction: column; /* Alinha o conteúdo verticalmente */
+  background-color: rgba(255, 255, 255, 0.9); /* Fundo branco semi-transparente */
+  width: 100%;
+  padding: 15px; /* Espaçamento interno */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* Sombra leve */
+  margin-top: -5px; /* Ajuste o espaço acima da legenda */
+  position: relative; /* Para o posicionamento absoluto do texto */
+  border: 1px solid #e6e6e6; /* Borda sutil e moderna */
+}
+
+/* Texto da legenda */
+.post-caption-highlight {
+  font-size: 14px; /* Tamanho da fonte */
+  color: var(--color-dark); /* Cor do texto */
+  line-height: 1.4; /* Altura da linha para melhor leitura */
+  text-align: left; /* Alinhamento do texto à esquerda */
+  padding: 10px; /* Padding interno para espaçamento confortável */
+  background-color: transparent; /* Sem fundo adicional */
+}

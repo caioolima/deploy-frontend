@@ -1,0 +1,166 @@
+@charset "UTF-8";
+
+.tab-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.tab-buttons button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin: 15px;
+  padding: 15px 20px;
+  font-size: 16px;
+  color: #717171;
+  transition: background-color 0.3s;
+  font-family: "Raleway", sans-serif;
+  border-top: 5px solid transparent; /* Adicionando a borda superior */
+}
+
+.tab-buttons button:hover {
+  background-color: #f0f0f0;
+}
+
+.tab-buttons button.active-tab {
+  color: #000000;
+  font-weight: bold;
+  border-top-color: var(--color-primary);
+  font-size: 18px;
+  margin: 40px;
+}
+
+.empty-message {
+  font-size: 1.2rem; /* Tamanho da fonte */
+  color: #666; /* Cor do texto */
+  text-align: center; /* Alinhamento do texto */
+  padding: 20px; /* Espaçamento interno */
+}
+
+.line-profile {
+  display: none;
+  width: 100%;
+  height: 4px; /* Altura da linha superior */
+  background-color: #07c449; /* Cor da linha superior */
+  border-radius: 4px 4px 0 0; /* Adiciona bordas arredondadas somente no topo */
+}
+
+.photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 5px;
+  margin-bottom: 200px;
+}
+
+.photo-grid {
+  display: grid;
+  gap: 2px;
+  grid-template-columns: repeat(3, 1fr); /* Mantenha três colunas */
+  margin-bottom: 200px;
+}
+
+@media screen and (min-width: 660px) and (max-width: 1300px) {
+  .photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .line-profile {
+    height: 2px;
+  }
+}
+@media screen and (max-width: 660px) {
+  .photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .line-profile {
+    height: 2px;
+  }
+}
+
+.photo-item img {
+  width: 100%;
+  height:320px;
+  object-fit: cover;
+}
+
+.image-container-button {
+  cursor: pointer;
+  position: relative; /* Garante que o contêiner mantenha o controle do layout */
+  width: 100%;
+  height: 100%; /* Garante que o contêiner ocupe todo o espaço disponível */
+}
+
+.image-container-button img {
+  width: 100%; /* Garante que a imagem ocupe todo o espaço do contêiner */
+  height: 100%; /* Garante que a imagem ocupe todo o espaço do contêiner */
+  object-fit: cover; /* Mantém a proporção e corta a imagem conforme necessário */
+  transition: opacity 0.5s; /* Adiciona uma transição de opacidade */
+}
+
+.photo-item {
+  width: 100%;
+  height: 320px;
+  position: relative;
+}
+
+/* Adicione esta regra de estilo para remover a aparência de botão */
+.photo-item button {
+  background: none;
+  border: none;
+  cursor: pointer; /* Adicione um cursor de ponteiro para indicar que é clicável */
+}
+
+/* Adicione um estilo de foco ao botão para destacar a interatividade */
+.photo-item button:focus {
+  outline: none;
+}
+
+.empty-gallery-message {
+  font-size: 1.2rem;
+  text-align: center; /* Centraliza horizontalmente */
+  margin: 40px;
+  color: #999; /* Cor de texto cinza claro */
+}
+
+.loading-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.dot-loader {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: #000;
+  border-radius: 50%;
+  animation: dot-spin 1s infinite linear;
+}
+
+.dot-loader:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.dot-loader:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.dot-loader:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes dot-spin {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(0);
+  }
+}

@@ -1,0 +1,190 @@
+/* style.module.css */
+
+.modal-edit {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content-edit {
+  background-color: white;
+  width: 80%;
+  max-width: 600px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  position: relative;
+}
+
+.modal-close-edit-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #000000;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.modal-close-edit-button:hover {
+  color: #333;
+}
+
+.text-edit {
+  margin-bottom: 20px;
+  margin: 30px auto;
+}
+
+.text-edit label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.edit-input,
+.text-edit input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: "Raleway", sans-serif;
+}
+
+.edit-input {
+  resize: none; /* Impede o redimensionamento pelo usuário */
+}
+
+.bio_text_edit {
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.black-text {
+  color: #333;
+  font-size: 14px;
+}
+
+.save-button-container {
+  /* Estilo para o container do botão */
+  margin-top: 20px; /* Ajuste conforme necessário */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.save-button {
+  background-color: var(--color-primary-focus);
+  color: var(--color-dark);
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
+}
+
+.save-button:hover {
+  background-color: var(--color-dark);
+  color: var(--color-primary-focus);
+}
+
+.save-button.disabled {
+  /* Estilo para o botão desabilitado */
+  background-color: #ccc; /* Cor de fundo mais clara para indicar desabilitado */
+  color: #666; /* Cor de texto mais clara para indicar desabilitado */
+  cursor: not-allowed; /* Cursor indicando que o botão não pode ser clicado */
+  opacity: 0.6; /* Opacidade reduzida para indicar desabilitado */
+}
+
+.delete-account-button {
+  background-color: transparent;
+  color: var(--color-alert);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  font-family: "Raleway", sans-serif;
+}
+
+.delete-account-button:hover {
+  background-color: var(--color-dark);
+}
+
+.confirm-delete-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.confirm-delete-modal p {
+  margin-bottom: 10px;
+}
+
+.confirm-delete-button{
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: var(--color-primary-focus);
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+  font-family: "Raleway", sans-serif;
+}
+
+.confirm-delete-button:hover {
+  background-color: var(--color-dark);
+  color: var(--color-primary-focus);
+}
+
+.cancel-button-bio {
+  background-color: transparent;
+  color: #666;
+  margin-left: 10px;
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: color 0.3s ease;
+  font-family: "Raleway", sans-serif;
+}
+
+.cancel-button-bio:hover {
+  color: var(--color-alert);
+  font-weight: bold;
+}
+
+.phone-input.error_message {
+  border-color: red; /* Define a cor da borda para indicar erro */
+}
+
+@media (max-width: 600px) {
+  .modal-content-edit {
+    width: 90%;
+  }
+}

@@ -1,0 +1,61 @@
+/* TipsSection.module.css */
+.tipsContainer {
+  background-color: white;
+  border-radius: 10px;
+  padding: 30px;
+  margin-top: 40px;
+  transition: transform 0.2s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 50px;
+}
+
+.tipsContainer:hover {
+  transform: scale(1.05);
+}
+
+.tipsTitle {
+  font-size: 2.5em;
+  color: var(--color-dark);
+  font-family: "Raleway", sans-serif;
+  text-align: center;
+  margin: auto;
+}
+
+.tipsList {
+  list-style-type: none;
+  padding: 0;
+  display: grid;
+  gap: 15px;
+  margin: 50px auto;
+}
+
+.tipItem {
+  font-size: 1.2em;
+  color: var(--color-dark);
+  padding-left: 30px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.tipItem::before {
+  content: "•";
+  color: var(--color-primary);
+  font-weight: bold;
+  font-size: 1.5em;
+  margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+  .tipsContainer {
+    padding: 20px;
+  }
+
+  .tipsTitle {
+    font-size: 2em;
+  }
+
+  .tipItem {
+    font-size: 1.1em;
+  }
+}

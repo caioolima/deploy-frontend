@@ -1,0 +1,83 @@
+@charset "UTF-8";
+
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,400;0,500;0,600;0,700;1,500;1,600&display=swap");
+
+/* main.css */
+
+div.container-home {
+    /* ↑ Container (Pai) que engloba todo o conteúdo da tela de login. */
+    height: 100vh;
+    margin: auto; /* ← Centraliza o container */
+    display: flex;
+    flex-direction: column; /* ← Separa o header do footer verticalmente. */
+}
+
+div.content {
+    /* ↑ Container do header e form. */
+    font-family: "Raleway", sans-serif;
+    width: 80vw;
+    margin: auto; /* ← Centraliza o container em relação ao (Pai)*/
+    display: flex;
+    flex-direction: row; /* ← Deixa o filhos lado a lado. */
+    justify-content: space-between; /* ← Adiciona espaços automáticos entre os filhos. */
+}
+
+html {
+    overflow-x: hidden; /* Oculta a barra de rolagem horizontal */
+}
+
+/* ↓ Ajustes de responsividade da tela de login para telas grandes.*/
+@media screen and (min-width: 1500px) {
+    div.content {
+        width: 60vw; /* ← Limita a largura do container do head e form. */
+    }
+}
+
+/* ↓ Ajuste de responsividade da tela de login para telas pequenas. */
+@media screen and (max-width: 1000px) {
+    div.container-home {
+        width: 100vw; /* ← Deixa o container (Pai ↑) com largura total da tela. */
+    }
+    div.content {
+        width: 100%; /* ← Deixa o container com largura total em relação ao (Pai ↑). */
+        flex-direction: column; /* ← Deixa um elemento sob o outro para telas pequenas. */
+        align-items: center; /* ← Alinha o conteúdo. */
+        height: 100%; /* ← Altura total do container em relação ao (Pai ↑). */
+        display: block;
+    }
+}
+
+/* Estilos da barra de rolagem */
+*::-webkit-scrollbar {
+    width: 10px; /* Largura da barra de rolagem */
+}
+
+/* Estilo do polegar */
+*::-webkit-scrollbar-thumb {
+    background: var(--color-primary-focus); /* Gradiente para efeito de transição */
+    border-radius: 10px; /* Borda arredondada */
+    border-top-width: 0; /* Largura da borda superior (triângulo) */
+    border-bottom-width: 10px; /* Largura da borda inferior */
+    transform: rotate(45deg); /* Rotação para criar a borda triangular */
+    transform-origin: center; /* Origem da rotação */
+    animation: bloodFlow 1s infinite alternate; /* Animação do efeito de corrente sanguínea */
+}
+
+/* Estilo da trilha */
+*::-webkit-scrollbar-track {
+    background-color: #ffffff; /* Cor de fundo */
+    border-radius: 10px; /* Borda arredondada */
+}
+
+/* Animação do efeito de corrente sanguínea */
+@keyframes bloodFlow {
+    0% {
+        background-position: 0% 0%; /* Posição inicial */
+    }
+    50% {
+        background-position: 100% 100%; /* Posição intermediária */
+    }
+    100% {
+        background-position: 0% 0%; /* Posição final */
+    }
+}

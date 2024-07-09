@@ -1,0 +1,275 @@
+.commentModal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.commentModalContent {
+  background: #fff;
+  width: 90%;
+  max-width: 800px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  animation: slideIn 0.3s ease-out;
+  position: relative; /* Adicionado para posicionar o botão de fechar */
+  max-height: 90vh; /* Limita a altura do modal para evitar ultrapassar a tela */
+  overflow-y: auto; /* Adiciona rolagem vertical se o conteúdo exceder a altura do modal */
+}
+
+.closeCommentModal {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #fff; /* Cor do texto */
+  background-color: rgba(0, 0, 0, 0.5); /* Fundo semitransparente */
+  border: 2px solid #fff; /* Borda branca */
+  border-radius: 50%; /* Forma circular */
+  width: 40px; /* Tamanho fixo */
+  height: 40px; /* Tamanho fixo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Sombra sutil */
+}
+
+.closeCommentModal:hover {
+  background-color: #fff; /* Fundo branco ao passar o mouse */
+  color: #f00; /* Cor do texto ao passar o mouse */
+  transform: scale(1.1); /* Efeito de zoom ao passar o mouse */
+}
+
+.commentImageContainer {
+  height: auto; /* Permite que a imagem se ajuste automaticamente */
+  background: #f7f7f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.commentImage {
+  max-width: 100%;
+  max-height: 400px; /* Limita a altura máxima da imagem */
+  object-fit: cover;
+}
+
+.commentInputContainer {
+  padding: 20px;
+}
+
+.commentTitle {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.commentList {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
+.commentList ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.commentUserInfo {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.profileImageFeed {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.commentContent {
+  background: #f0f0f0;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px; /* Espaçamento inferior */
+}
+
+.usernameComment {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.usernameFeedPublication {
+  font-weight: bold;
+  color: #555;
+}
+
+.commentText {
+  color: #333;
+}
+
+.commentTime {
+  display: block; /* Faz o tempo postado aparecer em uma nova linha */
+  font-size: 0.8rem;
+  color: #999;
+  margin-top: 5px;
+}
+
+.noCommentsMessage {
+  text-align: center;
+  color: #999;
+}
+
+.commentInputWrapper {
+  display: flex;
+  align-items: center; /* Alinha verticalmente */
+  gap: 10px; /* Espaçamento entre o input e o botão */
+}
+
+.commentTextarea {
+  flex: 1; /* Ocupa o máximo de espaço disponível */
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-family: "Raleway", sans-serif;
+}
+
+.submitCommentButton {
+  padding: 10px 20px;
+  background: #16bb1f;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-family: "Raleway", sans-serif;
+}
+
+.submitCommentButton:hover {
+  background: #0d7813;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.loadingShimmer {
+  animation: shimmer 1.5s infinite linear;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.currentUser .commentContent {
+  background: #e6ffe6;
+}
+
+.currentUser .usernameFeedPublication {
+  color: #16bb1f;
+}
+
+/* Media Queries para responsividade */
+
+@media (max-width: 768px) {
+  .commentModalContent {
+    width: 95%;
+    max-width: none; /* Remove o max-width para telas pequenas */
+    height: auto; /* Ajusta a altura automaticamente */
+  }
+
+  .commentImageContainer {
+    height: auto; /* Permite que a imagem se ajuste automaticamente */
+    padding: 10px; /* Adiciona um pouco de preenchimento */
+  }
+
+  .commentImage {
+    max-height: 400px; /* Limita a altura máxima da imagem */
+  }
+
+  .commentTitle {
+    font-size: 1.25rem; /* Reduz o tamanho da fonte */
+  }
+
+  .commentList {
+    max-height: 300px; /* Reduz a altura máxima da lista de comentários */
+  }
+
+  .profileImageFeed {
+    width: 30px;
+    height: 30px;
+  }
+
+  .commentTextarea {
+    font-size: 0.9rem; /* Reduz o tamanho da fonte */
+  }
+
+  .submitCommentButton {
+    font-size: 0.9rem; /* Reduz o tamanho da fonte */
+  }
+}
+
+@media (max-width: 480px) {
+  .commentModalContent {
+    width: 100%;
+    height: auto; /* Ajusta a altura automaticamente */
+    border-radius: 0; /* Remove a borda arredondada */
+  }
+
+  .commentImageContainer {
+    height: 250px; /* Ajusta a altura da imagem para telas muito pequenas */
+  }
+
+  .commentImage {
+    max-height: 100%; /* Ajusta a altura máxima da imagem */
+  }
+
+  .commentTitle {
+    font-size: 1.1rem; /* Reduz ainda mais o tamanho da fonte */
+  }
+
+  .commentList {
+    max-height: 210px; /* Reduz a altura máxima da lista de comentários */
+  }
+
+  .profileImageFeed {
+    width: 25px;
+    height: 25px;
+  }
+
+  .commentTextarea {
+    font-size: 0.8rem; /* Reduz o tamanho da fonte */
+  }
+
+  .submitCommentButton {
+    font-size: 0.8rem; /* Reduz o tamanho da fonte */
+  }
+}

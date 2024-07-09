@@ -1,0 +1,75 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 4em;
+  margin-top: 30px;
+}
+
+.logo a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.logo:hover {
+  text-decoration: none;
+  color: #000000;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 20px 0;
+}
+
+.supportPage {
+  font-family: "Raleway", sans-serif;
+  color: var(--color-dark);
+  background-color: #f4f4f4;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin-bottom: 50px;
+}
+
+.header {
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  color: var(--color-dark);
+  border-radius: 8px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 800px;
+  margin-top: 20px;
+}
+
+.footer {
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+}
+
+@media screen and (max-width: 768px) {
+  .header h1 {
+    font-size: 25px;
+  }
+
+  .footer {
+    padding: 20px;
+  }
+}

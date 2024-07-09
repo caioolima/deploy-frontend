@@ -1,0 +1,66 @@
+/* BackpackerArticle.module.css */
+
+.article {
+  max-width: 800px;
+  margin: 0 auto;
+  margin-bottom: 70px;
+}
+
+.header {
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+.title {
+  font-size: 2.5rem;
+  color: var(--color-primary);
+}
+
+.section {
+  margin-bottom: 40px;
+}
+
+.subtitle {
+  font-size: 1.8rem;
+  color: var(--color-primary);
+  margin-bottom: 20px;
+}
+
+.paragraph {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 15px;
+}
+
+.image {
+  display: block;
+  margin: 2% auto;
+  max-width: 100%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+}
+
+.imageAttribution {
+  font-size: 0.8rem;
+  text-align: center;
+  margin-top: 10px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+  .article {
+    padding: 15px;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+  }
+
+  .paragraph {
+    font-size: 1rem;
+  }
+}

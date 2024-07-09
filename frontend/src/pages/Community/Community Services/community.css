@@ -1,0 +1,125 @@
+
+/* Estilos para o contêiner */
+.country-details-container {
+    max-width: 650px;
+    margin: 20vh auto; /* Centraliza horizontalmente e adiciona margem superior */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza verticalmente */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    height: 500px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    position: relative; /* Adiciona posição relativa para alinhar a bandeira */
+    background-color: #fff;
+    z-index: 1000;
+}
+
+.flag {
+  position: absolute; /* Mantém o fluxo normal do documento */
+  top: 0;
+  left: 0;
+  width: 100vw; /* 100% da largura da viewport */
+  height: 100vh; /* 100% da altura da viewport */
+  background-size: cover; /* Garante que a imagem de fundo cubra toda a tela */
+  background-position: center; /* Centraliza a imagem de fundo */
+}
+
+
+  /* Estilos para o título */
+  .country-details-title {
+    padding: 15px 2px;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilos para o ID do país */
+  .country-id {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilos para o título das regras da comunidade */
+  .community-rules-title {
+    font-size: 20px;
+    padding: 10px 5px;
+    margin-bottom: 50px;
+  }
+  
+  /* Estilos para a lista de regras */
+  .community-rules-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  /* Estilos para os itens da lista */
+  .community-rules-list li {
+    margin-bottom: 10px;
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilos para os marcadores */
+  .community-rules-list li::before {
+    content: "";
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--color-primary); /* Cor do marcador */
+  }
+  
+  /* Estilos para o botão de participar da comunidade */
+  .join-button {
+    background-color: var(--color-details);
+    color: #fff;
+    border: none;
+    padding: 12px 24px; /* Aumenta o padding para maior destaque */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px; /* Tamanho da fonte */
+    transition: background-color 0.3s ease; /* Adiciona uma transição suave */
+    font-family: "Raleway", sans-serif;
+  }
+  
+  .join-button:hover {
+    background-color: var(--color-details-hover); /* Cor mais escura ao passar o mouse */
+  }
+  
+  /* Estilos para a mensagem de já participando */
+  .already-joined-message {
+    font-size: 18px;
+    color: var(--color-details);
+  }
+  
+  /* Estilos para a bandeira do Brasil */
+.country-details-container::before {
+    background-image: url("./flags/brasil.jpeg");
+}
+
+/* Estilos para a bandeira da Alemanha */
+.country-details-container::before {
+    background-image: url("./flags/alemanha.png");
+}
+
+/* Estilos para a bandeira da Alemanha */
+.country-details-container::before {
+  background-image: url("./flags/japao.png");
+}
+
+/* Estilos para a bandeira da Alemanha */
+.country-details-container::before {
+  background-image: url("./flags/itália.jpg");
+}
+
+/* Estilos para a bandeira da Alemanha */
+.country-details-container::before {
+  background-image: url("./flags/china.jpg");
+}
+

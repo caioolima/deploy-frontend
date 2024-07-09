@@ -1,0 +1,100 @@
+/* Adicione estilos ao seu arquivo CSS */
+
+/* UserProfile.css */
+
+main.profile {
+  /* ← Pagina inteira */
+  display: flex; /* Permite que os filhos usem flexbox para alinhamento */
+  width: 100vw;
+  height: auto;
+}
+
+section.profile-container {
+  margin: 30px auto; /* Ajuste a margem para posicionar a seção e adicionar espaçamento */
+  width: 50vw;
+  max-height: calc(
+    100vh - 30px
+  ); /* Calcule a altura máxima menos a margem superior */
+}
+
+.modal.active {
+  /* ← Estado dos modais */
+  display: flex;
+}
+
+.modal {
+  /* Todos os modais */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Raleway", sans-serif;
+}
+
+.custom-file-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 60px;
+}
+
+.custom-file-upload label {
+  cursor: pointer;
+  padding: 15px 20px;
+  background-color: var(--color-details);
+  color: #fff;
+  border-radius: 4px;
+  font-size: 15px;
+  width: 50%;
+  margin-top: -20px;
+}
+
+.custom-file-upload input {
+  display: none;
+}
+
+.bio-textarea {
+  overflow-wrap: break-word; /* Para quebrar palavras longas */
+  word-wrap: break-word; /* Para compatibilidade com navegadores mais antigos */
+  max-width: 400px; /* Defina a largura máxima desejada */
+}
+
+.modal-close-edit-button {
+  width: 20%;
+  background-color: var(--color-primary);
+}
+
+.mobile-logo {
+  display: none;
+}
+
+@media screen and (max-width: 1000px) {
+  section.profile-container {
+    width: 70vw;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  section.profile-container {
+    width: 100vw;
+  }
+}
+
+@media sceen and (max-width: 1400px) {
+  section.profile-container {
+    width: 700px;
+  }
+}
+
+.footer-reset {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}

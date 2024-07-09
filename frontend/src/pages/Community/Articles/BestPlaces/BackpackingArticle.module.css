@@ -1,0 +1,102 @@
+/* BackpackingArticle.module.css */
+
+.pageWrapper {
+  display: flex;
+  flex-direction: column; /* Para dispositivos móveis, como celulares */
+}
+
+.articleContainer {
+  background-color: #f9f9f9;
+  margin: auto;
+  padding: 20px;
+  width: 100%; /* Ajusta para ocupar toda a largura disponível */
+  max-width: 1200px; /* Define uma largura máxima para evitar que o conteúdo se espalhe demais */
+}
+
+.title {
+  text-align: center;
+  font-size: 2.5em;
+  color: var(--color-dark);
+  margin: auto;
+}
+
+.locationsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  justify-items: center;
+  margin-top: 50px;
+}
+
+.detailsSection {
+  margin-top: 40px;
+  display: grid;
+  gap: 30px;
+}
+
+/* Media Queries para dispositivos específicos */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .locationsGrid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+  }
+
+  .title {
+    font-size: 2em;
+  }
+  .articleContainer {
+    width: 82%; /* Reduzido para ocupar menos espaço em telas maiores */
+    margin: auto 183px; /* Centraliza o container */
+  }
+}
+
+/* iPhone e Android */
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.9em;
+    width: 100%;
+  }
+  .articleContainer {
+    width: 90%;
+    margin: auto;
+  }
+}
+
+/* iPhone e Android */
+@media (max-width: 950px) {
+  .articleContainer {
+    width: 90%;
+    margin: auto;
+  }
+}
+
+/* MacBook */
+@media (min-width: 1280px) {
+  .locationsGrid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 50px;
+  }
+
+  .articleContainer {
+    width: 70%;
+    margin: auto 280px;
+  }
+
+  .title {
+    font-size: 2.8em;
+  }
+}
+
+/* Notebook */
+@media (min-width: 1366px) {
+  .locationsGrid {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 60px;
+  }
+
+  .title {
+    font-size: 3em;
+  }
+}

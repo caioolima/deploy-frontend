@@ -1,0 +1,73 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@fortawesome/free-solid-svg-icons": "^6.5.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "@mui/material": "^5.15.11",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "auth": "^1.0.2",
+    "aws-sdk": "^2.1569.0",
+    "axios": "^1.6.2",
+    "date-fns": "^3.6.0",
+    "firebase": "^10.8.0",
+    "framer-motion": "^11.0.24",
+    "i18next": "^23.7.8",
+    "nodemon": "^3.1.0",
+    "nth-check": "^2.0.1",
+    "postcss": "^8.4.31",
+    "react": "^18.2.0",
+    "react-country-flag": "^3.1.0",
+    "react-dom": "^18.2.0",
+    "react-i18next": "^13.5.0",
+    "react-icons": "^5.2.1",
+    "react-modal": "^3.16.1",
+    "react-phone-number-input": "^3.3.9",
+    "react-router-dom": "^6.22.3",
+    "react-scripts": "^5.0.1",
+    "react-slick": "^0.30.2",
+    "react-spinkit": "^3.0.0",
+    "react-spinners": "^0.13.8",
+    "react-spring": "^9.7.3",
+    "react-toastify": "^10.0.4",
+    "slick-carousel": "^1.8.1",
+    "socket.io": "^4.7.5",
+    "socket.io-client": "^4.7.5",
+    "uuid": "^9.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@babel/plugin-transform-private-methods": "^7.24.7",
+    "@rollup/plugin-terser": "^0.4.4"
+  }
+}
