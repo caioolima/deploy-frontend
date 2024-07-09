@@ -316,163 +316,169 @@ const FeedPage = () => {
         ) : (
           feed.map((post) => (
             <div key={post._id} className="post">
-              {/* Renderiza a imagem do post e oculta a legenda até que a imagem seja carregada */}
-              {imageLoadStatus[post._id] ? (
-                <div className="post-content">
-                  <div className="post-header">
-                    {post.userId.profileImageUrl ? (
-                      <a href={`/profile/${post.userId._id}`}>
-                        <img
-                          src={post.userId.profileImageUrl}
-                          alt={`${post.userId.firstName} ${post.userId.lastName}`}
-                          className="profile-image-feed"
-                        />
-                      </a>
-                    ) : (
-                      <a href={`/profile/${post.userId._id}`}>
-                        <AiOutlineUser className="profile-icon-profile" />
-                      </a>
-                    )}
-                    <a href={`/profile/${post.userId._id}`}>
-                      <p className="username-feed">{post.userId.username}</p>
-                    </a>
-                  </div>
+              <div className="post-header">
+                {post.userId.profileImageUrl ? (
+                  <a href={`/profile/${post.userId._id}`}>
+                    <img
+                      src={post.userId.profileImageUrl}
+                      alt={`${post.userId.firstName} ${post.userId.lastName}`}
+                      className="profile-image-feed"
+                      onLoad={() =>
+                        setImageLoadStatus((prev) => ({
+                          ...prev,
+                          [post._id]: true,
+                        }))
+                      }
+                    />
+                  </a>
+                ) : (
+                  <a href={`/profile/${post.userId._id}`}>
+                    <AiOutlineUser className="profile-icon-profile" />
+                  </a>
+                )}
+                <a href={`/profile/${post.userId._id}`}>
+                  <p className="username-feed">{`${post.userId.username}`}</p>
+                </a>
+              </div>
 
-                  <img
-                    src={post.url}
-                    alt="Imagem da galeria"
-                    className="post-image"
-                    onLoad={() => handleImageLoad(post._id)} // Atualiza o estado de carregamento da imagem
-                  />
-
-                  <div
-                    className={`post-background-caption ${
-                      post.caption ? "post-background-color-caption" : ""
-                    }`}
-                  >
-                    <div className="post-caption-container">
-                      <p className="post-caption-highlight">
-                        {post.caption || t("post_caption_placeholder")}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="post-info">
-                    <div className="contain-like-feed">
-                      <button
-                        onClick={() => {
-                          if (post.isLiked) {
-                            unlikePost(
-                              post._id,
-                              post.userId._id,
-                              post.url,
-                              user.id
-                            );
-                          } else {
-                            likePost(
-                              post._id,
-                              post.userId._id,
-                              post.url,
-                              user.id
-                            );
-                          }
-                        }}
-                      >
-                        {post.isLiked ? (
-                          <AiFillFire className="like filled" />
-                        ) : (
-                          <AiOutlineFire className="like-feed" />
-                        )}
-                      </button>
-                      <div className="post-actions">
-                        <button onClick={() => openCommentModal(post.url)}>
-                          <MdComment className="comment-icon" />
-                        </button>
+              <div className="post-content">
+                {imageLoadStatus[post._id] ? (
+                  <>
+                    <img
+                      src={post.url}
+                      alt="Imagem da galeria"
+                      className="post-image"
+                      onLoad={() => handleImageLoad(post._id)}
+                    />
+                    <div
+                      className={`post-background-caption ${
+                        post.caption ? "post-background-color-caption" : ""
+                      }`}
+                    >
+                      <div className="post-caption-container">
+                        <p className="post-caption-highlight">
+                          {post.caption || t("post_caption_placeholder")}
+                        </p>
                       </div>
                     </div>
-                    <button
-                      className="view-likes-button"
-                      onClick={() => handleViewLikes(post.url)}
-                    >
-                      {t("view_likes_button")}
-                    </button>
-                    {post.isSaved ? (
-                      <FaBookmark
-                        className="save-icon saved"
-                        onClick={() =>
-                          handleSaved(post, post.userId._id, post.url, post._id)
-                        }
-                      />
-                    ) : (
-                      <FaRegBookmark
-                        className="save-icon"
-                        onClick={() =>
-                          handleSave(post._id, post.userId._id, post.url)
-                        }
-                      />
-                    )}
-                    <p className="post-date-feed">
-                      {t("posted_at")}{" "}
-                      {new Date(post.postedAt).toLocaleString()}
-                    </p>
-                  </div>
-                </div>
-              ) : (
-                <div className="shimmer post-image"></div> // Placeholder para a imagem
-              )}
-
-              {modalOpen && (
-                <div className="feed-modal">
-                  <div className="modal-content-feed">
-                    <span className="close-feed-modal" onClick={closeModal}>
-                      &times;
-                    </span>
-                    {modalUsers.length > 0 ? (
-                      <ul className="feed-modal-list">
-                        <h2 className="feed-modal-title">
-                          {t("users_liked_post_title")}
-                        </h2>
-                        {modalUsers.map((user) => (
-                          <li className="feed-modal-item" key={user.userId}>
-                            {user.profileImageUrl ? (
-                              <a href={`/profile/${user.userId._id}`}>
-                                <img
-                                  src={user.profileImageUrl}
-                                  alt="Imagem da galeria"
-                                  className="rounded-image-message-feed"
-                                />
-                              </a>
-                            ) : (
-                              <a href={`/profile/${user.userId._id}`}>
-                                <AiOutlineUser className="profile-icon-profile" />
-                              </a>
-                            )}
-                            <a href={`/profile/${user.userId._id}`}>
-                              {user.username}
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                    ) : (
-                      <p className="no-likes">{t("no_likes_message")}</p>
-                    )}
-                  </div>
-                </div>
-              )}
-              {commentModalOpen && (
-                <CommentModal
-                  imageUrl={selectedPostImageUrl}
-                  onClose={closeCommentModal}
-                  user={user}
-                />
-              )}
+                    <div className="post-info">
+                      <div className="contain-like-feed">
+                        <button
+                          onClick={() => {
+                            if (post.isLiked) {
+                              unlikePost(
+                                post._id,
+                                post.userId._id,
+                                post.url,
+                                user.id
+                              );
+                            } else {
+                              likePost(
+                                post._id,
+                                post.userId._id,
+                                post.url,
+                                user.id
+                              );
+                            }
+                          }}
+                        >
+                          {post.isLiked ? (
+                            <AiFillFire className="like filled" />
+                          ) : (
+                            <AiOutlineFire className="like-feed" />
+                          )}
+                        </button>
+                        <div className="post-actions">
+                          <button onClick={() => openCommentModal(post.url)}>
+                            <MdComment className="comment-icon" />
+                          </button>
+                        </div>
+                      </div>
+                      <button
+                        className="view-likes-button"
+                        onClick={() => handleViewLikes(post.url)}
+                      >
+                        {t("view_likes_button")}
+                      </button>
+                      {post.isSaved ? (
+                        <FaBookmark
+                          className="save-icon saved"
+                          onClick={() =>
+                            handleSaved(post, post.userId._id, post.url, post._id)
+                          }
+                        />
+                      ) : (
+                        <FaRegBookmark
+                          className="save-icon"
+                          onClick={() =>
+                            handleSave(post._id, post.userId._id, post.url)
+                          }
+                        />
+                      )}
+                      <p className="post-date-feed">
+                        {t("posted_at")} {new Date(post.postedAt).toLocaleString()}
+                      </p>
+                    </div>
+                  </>
+                ) : (
+                  <div className="shimmer post-image"></div> // Placeholder para a imagem
+                )}
+              </div>
             </div>
           ))
         )}
         <h1 className="end-explore">{t("end_message")}</h1>
       </div>
+      
+      {modalOpen && (
+        <div className="feed-modal">
+          <div className="modal-content-feed">
+            <span className="close-feed-modal" onClick={closeModal}>
+              &times;
+            </span>
+            {modalUsers.length > 0 ? (
+              <ul className="feed-modal-list">
+                <h2 className="feed-modal-title">
+                  {t("users_liked_post_title")}
+                </h2>
+                {modalUsers.map((user) => (
+                  <li className="feed-modal-item" key={user.userId}>
+                    {user.profileImageUrl ? (
+                      <a href={`/profile/${user.userId._id}`}>
+                        <img
+                          src={user.profileImageUrl}
+                          alt="Imagem da galeria"
+                          className="rounded-image-message-feed"
+                        />
+                      </a>
+                    ) : (
+                      <a href={`/profile/${user.userId._id}`}>
+                        <AiOutlineUser className="profile-icon-profile" />
+                      </a>
+                    )}
+                    <a href={`/profile/${user.userId._id}`}>
+                      {user.username}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="no-likes">{t("no_likes_message")}</p>
+            )}
+          </div>
+        </div>
+      )}
+
+      {commentModalOpen && (
+        <CommentModal
+          imageUrl={selectedPostImageUrl}
+          onClose={closeCommentModal}
+          user={user}
+        />
+      )}
     </main>
   );
 };
+
 
 export default FeedPage;
