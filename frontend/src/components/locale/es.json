@@ -486,5 +486,14 @@
     "yes": "Sí",
     "no": "No",
     "end_message": "Has llegado al final",
-    "leaveCommunity": "Salir de la Comunidad"
+    "leaveCommunity": "Salir de la Comunidad",
+    "like": "le dio me gusta a tu publicación.",
+  "follow": "empezó a seguirte.",
+  "comment": "comentó en tu publicación.",
+  "save": "guardó tu publicación.",
+  "post": "publicó una nueva foto.",
+  "no_notifications": "Sin notificaciones.",
+  "notifications": "Notificaciones",
+  "notification_title": "Notificaciones",
+  "notification_label": "Notificaciones"
 }

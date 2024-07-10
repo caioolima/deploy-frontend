@@ -493,7 +493,16 @@
   "yes": "Yes",
   "no": "No",
   "end_message": "You have reached the end",
-  "leaveCommunity": "Leave Community"
+  "leaveCommunity": "Leave Community",
+  "like": "liked your post.",
+  "follow": "started following you.",
+  "comment": "commented on your post.",
+  "save": "saved your post.",
+  "post": "posted a new photo.",
+  "no_notifications": "No notifications.",
+  "notifications": "Notifications",
+  "notification_title": "Notifications",
+  "notification_label": "Notifications"
 }
   
 

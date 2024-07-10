@@ -205,13 +205,21 @@ const FeedPage = () => {
   };
 
   const openModal = () => {
+    setScrollPosition(window.scrollY); // Salva a posição de rolagem
     setModalOpen(true); // Abre o modal
+
+    // Mantém a posição de rolagem ao aplicar estilos
     document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollPosition}px`;
   };
 
   const closeModal = () => {
     setModalOpen(false); // Fecha o modal
-    document.body.style.position = "static";
+
+    // Restaura o estilo e a posição de rolagem
+    document.body.style.position = "";
+    document.body.style.top = "";
+    window.scrollTo(0, scrollPosition);
   };
 
   const openCommentModal = (imageUrl) => {
@@ -404,7 +412,12 @@ const FeedPage = () => {
                         <FaBookmark
                           className="save-icon saved"
                           onClick={() =>
-                            handleSaved(post, post.userId._id, post.url, post._id)
+                            handleSaved(
+                              post,
+                              post.userId._id,
+                              post.url,
+                              post._id
+                            )
                           }
                         />
                       ) : (
@@ -416,7 +429,8 @@ const FeedPage = () => {
                         />
                       )}
                       <p className="post-date-feed">
-                        {t("posted_at")} {new Date(post.postedAt).toLocaleString()}
+                        {t("posted_at")}{" "}
+                        {new Date(post.postedAt).toLocaleString()}
                       </p>
                     </div>
                   </>
@@ -429,7 +443,7 @@ const FeedPage = () => {
         )}
         <h1 className="end-explore">{t("end_message")}</h1>
       </div>
-      
+
       {modalOpen && (
         <div className="feed-modal">
           <div className="modal-content-feed">
@@ -456,9 +470,7 @@ const FeedPage = () => {
                         <AiOutlineUser className="profile-icon-profile" />
                       </a>
                     )}
-                    <a href={`/profile/${user.userId._id}`}>
-                      {user.username}
-                    </a>
+                    <a href={`/profile/${user.userId._id}`}>{user.username}</a>
                   </li>
                 ))}
               </ul>
@@ -479,6 +491,5 @@ const FeedPage = () => {
     </main>
   );
 };
-
 
 export default FeedPage;

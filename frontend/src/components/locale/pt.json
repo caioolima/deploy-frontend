@@ -500,6 +500,15 @@
   "confirm_delete_account": "Você realmente deseja excluir sua conta? A conta será desativada após 30 dias.",
   "yes": "Sim",
   "no": "Não",
-  "end_message": "Você chegou no fim",
-   "leaveCommunity": "Sair da Comunidade"
+  "end_message": "Você chegou no fim.",
+   "leaveCommunity": "Sair da Comunidade.",
+   "like": "curtiu sua publicação.",
+  "follow": "começou a te seguir.",
+  "comment": "comentou em sua publicação.",
+  "save": "salvou sua publicação.",
+  "post": "postou uma nova foto.",
+  "no_notifications": "Sem notificações.",
+  "notifications": "Notificações",
+  "notification_title": "Notificações",
+  "notification_label": "Notificações"
   }
