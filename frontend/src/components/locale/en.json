@@ -517,7 +517,9 @@
     "Profile": "Profile",
     "Seu navegador não suporta o elemento de vídeo.": "Your browser does not support the video element.",
     "Enviado": "Sent",
-    "Imagem carregada:": "Uploaded image:"
+    "Imagem carregada:": "Uploaded image:",
+      "Feature request submitted successfully!": "Feature request submitted successfully!",
+  "Error submitting feature request. Please try again later.": "Error submitting feature request. Please try again later."
 }
   
 

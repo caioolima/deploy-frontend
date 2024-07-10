@@ -505,5 +505,7 @@
   "Cancelar": "Cancelar",
   "Enviando...": "Enviando...",
   "Anexar mídia": "Adjuntar medios",
-  "Imagem carregada:": "Imagen cargada:"
+  "Imagem carregada:": "Imagen cargada:",
+    "Feature request submitted successfully!": "¡Solicitud de funcionalidad enviada con éxito!",
+  "Error submitting feature request. Please try again later.": "Error al enviar la solicitud de funcionalidad. Por favor, inténtalo de nuevo más tarde."
 }

@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import styles from "./resets_password.module.css";
 import Footer from "../../components/Footer/footer.jsx";
+import { useLanguage } from "../../contexts/LanguageContext.js"; // Importa o contexto de idioma
 
 const ResetPassword = ({ onClose }) => {
   const { t } = useTranslation();
@@ -19,6 +20,7 @@ const ResetPassword = ({ onClose }) => {
   const [showPasswordFields, setShowPasswordFields] = useState(false);
   const [passwordsMatch, setPasswordsMatch] = useState(true);
   const [confirmPasswordTouched, setConfirmPasswordTouched] = useState(false);
+  const { userLanguage } = useLanguage(); // Obtém o idioma do contexto
 
   useEffect(() => {
     setMessage("");
@@ -37,16 +39,13 @@ const ResetPassword = ({ onClose }) => {
     setSendingEmail(true);
 
     try {
-      const response = await fetch(
-        "https://connecter-server-033a278d1512.herokuapp.com/auth/requestPasswordReset",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email }),
-        }
-      );
+      const response = await fetch("https://connecter-server-033a278d1512.herokuapp.com/auth/requestPasswordReset", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, language: userLanguage }), // Envia o idioma com os dados do formulário
+      });
 
       const data = await handleErrors(response);
       setValidCode(true);
@@ -62,16 +61,13 @@ const ResetPassword = ({ onClose }) => {
     setVerifyingCode(true);
 
     try {
-      const response = await fetch(
-        `https://connecter-server-033a278d1512.herokuapp.com/auth/verifyCode`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email, code: code.join("") }),
-        }
-      );
+      const response = await fetch("https://connecter-server-033a278d1512.herokuapp.com/auth/verifyCode", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, code: code.join(""), language: userLanguage }), // Envia o idioma com os dados do formulário
+      });
 
       const data = await handleErrors(response);
       if (data.success) {
@@ -86,6 +82,7 @@ const ResetPassword = ({ onClose }) => {
       setVerifyingCode(false);
     }
   };
+
 
   const handleResetPassword = async (e) => {
     e.preventDefault();

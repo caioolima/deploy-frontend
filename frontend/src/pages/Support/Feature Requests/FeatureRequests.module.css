@@ -74,6 +74,7 @@ hr {
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
+  font-family: "Raleway", sans-serif;
 }
 
 .formGroup textarea {
@@ -96,6 +97,15 @@ hr {
 
 .submitButton:hover {
   background-color: var(--color-details-hover);
+}
+
+.statusMessage {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f4f4f4;
+  color: #333;
 }
 
 .footer {
