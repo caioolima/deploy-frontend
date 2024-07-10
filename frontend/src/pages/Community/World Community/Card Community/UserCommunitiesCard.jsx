@@ -14,8 +14,7 @@ const UserCommunitiesCard = ({
   t,
 }) => {
   const [loading, setLoading] = useState(true);
-  const [loadingComplete, setLoadingComplete] = useState(false); // Novo estado para controlar carregamento completo
-  const [sliderLoaded, setSliderLoaded] = useState(false); // Estado para controlar carregamento do Slider
+  const [dataLoaded, setDataLoaded] = useState(false);
 
   // Função para seta personalizada anterior
   const CustomPrevArrow = ({ onClick }) => (
@@ -36,8 +35,8 @@ const UserCommunitiesCard = ({
     ...defaultSliderSettings,
     infinite: false,
     speed: 500,
-    prevArrow: sliderLoaded && <CustomPrevArrow />, // Renderiza seta anterior apenas quando sliderLoaded for true
-    nextArrow: sliderLoaded && <CustomNextArrow />, // Renderiza seta seguinte apenas quando sliderLoaded for true
+    prevArrow: <CustomPrevArrow />,
+    nextArrow: <CustomNextArrow />,
   };
 
   useEffect(() => {
@@ -46,19 +45,15 @@ const UserCommunitiesCard = ({
       // Simula o carregamento dos dados
       setTimeout(() => {
         setLoading(false);
-        setLoadingComplete(true); // Marca o carregamento como completo
+        setDataLoaded(true);
       }, 2000); // Altere este valor para o tempo real de carregamento dos dados
     };
 
     loadData();
   }, []);
 
-  useEffect(() => {
-    // Define sliderLoaded como true após o carregamento completo
-    if (!loading) {
-      setSliderLoaded(true);
-    }
-  }, [loading]);
+  // Verifica se a API respondeu e se há comunidades para mostrar
+  const hasCommunities = !loading && dataLoaded && comunidadesUsuario.length > 0;
 
   return (
     <section>
@@ -67,41 +62,39 @@ const UserCommunitiesCard = ({
         <hr className={styles.hrTop} />
         {loading ? (
           <p className={styles.loadingMessage}>{t("loading")}</p>
-        ) : loadingComplete ? ( // Verifica se o carregamento está completo
-          comunidadesUsuario.length > 0 ? (
-            <Slider {...settings}>
-              {comunidadesUsuario.map((comunidade) => (
-                <div key={comunidade._id} className={styles.cardCommunity}>
-                  <div
-                    className={styles.imageCountry}
-                    style={{
-                      backgroundImage: `url(${flagMappings[comunidade.country.toLowerCase()] ||
-                        comunidade.image
-                        })`,
-                    }}
-                  ></div>
-                  <span>{comunidade.country}</span>
-                  <p>
-                    {numeroMembros[comunidade._id] !== undefined
-                      ? numeroMembros[comunidade._id] === 1
-                        ? t("member", { count: numeroMembros[comunidade._id] })
-                        : t("members", { count: numeroMembros[comunidade._id] })
-                      : t("loading")}
-                  </p>{" "}
-                  <Link
-                    to={`/community/${encodeURIComponent(
-                      comunidade.country
-                    )}/${comunidade._id}`}
-                  >
-                    <button className={styles.signButtonSign}>{t("join")}</button>
-                  </Link>
-                </div>
-              ))}
-            </Slider>
-          ) : (
-            <p className={styles.noCommunitiesMessage}>{t("noCommunities")}</p>
-          )
-        ) : null}
+        ) : hasCommunities ? (
+          <Slider {...settings}>
+            {comunidadesUsuario.map((comunidade) => (
+              <div key={comunidade._id} className={styles.cardCommunity}>
+                <div
+                  className={styles.imageCountry}
+                  style={{
+                    backgroundImage: `url(${flagMappings[comunidade.country.toLowerCase()] ||
+                      comunidade.image
+                      })`,
+                  }}
+                ></div>
+                <span>{comunidade.country}</span>
+                <p>
+                  {numeroMembros[comunidade._id] !== undefined
+                    ? numeroMembros[comunidade._id] === 1
+                      ? t("member", { count: numeroMembros[comunidade._id] })
+                      : t("members", { count: numeroMembros[comunidade._id] })
+                    : t("loading")}
+                </p>
+                <Link
+                  to={`/community/${encodeURIComponent(
+                    comunidade.country
+                  )}/${comunidade._id}`}
+                >
+                  <button className={styles.signButtonSign}>{t("join")}</button>
+                </Link>
+              </div>
+            ))}
+          </Slider>
+        ) : (
+          !loading && <p className={styles.noCommunitiesMessage}>{t("noCommunities")}</p>
+        )}
       </div>
     </section>
   );

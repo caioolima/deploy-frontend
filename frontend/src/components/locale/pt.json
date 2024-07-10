@@ -510,5 +510,15 @@
   "no_notifications": "Sem notificações.",
   "notifications": "Notificações",
   "notification_title": "Notificações",
-  "notification_label": "Notificações"
+  "notification_label": "Notificações",
+  "{{count}} mensagens não lidas": "{{count}} mensagens não lidas",
+  "Digite sua mensagem": "Digite sua mensagem",
+  "Abrir câmera": "Abrir câmera",
+  "Enviar": "Enviar",
+  "Enviar Mídia": "Enviar Mídia",
+  "Mídia anexada": "Mídia anexada",
+  "Cancelar": "Cancelar",
+  "Enviando...": "Enviando...",
+  "Anexar mídia": "Anexar mídia",
+   "Imagem carregada:": "Imagem carregada:"
   }

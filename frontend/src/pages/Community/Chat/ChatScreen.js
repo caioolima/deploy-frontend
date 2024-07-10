@@ -7,6 +7,7 @@ import { AiOutlineUser } from "react-icons/ai"; // Importando o ícone de usuár
 import MessageInput from "./Components/MessageInput";
 import MessageList from "./Components/MessageList";
 import MediaModal from "./Components/MediaModal";
+import { useLanguage } from '../../../contexts/LanguageContext';
 
 import Function from "./function/function";
 
@@ -41,7 +42,7 @@ const ChatScreen = () => {
         messagesEndRef,
     } = Function()
 
-
+  
   return (
     <div className="chat-screen">
       <SidebarMenu />

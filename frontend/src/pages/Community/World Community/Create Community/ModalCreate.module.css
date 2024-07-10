@@ -20,8 +20,7 @@
   max-width: 90%;
 }
 
-.modalContentCreate h2 {
-  margin-bottom: 20px;
+.createTitleCommunity{
   font-size: 24px;
   color: #333;
   text-align: center;
@@ -30,6 +29,7 @@
 
 .modalContentCreate form label {
   display: block;
+  margin: 20px auto;
   margin-bottom: 15px;
 }
 
@@ -40,6 +40,7 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   resize: none;
+  font-family: "Raleway", sans-serif;
 }
 
 .modalContentCreate form input[type="file"] {

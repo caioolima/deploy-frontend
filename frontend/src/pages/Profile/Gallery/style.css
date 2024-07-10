@@ -3,7 +3,6 @@
 .tab-buttons {
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
 }
 
 .tab-buttons button {
@@ -58,7 +57,6 @@
   display: grid;
   gap: 2px;
   grid-template-columns: repeat(3, 1fr); /* Mantenha três colunas */
-  margin-bottom: 200px;
 }
 
 @media screen and (min-width: 660px) and (max-width: 1300px) {

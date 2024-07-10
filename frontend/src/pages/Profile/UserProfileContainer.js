@@ -8,7 +8,7 @@ import SidebarMenu from "./SidebarMenu/index";
 import EditModal from "./EditModal/index";
 import ChangePhotoModal from "./ChangePhotoModal/index";
 import UploadPhotoModal from "./UploadPhotoModal/index";
-import Galeria from "./Galeria/index";
+import Galeria from "./Gallery/index";
 import InfoProfile from "./InfoProfile/index";
 import PublicationDetailsModal from "./PublicationDetailsModal/index";
 import { useAuth } from "../../hooks/use-auth";

@@ -106,7 +106,7 @@ function App() {
       <Route path="/worldcommunity" element={<FirstWorldCountries />} />
       <Route
         path="/comunidade/:countryId/:communityId/chat"
-        element={<ChatScreen />}
+        element={  <LanguageProvider><ChatScreen /></LanguageProvider>}
       />
       <Route
         path="/community/:countryId/:communityId"

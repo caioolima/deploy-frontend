@@ -169,6 +169,7 @@
     
     .profile-header {
         width: 100vw;
+        margin-top: 30px;
     }
     
     .profile-info {
@@ -222,9 +223,9 @@
     border-radius: 10px;
     max-width: 30%; /* Largura máxima ajustada */
     max-height: 65vh;
-    overflow-y: auto;
     width: 80%; /* Largura ajustada para centralizar */
     margin-top: -100px;
+    overflow: hidden; /* Impede o overflow do conteúdo geral do modal */
 }
 
 .modal-content-two h3 {
@@ -240,6 +241,8 @@
     padding: 0;
     margin: 0;
     color: #f0f0f0;
+    max-height: 50vh; /* Limita a altura da lista para adicionar scroll */
+    overflow-y: auto; /* Adiciona scroll vertical quando necessário */
 }
 
 .modal-content-two ul li {

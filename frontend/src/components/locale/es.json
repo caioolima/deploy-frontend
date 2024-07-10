@@ -495,5 +495,15 @@
   "no_notifications": "Sin notificaciones.",
   "notifications": "Notificaciones",
   "notification_title": "Notificaciones",
-  "notification_label": "Notificaciones"
+  "notification_label": "Notificaciones",
+  "{{count}} mensagens não lidas": "{{count}} mensajes no leídos",
+  "Digite sua mensagem": "Escribe tu mensaje",
+  "Abrir câmera": "Abrir cámara",
+  "Enviar": "Enviar",
+  "Enviar Mídia": "Subir Medios",
+  "Mídia anexada": "Medio adjunto",
+  "Cancelar": "Cancelar",
+  "Enviando...": "Enviando...",
+  "Anexar mídia": "Adjuntar medios",
+  "Imagem carregada:": "Imagen cargada:"
 }

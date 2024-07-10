@@ -502,7 +502,22 @@
   "no_notifications": "No notifications.",
   "notifications": "Notifications",
   "notification_title": "Notifications",
-  "notification_label": "Notifications"
+  "notification_label": "Notifications",
+    "{{count}} mensagens não lidas": "{{count}} unread messages",
+    "Digite sua mensagem": "Type your message",
+    "Abrir câmera": "Open camera",
+    "Enviar": "Send",
+    "Enviar Mídia": "Upload Media",
+    "Mídia anexada": "Attached media",
+    "Cancelar": "Cancel",
+    "Enviando...": "Sending...",
+    "Anexar mídia": "Attach media",
+    "Chat": "Chat",
+    "Eu": "Me",
+    "Profile": "Profile",
+    "Seu navegador não suporta o elemento de vídeo.": "Your browser does not support the video element.",
+    "Enviado": "Sent",
+    "Imagem carregada:": "Uploaded image:"
 }
   
 

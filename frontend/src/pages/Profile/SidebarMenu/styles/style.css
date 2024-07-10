@@ -1,152 +1,233 @@
-@charset "UTF-8";
-
 .sidebar {
-    height: 100%;
-    width: 180px; /* Largura do menu lateral */
-    position: fixed;
-    z-index: 1;
-    bottom: 0;
-    left: 0;
-    background-color: var(--color-dark); /* Cor de fundo do menu (black) */
-    padding-top: 100px;
-    text-align: left; /* Alinhe o texto à esquerda */
-    display: flex;
-    flex-direction: column;
-    border-right: 1px solid rgb(75, 75, 75); /*Adicione uma borda vertical à direita*/
+  height: 100%;
+  width: 180px; /* Largura do menu lateral */
+  position: fixed;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  background-color: var(--color-dark); /* Cor de fundo do menu (black) */
+  padding-top: 100px;
+  text-align: left; /* Alinhe o texto à esquerda */
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgb(75, 75, 75); /* Adicione uma borda vertical à direita */
 }
 
 .sidebar a,
 .sidebar button {
-    text-decoration: none;
-    color: rgb(161, 160, 160);
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-    transition: color 0.3s ease; /* Adicione a regra de transição para a cor */
+  text-decoration: none;
+  color: rgb(161, 160, 160);
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  transition: color 0.3s ease; /* Adicione a regra de transição para a cor */
 }
 
 .sidebar a:hover,
 .sidebar button:hover .sidebar-link {
-    color: var(--color-details); /* Cor (verde) desejada ao passar o mouse */
+  color: var(--color-details); /* Cor (verde) desejada ao passar o mouse */
 }
 
 .sidebar button .sidebar-link {
-    display: flex;
-    align-items: center;
-    transition: color 0.3s ease; /* Adicione a regra de transição para a cor */
+  display: flex;
+  align-items: center;
+  transition: color 0.3s ease; /* Adicione a regra de transição para a cor */
 }
 
 .sidebar button {
-    background: none;
-    border: none;
-    color: rgb(161, 160, 160);
-    cursor: pointer;
-    font-family: "Raleway", sans-serif;
-    font-weight: bold;
-}
-
-.sidebar-link-out{
-    margin-top: 400px;
-    position: relative;
-}
-.sidebar button span {
-    font-size: 15px;
-    margin-left: 20px; /* Ajuste o espaçamento entre o ícone e o texto conforme necessário */
-}
-
-.desktop-logo {
-    font-weight: bold;
-    font-size: 1.2rem;
-    margin-left: 17px;
-    color: #fff;
-}
-.sidebar span {
-    font-size: 15px; /* Ajuste o tamanho do texto conforme necessário */
-    margin-left: 20px; /* Espaço entre o ícone e o texto */
-    margin-top: 25px;
+  background: none;
+  border: none;
+  color: rgb(161, 160, 160);
+  cursor: pointer;
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
 }
 
 .sidebar-link-out {
-    margin-top: auto; /* Garante que o botão "Sair" fique no final do sidebar */
-    position: relative;
+  margin-top: 400px;
+  position: relative;
+}
+
+.sidebar button span {
+  font-size: 15px;
+  margin-left: 20px; /* Ajuste o espaçamento entre o ícone e o texto conforme necessário */
+}
+
+.desktop-logo {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-left: 17px;
+  color: #fff;
+}
+
+.sidebar span {
+  font-size: 15px; /* Ajuste o tamanho do texto conforme necessário */
+  margin-left: 20px; /* Espaço entre o ícone e o texto */
+  margin-top: 25px;
+}
+
+.sidebar-link-out {
+  margin-top: auto; /* Garante que o botão "Sair" fique no final do sidebar */
+  position: relative;
 }
 
 .sidebar svg {
-    margin-bottom: 1px;
-    width: 20px; /* Ajuste a largura do ícone para o seu design específico */
-    height: 20px; /* Ajuste a altura do ícone para o seu design específico */
-    margin-left: 20px; /* Espaço entre o ícone e o texto */
-    margin-top: 25px;
+  margin-bottom: 1px;
+  width: 20px; /* Ajuste a largura do ícone para o seu design específico */
+  height: 20px; /* Ajuste a altura do ícone para o seu design específico */
+  margin-left: 20px; /* Espaço entre o ícone e o texto */
+  margin-top: 25px;
 }
 
 .sidebar-link.active {
-    color: var(--color-primary); /* Cor (rosa) para indicar a página ativa */
-    font-weight: 700;
+  color: var(--color-primary); /* Cor (rosa) para indicar a página ativa */
+  font-weight: 700;
 }
+
 .sidebar-link {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .logo {
-    font-weight: bold;
-    display: flex;
-    align-items: center; /* Alinha os itens verticalmente */
+  font-weight: bold;
+  display: flex;
+  align-items: center; /* Alinha os itens verticalmente */
 }
 
 .logo a {
-    text-decoration: none;
-    color: #ffffff;
+  text-decoration: none;
+  color: #ffffff;
 }
 
 .logo a:hover {
-    text-decoration: none;
-    color: #ffffff;
-    transition: transparent 0.3s ease;
+  text-decoration: none;
+  color: #ffffff;
+  transition: transparent 0.3s ease;
 }
 
 .logo-bar {
-    font-weight: bold;
-    display: flex;
-    align-items: center; /* Alinha os itens verticalmente */
+  font-weight: bold;
+  display: flex;
+  align-items: center; /* Alinha os itens verticalmente */
 }
 
 .logo-bar span {
-    text-decoration: none;
-    color: #ffffff;
-    font-size: 18px;
-    font-weight: bold;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: bold;
 }
 
-
 @media screen and (max-width: 1000px) {
-    
-    .sidebar {
-        height: 45px;
-        width: 100%; /* Largura do menu lateral */
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        padding: 0;
-        display: flex;
-        z-index: 99;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-    }
-    .sidebar span {
-        display: none;
-    }
-    
-    .sidebar svg {
-        margin: 0;
-        padding: 0;
-    }
-    
-    .sidebar a {
-        margin: 0;
-    }
-    
-    .-bar {
-        display: none;
-    }
+  .sidebar {
+    height: 45px;
+    width: 100%; /* Largura do menu lateral */
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    padding: 0;
+    display: flex;
+    z-index: 99;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .sidebar span {
+    display: none;
+  }
+
+  .sidebar svg {
+    margin: 0;
+    padding: 0;
+  }
+
+  .sidebar a {
+    margin: 0;
+  }
+
+  .-bar {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .mobile-menu {
+    display: none; /* Oculta o menu hamburguer em telas maiores */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  /* Estilos para o menu hamburguer em dispositivos móveis */
+  .mobile-menu {
+    position: fixed; /* Torna o menu fixo no topo */
+    top: 10px; /* Distância do topo */
+    right: 20px; /* Distância da borda direita */
+    z-index: 9999; /* Garante que o menu esteja acima de outros elementos */
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Espaçamento entre os itens */
+    font-family: "Raleway", sans-serif; /* Fonte moderna */
+  }
+
+  .menu-icon {
+    background: none;
+    border: none;
+    font-size: 2rem; /* Tamanho do ícone */
+    cursor: pointer;
+    transition: color 0.3s, transform 0.3s; /* Transições suaves */
+  }
+
+  /* Estilo para o ícone de notificação */
+  .icon-notification svg {
+    font-size: 1.8rem; /* Tamanho do ícone */
+    transition: color 0.3s; /* Transição suave na cor */
+  }
+
+  /* Estilo para o ícone de notificação */
+  .icon-notification span {
+    display: none;
+  }
+
+  /* Estilo para o menu dropdown */
+  .menu-dropdown {
+    position: absolute;
+    top: 50px; /* Ajuste a posição conforme necessário */
+    right: 0; /* Alinha o dropdown à direita do menu hamburguer */
+    background-color: var(--color-dark); /* Cor de fundo */
+    padding: 15px;
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espaçamento entre os itens */
+    width: 150px; /* Largura do dropdown */
+  }
+
+  /* Estilo para os botões no menu dropdown */
+  .menu-dropdown button {
+    background: none;
+    border: none;
+    color: #fff; /* Cor do texto dos botões */
+    cursor: pointer;
+    font-size: 1rem; /* Tamanho da fonte */
+    text-align: left;
+    font-family: "Raleway", sans-serif; /* Fonte moderna */
+    padding: 10px;
+    border-radius: 4px; /* Bordas arredondadas */
+    transition: background-color 0.3s, color 0.3s; /* Transições suaves */
+  }
+
+  .menu-dropdown button:hover {
+    background-color: rgba(
+      255,
+      255,
+      255,
+      0.1
+    ); /* Cor de fundo ao passar o mouse */
+    color: var(--color-details); /* Cor do texto ao passar o mouse */
+  }
+
+  .menu-dropdown span {
+    margin-left: 10px;
+  }
 }

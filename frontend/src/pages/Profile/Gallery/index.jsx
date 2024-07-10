@@ -17,8 +17,10 @@ const Galeria = () => {
   const [savedPosts, setSavedPosts] = useState([]);
   const [loadedImages, setLoadedImages] = useState(Array(userPhotos.length).fill(false));
   const [activeTab, setActiveTab] = useState("galeria");
+  const [loadingSavedPosts, setLoadingSavedPosts] = useState(true); // Adiciona o estado de carregamento
   const { user } = useAuth();
   const { userId } = useParams();
+
   useEffect(() => {
     // Aplica overflow: hidden ao elemento html para remover o scroll
     document.documentElement.style.overflowX = "hidden";
@@ -28,6 +30,7 @@ const Galeria = () => {
       document.documentElement.style.overflowX = "auto";
     };
   }, []);
+
   useEffect(() => {
     const preloadImages = () => {
       userPhotos.forEach((photoData, index) => {
@@ -45,23 +48,34 @@ const Galeria = () => {
   }, [userPhotos]);
 
   useEffect(() => {
-    const fetchSavedPosts = async () => {
-      try {
-        // Fazer uma requisição para obter as publicações salvas
-        const response = await fetch(`https://connecter-server-033a278d1512.herokuapp.com/feedRoutes/savedPosts/${userId}`);
-        if (!response.ok) {
-          throw new Error("Failed to fetch saved posts");
+    // Recupera posts salvos do localStorage
+    const savedPostsFromStorage = localStorage.getItem("savedPosts");
+    if (savedPostsFromStorage) {
+      setSavedPosts(JSON.parse(savedPostsFromStorage));
+      setLoadingSavedPosts(false);
+    } else {
+      // Caso não haja posts no localStorage, busca do servidor
+      const fetchSavedPosts = async () => {
+        setLoadingSavedPosts(true);
+        try {
+          const response = await fetch(`https://connecter-server-033a278d1512.herokuapp.com/feedRoutes/savedPosts/${userId}`);
+          if (!response.ok) {
+            throw new Error("Failed to fetch saved posts");
+          }
+          const data = await response.json();
+          setSavedPosts(data.savedPosts);
+          // Armazena os posts no localStorage
+          localStorage.setItem("savedPosts", JSON.stringify(data.savedPosts));
+        } catch (error) {
+          console.error("Error fetching saved posts:", error);
+        } finally {
+          setLoadingSavedPosts(false);
         }
-        const data = await response.json();
-        setSavedPosts(data.savedPosts);
-      } catch (error) {
-        console.error("Error fetching saved posts:", error);
-      }
-    };
+      };
 
-    // Se a guia ativa for 'salvos' e o userId corresponder ao user.id, buscar as publicações salvas
-    if (activeTab === "salvos" && user && userId === user.id) {
-      fetchSavedPosts();
+      if (activeTab === "salvos" && user && userId === user.id) {
+        fetchSavedPosts();
+      }
     }
   }, [activeTab, userId, user]);
 
@@ -98,12 +112,16 @@ const Galeria = () => {
         )
       ) : (
         userId === user.id && (
-          <SavedPostsGrid
-            savedPosts={savedPosts}
-            loadedImages={loadedImages}
-            handleImageLoaded={handleImageLoaded}
-            handlePublicationClick={handlePublicationClick}
-          />
+          loadingSavedPosts ? (
+            <div className="loading-placeholder"></div>
+          ) : (
+            <SavedPostsGrid
+              savedPosts={savedPosts}
+              loadedImages={loadedImages}
+              handleImageLoaded={handleImageLoaded}
+              handlePublicationClick={handlePublicationClick}
+            />
+          )
         )
       )}
     </div>

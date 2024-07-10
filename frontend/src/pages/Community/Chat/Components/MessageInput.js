@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'; // Certifique-se de importar useState e useEffect
+import { useTranslation } from 'react-i18next'; // Importa o useTranslation
 
 const MessageInput = ({
     unreadMessages,
@@ -12,6 +13,7 @@ const MessageInput = ({
     sendMessage,
     setMessageInput
 }) => {
+    const { t } = useTranslation();
     const [isSending, setIsSending] = useState(false);
 
     // Habilita ou desabilita o botão "Enviar" com base no valor de messageInput
@@ -38,7 +40,7 @@ const MessageInput = ({
         <div className="message-input">
             {unreadMessages > 0 && lastMessageSeenIndex !== messages.length - 1 && (
                 <p className="unread-messages" onClick={handleUnreadMessageClick}>
-                    {unreadMessages} mensagens não lidas
+                    {t('{{count}} mensagens não lidas', { count: unreadMessages })}
                 </p>
             )}
 
@@ -47,19 +49,20 @@ const MessageInput = ({
                 value={messageInput}
                 onChange={(e) => setMessageInput(e.target.value)}
                 onKeyDown={handleKeyPress} // Adicione o evento de teclado aqui
-                placeholder="Digite sua mensagem"
+                placeholder={t('Digite sua mensagem')}
             />
             {/* Ícone de câmera para abrir o modal */}
             <AiOutlineCamera
                 className="camera-icon"
                 onClick={() => setShowMediaModal(true)}
+                title={t('Abrir câmera')} // Tooltip para o ícone da câmera
             />
             <button 
                 onClick={handleSendMessage} 
                 disabled={isButtonDisabled} // Desativa o botão com base em isButtonDisabled
                 className={`send-button ${isButtonDisabled ? 'disabled' : ''}`}
             >
-                Enviar
+                {t('Enviar')}
             </button>
         </div>
     );

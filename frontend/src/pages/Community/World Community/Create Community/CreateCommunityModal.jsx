@@ -150,7 +150,7 @@ const CreateCommunityModal = () => {
   return (
     <div className={styles.modalOverlayCreate}>
       <div className={styles.modalContentCreate}>
-        <h2>{t("create_community_title")}</h2>
+        <h2 className={styles.createTitleCommunity}>{t("create_community_title")}</h2>
         <form onSubmit={handleSubmit}>
           <label>
             {t("community_name")}
@@ -167,7 +167,7 @@ const CreateCommunityModal = () => {
             </p>
           )}
           {imagemCarregada ? (
-            <p>Imagem carregada: {uploadedImageName}</p>
+            <p>{t('Imagem carregada:')} {uploadedImageName}</p>
           ) : (
             <div>
               <label>{t("community_image")}</label>
