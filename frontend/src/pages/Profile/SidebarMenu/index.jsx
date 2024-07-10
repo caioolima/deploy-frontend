@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./styles/style.css";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation, matchPath } from "react-router-dom";
 import logoImage from "../../../assets/icons-backpack.png";
 import { useMyContext } from "../../../contexts/profile-provider";
 import useGetdata from "../Hooks/useGetdata.jsx";
@@ -25,26 +25,30 @@ const SidebarMenuItems = () => {
   } = useMyContext();
   const { handleProfileClick } = useGetdata();
   const location = useLocation();
-  const isMobile = window.innerWidth <= 768; // Definir limite para dispositivos móveis
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isMenuIconClose, setIsMenuIconClose] = useState(false); // Estado para controlar o ícone do menu
-  const menuRef = useRef(null); // Referência para o menu
+  const [isMenuIconClose, setIsMenuIconClose] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const menuRef = useRef(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-    setIsMenuIconClose(!isMenuIconClose); // Alterna o ícone entre ☰ e ✕
+    setIsMenuIconClose(!isMenuIconClose);
   };
 
   const handleLogout = () => {
     console.log("Logout realizado");
-    setIsMenuOpen(false); // Fechar o menu hamburguer após o logout
-    setIsMenuIconClose(false); // Reverter para o ícone de ☰ após fechar
+    setIsMenuOpen(false);
+    setIsMenuIconClose(false);
   };
+
+  // Verifica se a URL corresponde aos padrões /feed/:userId ou /profile/:userId
+  const isProfileOrFeedPage = Boolean(
+    matchPath("/feed/:userId", location.pathname) ||
+      matchPath("/profile/:userId", location.pathname)
+  );
 
   const isCommunityPage = location.pathname === "/worldcommunity";
 
-  // Fechar o menu se clicar fora dele
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
@@ -53,22 +57,26 @@ const SidebarMenuItems = () => {
       }
     };
 
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
     document.addEventListener("mousedown", handleClickOutside);
+    window.addEventListener("resize", handleResize);
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
   return (
     <div>
-      {/* Menu hamburguer para logout */}
-      {isMobile && (
+      {isMobile && isProfileOrFeedPage && (
         <div className="mobile-menu" ref={menuRef}>
           <p className="icon-notification">
-            <IconNotification style={{ fontSize: "30px" }} />{" "}
-            {/* Ajuste o tamanho conforme necessário */}
+            <IconNotification style={{ fontSize: "30px" }} />
           </p>
-
           <button className="menu-icon" onClick={toggleMenu}>
             {isMenuIconClose ? "✕" : "☰"}
           </button>
@@ -92,8 +100,7 @@ const SidebarMenuItems = () => {
           </a>
         </div>
 
-        {/* Menu principal para dispositivos móveis */}
-        {isMobile && (
+        {isMobile ? (
           <>
             <IconHome />
             <IconFeed />
@@ -102,20 +109,19 @@ const SidebarMenuItems = () => {
             {isMyProfilePage && <IconPublish />}
             <ButtonProfile />
           </>
-        )}
-
-        {/* Menu completo para desktop */}
-        {!isMobile && (
-          <>
-            <IconHome />
-            <IconFeed />
-            <IconNotification />
-            <IconSearch />
-            {isCommunityPage && <IconCreateCommunity />}
-            {isMyProfilePage && <IconPublish />}
-            <ButtonProfile />
-            <ButtonExit />
-          </>
+        ) : (
+          (
+            <>
+              <IconHome />
+              <IconFeed />
+              <IconNotification />
+              <IconSearch />
+              {isCommunityPage && <IconCreateCommunity />}
+              {isMyProfilePage && <IconPublish />}
+              <ButtonProfile />
+              <ButtonExit />
+            </>
+          )
         )}
 
         {isCreateCommunityModalOpen && <CreateCommunityModal />}
