@@ -132,6 +132,7 @@
   font-size: 38px;
   transition: color 0.3s ease; /* Transição suave da cor */
   margin: 15px 15px;
+  color: var(--color-dark);
 }
 
 .like-feed:hover {
@@ -166,6 +167,7 @@
 .comment-icon {
   font-size: 38px;
   transition: color 0.3s ease; /* Transição suave da cor */
+  color: var(--color-dark);
 }
 
 .comment-icon:hover {
