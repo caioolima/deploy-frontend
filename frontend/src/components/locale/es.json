@@ -507,5 +507,19 @@
   "Anexar mídia": "Adjuntar medios",
   "Imagem carregada:": "Imagen cargada:",
     "Feature request submitted successfully!": "¡Solicitud de funcionalidad enviada con éxito!",
-  "Error submitting feature request. Please try again later.": "Error al enviar la solicitud de funcionalidad. Por favor, inténtalo de nuevo más tarde."
+  "Error submitting feature request. Please try again later.": "Error al enviar la solicitud de funcionalidad. Por favor, inténtalo de nuevo más tarde.",
+  "comment_time": {
+    "lessThanXMinutes": "hace {{count}} minutos",
+    "xMinutes": "hace aproximadamente {{count}} minutos",
+    "aboutXHours": "hace aproximadamente {{count}} horas",
+    "xHours": "hace {{count}} horas",
+    "aDay": "hace un día",
+    "xDays": "hace {{count}} días",
+    "aboutXWeeks": "hace aproximadamente {{count}} semanas",
+    "xWeeks": "hace {{count}} semanas",
+    "aboutXMonths": "hace aproximadamente {{count}} meses",
+    "xMonths": "hace {{count}} meses",
+    "aboutXYears": "hace aproximadamente {{count}} años",
+    "xYears": "hace {{count}} años"
+  }
 }

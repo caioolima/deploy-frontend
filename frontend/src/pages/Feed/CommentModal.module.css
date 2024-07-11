@@ -7,7 +7,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.5); /* Escurece o fundo */
   z-index: 1000;
 }
 
@@ -19,9 +19,9 @@
   overflow: hidden;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   animation: slideIn 0.3s ease-out;
-  position: relative; /* Adicionado para posicionar o botão de fechar */
-  max-height: 90vh; /* Limita a altura do modal para evitar ultrapassar a tela */
-  overflow-y: auto; /* Adiciona rolagem vertical se o conteúdo exceder a altura do modal */
+  position: relative;
+  max-height: 92vh;
+  overflow-y: auto;
 }
 
 .closeCommentModal {
@@ -30,27 +30,27 @@
   right: 15px;
   font-size: 2rem;
   cursor: pointer;
-  color: #fff; /* Cor do texto */
-  background-color: rgba(0, 0, 0, 0.5); /* Fundo semitransparente */
-  border: 2px solid #fff; /* Borda branca */
-  border-radius: 50%; /* Forma circular */
-  width: 40px; /* Tamanho fixo */
-  height: 40px; /* Tamanho fixo */
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 2px solid #fff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: background-color 0.3s, color 0.3s, transform 0.3s;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Sombra sutil */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .closeCommentModal:hover {
-  background-color: #fff; /* Fundo branco ao passar o mouse */
-  color: #f00; /* Cor do texto ao passar o mouse */
-  transform: scale(1.1); /* Efeito de zoom ao passar o mouse */
+  background-color: #fff;
+  color: #f00;
+  transform: scale(1.1);
 }
 
 .commentImageContainer {
-  height: auto; /* Permite que a imagem se ajuste automaticamente */
+  height: auto;
   background: #f7f7f7;
   display: flex;
   justify-content: center;
@@ -60,7 +60,7 @@
 
 .commentImage {
   max-width: 100%;
-  max-height: 400px; /* Limita a altura máxima da imagem */
+  max-height: 400px;
   object-fit: cover;
 }
 
@@ -103,7 +103,7 @@
   background: #f0f0f0;
   border-radius: 10px;
   padding: 10px;
-  margin-bottom: 10px; /* Espaçamento inferior */
+  margin-bottom: 10px;
 }
 
 .usernameComment {
@@ -123,7 +123,7 @@
 }
 
 .commentTime {
-  display: block; /* Faz o tempo postado aparecer em uma nova linha */
+  display: block;
   font-size: 0.8rem;
   color: #999;
   margin-top: 5px;
@@ -136,12 +136,12 @@
 
 .commentInputWrapper {
   display: flex;
-  align-items: center; /* Alinha verticalmente */
-  gap: 10px; /* Espaçamento entre o input e o botão */
+  align-items: center;
+  gap: 10px;
 }
 
 .commentTextarea {
-  flex: 1; /* Ocupa o máximo de espaço disponível */
+  flex: 1;
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
@@ -202,74 +202,73 @@
 @media (max-width: 768px) {
   .commentModalContent {
     width: 95%;
-    max-width: none; /* Remove o max-width para telas pequenas */
-    height: auto; /* Ajusta a altura automaticamente */
+    max-width: none;
+    height: auto;
   }
 
   .commentImageContainer {
-    height: auto; /* Permite que a imagem se ajuste automaticamente */
-    padding: 10px; /* Adiciona um pouco de preenchimento */
+    padding: 10px;
   }
 
   .commentImage {
-    max-height: 400px; /* Limita a altura máxima da imagem */
+    max-height: 300px; /* Ajusta a altura máxima da imagem para dispositivos menores */
   }
 
   .commentTitle {
-    font-size: 1.25rem; /* Reduz o tamanho da fonte */
+    font-size: 1.25rem;
   }
 
   .commentList {
-    max-height: 300px; /* Reduz a altura máxima da lista de comentários */
+    max-height: 250px; /* Ajusta a altura máxima da lista de comentários */
   }
 
   .profileImageFeed {
-    width: 30px;
-    height: 30px;
+    width: 35px; /* Ajusta o tamanho da imagem do perfil */
+    height: 35px;
   }
 
   .commentTextarea {
-    font-size: 0.9rem; /* Reduz o tamanho da fonte */
+    font-size: 0.9rem;
   }
 
   .submitCommentButton {
-    font-size: 0.9rem; /* Reduz o tamanho da fonte */
+    font-size: 0.9rem;
   }
 }
 
 @media (max-width: 480px) {
   .commentModalContent {
     width: 100%;
-    height: auto; /* Ajusta a altura automaticamente */
-    border-radius: 0; /* Remove a borda arredondada */
+    height: auto;
+    border-radius: 0;
   }
 
   .commentImageContainer {
-    height: 250px; /* Ajusta a altura da imagem para telas muito pequenas */
+    height: 250px;
   }
 
   .commentImage {
-    max-height: 100%; /* Ajusta a altura máxima da imagem */
+    max-height: 100%;
   }
 
   .commentTitle {
-    font-size: 1.1rem; /* Reduz ainda mais o tamanho da fonte */
+    font-size: 1.1rem;
   }
 
   .commentList {
-    max-height: 210px; /* Reduz a altura máxima da lista de comentários */
+    max-height: 200px; /* Ajusta a altura máxima da lista de comentários */
   }
 
   .profileImageFeed {
-    width: 25px;
-    height: 25px;
+    width: 30px; /* Ajusta o tamanho da imagem do perfil */
+    height: 30px;
   }
 
   .commentTextarea {
-    font-size: 0.8rem; /* Reduz o tamanho da fonte */
+    font-size: 0.8rem;
   }
 
   .submitCommentButton {
-    font-size: 0.8rem; /* Reduz o tamanho da fonte */
+    font-size: 0.8rem;
   }
 }

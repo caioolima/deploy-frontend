@@ -291,6 +291,7 @@
   cursor: pointer;
   padding: 0;
   margin-left: -30px;
+  color: var(--color-dark);
 }
 
 .delete-menu {

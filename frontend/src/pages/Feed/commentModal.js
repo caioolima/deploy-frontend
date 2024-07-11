@@ -9,7 +9,7 @@ const CommentModal = ({ imageUrl, onClose, user }) => {
   const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [imageLoaded, setImageLoaded] = useState(false);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const fetchComments = async () => {
     try {
@@ -93,15 +93,15 @@ const CommentModal = ({ imageUrl, onClose, user }) => {
         <div className={styles.commentImageContainer}>
           <img
             src={imageUrl}
-            alt={t("comment_image_alt", { defaultValue: "Imagem da postagem" })} // Adicionando suporte para tradução do texto alternativo da imagem
+            alt={t("comment_image_alt", { defaultValue: "Imagem da postagem" })}
             className={styles.commentImage}
-            onLoad={handleImageLoad} // Aciona o estado quando a imagem é carregada
-            style={{ display: imageLoaded ? "block" : "none" }} // Oculta a imagem até que seja carregada
+            onLoad={handleImageLoad}
+            style={{ display: imageLoaded ? "block" : "none" }}
           />
           {!imageLoaded && (
             <div
               className={styles.loadingShimmer}
-              style={{ height: t("loading_shimmer_height") }} // Altura do shimmer
+              style={{ height: t("loading_shimmer_height") }}
             ></div>
           )}
         </div>
@@ -109,7 +109,7 @@ const CommentModal = ({ imageUrl, onClose, user }) => {
           <h2 className={styles.commentTitle}>{t("comments")}</h2>
           <div className={styles.commentList}>
             <ul>
-              {imageLoaded && // Só renderiza comentários se a imagem estiver carregada
+              {imageLoaded &&
                 (loading ? (
                   <li
                     className={styles.loadingShimmer}
@@ -129,9 +129,7 @@ const CommentModal = ({ imageUrl, onClose, user }) => {
                     >
                       <img
                         src={comment.userId.profileImageUrl}
-                        alt={t("profile_image_alt", {
-                          defaultValue: "Profile",
-                        })} // Adicionando suporte para tradução do texto alternativo da imagem de perfil
+                        alt={t("profile_image_alt", { defaultValue: "Profile image" })}
                         className={styles.profileImageFeed}
                       />
                       <div className={styles.commentContent}>
@@ -144,9 +142,8 @@ const CommentModal = ({ imageUrl, onClose, user }) => {
                           {comment.text}
                         </span>
                         <span className={styles.commentTime}>
-                          {formatDistanceToNow(new Date(comment.postedAt), {
-                            addSuffix: true,
-                            locale: ptBR,
+                          {t("comment_time." + getCommentTimeKey(comment.postedAt), {
+                            count: getCommentTimeCount(comment.postedAt),
                           })}
                         </span>
                       </div>
@@ -155,7 +152,7 @@ const CommentModal = ({ imageUrl, onClose, user }) => {
                 ))}
             </ul>
           </div>
-          {imageLoaded && ( // Só mostra o campo de input e o botão se a imagem estiver carregada
+          {imageLoaded &&
             <div className={styles.commentInputWrapper}>
               <input
                 type="text"
@@ -172,11 +169,57 @@ const CommentModal = ({ imageUrl, onClose, user }) => {
                 {t("publish")}
               </button>
             </div>
-          )}
+          }
         </div>
       </div>
     </div>
   );
+};
+
+// Função para obter a chave de tradução para o tempo do comentário
+const getCommentTimeKey = (postedAt) => {
+  const now = new Date();
+  const postedDate = new Date(postedAt);
+  const diffInMinutes = Math.round((now - postedDate) / (1000 * 60));
+  const diffInHours = Math.round(diffInMinutes / 60);
+  const diffInDays = Math.round(diffInHours / 24);
+  const diffInWeeks = Math.round(diffInDays / 7);
+  const diffInMonths = Math.round(diffInDays / 30);
+  const diffInYears = Math.round(diffInDays / 365);
+
+  if (diffInMinutes < 1) return 'lessThanXMinutes';
+  if (diffInMinutes < 60) return 'xMinutes';
+  if (diffInHours < 24) return 'aboutXHours';
+  if (diffInHours < 48) return 'aDay';
+  if (diffInDays < 7) return 'xDays';
+  if (diffInDays < 30) return 'aboutXWeeks';
+  if (diffInDays < 365) return 'xWeeks';
+  if (diffInMonths < 12) return 'aboutXMonths';
+  return 'xYears';
+};
+
+// Função para obter a contagem de tempo do comentário
+const getCommentTimeCount = (postedAt) => {
+  const now = new Date();
+  const postedDate = new Date(postedAt);
+  const diffInMinutes = Math.round((now - postedDate) / (1000 * 60));
+  const diffInHours = Math.round(diffInMinutes / 60);
+  const diffInDays = Math.round(diffInHours / 24);
+  const diffInWeeks = Math.round(diffInDays / 7);
+  const diffInMonths = Math.round(diffInDays / 30);
+  const diffInYears = Math.round(diffInDays / 365);
+
+  return diffInMinutes < 60
+    ? diffInMinutes
+    : diffInHours < 24
+    ? diffInHours
+    : diffInDays < 7
+    ? diffInDays
+    : diffInWeeks < 4
+    ? diffInWeeks
+    : diffInMonths < 12
+    ? diffInMonths
+    : diffInYears;
 };
 
 export default CommentModal;
