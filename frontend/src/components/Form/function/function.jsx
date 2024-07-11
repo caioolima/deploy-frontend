@@ -15,7 +15,6 @@ const Function = () => {
         registrationFormEmail, setRegistrationFormEmail,
         registrationFormPassword, setRegistrationFormPassword,
         shouldCloseModal, setShouldCloseModal,
-        modalStyle, setModalStyle,
         showPassword, setShowPassword,
         showPassword2, setShowPassword2,
         showConfirmPassword, setShowConfirmPassword,
@@ -96,20 +95,6 @@ const Function = () => {
         : window.innerWidth >= 480
         ? "88%"
         : "100%";
-
-      setModalStyle({
-        top: "50%",
-        left: "50%",
-        right: "auto",
-        bottom: "auto",
-        marginRight: "-50%",
-        transform: "translate(-50%, -50%)",
-        width: modalWidth,
-        height: modalHeight,
-        borderRadius: "10px",
-        padding: "20px",
-        overflow: "auto",
-      });
     };
 
     handleResize();
@@ -393,7 +378,6 @@ const Function = () => {
         registrationFormEmail, setRegistrationFormEmail,
         registrationFormPassword, setRegistrationFormPassword,
         shouldCloseModal, setShouldCloseModal,
-        modalStyle, setModalStyle,
         showPassword, setShowPassword,
         showPassword2, setShowPassword2,
         showConfirmPassword, setShowConfirmPassword,

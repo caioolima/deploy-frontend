@@ -43,8 +43,7 @@ const SidebarMenuItems = () => {
 
   // Verifica se a URL corresponde aos padrões /feed/:userId ou /profile/:userId
   const isProfileOrFeedPage = Boolean(
-    matchPath("/feed/:userId", location.pathname) ||
-      matchPath("/profile/:userId", location.pathname)
+    matchPath("/profile/:userId", location.pathname)
   );
 
   const isCommunityPage = location.pathname === "/worldcommunity";
@@ -110,18 +109,16 @@ const SidebarMenuItems = () => {
             <ButtonProfile />
           </>
         ) : (
-          (
-            <>
-              <IconHome />
-              <IconFeed />
-              <IconNotification />
-              <IconSearch />
-              {isCommunityPage && <IconCreateCommunity />}
-              {isMyProfilePage && <IconPublish />}
-              <ButtonProfile />
-              <ButtonExit />
-            </>
-          )
+          <>
+            <IconHome />
+            <IconFeed />
+            <IconNotification />
+            <IconSearch />
+            {isCommunityPage && <IconCreateCommunity />}
+            {isMyProfilePage && <IconPublish />}
+            <ButtonProfile />
+            <ButtonExit />
+          </>
         )}
 
         {isCreateCommunityModalOpen && <CreateCommunityModal />}

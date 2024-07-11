@@ -15,20 +15,6 @@ const initialState = {
   gender: "masculino",
 };
 
-const modalStyleObj = {
-  top: "50%",
-  left: "50%",
-  right: "auto",
-  bottom: "auto",
-  marginRight: "-50%",
-  transform: "translate(-50%, -50%)",
-  padding: "20px",
-  borderRadius: "12px",
-  maxWidth: "90%", // Define a largura máxima como uma porcentagem
-  maxHeight: "90%", // Define a altura máxima como uma porcentagem
-  overflow: "auto", // Permite rolagem se o conteúdo exceder o tamanho do modal
-};
-
 const UseState = () => {
   const { t } = useTranslation();
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -41,7 +27,6 @@ const UseState = () => {
   const [registrationFormEmail, setRegistrationFormEmail] = useState("");
   const [registrationFormPassword, setRegistrationFormPassword] = useState("");
   const [shouldCloseModal, setShouldCloseModal] = useState(false);
-  const [modalStyle, setModalStyle] = useState(modalStyleObj);
   const [showPassword, setShowPassword] = useState(false);
   const [showPassword2, setShowPassword2] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -99,8 +84,6 @@ const UseState = () => {
     setRegistrationFormPassword,
     shouldCloseModal,
     setShouldCloseModal,
-    modalStyle,
-    setModalStyle,
     showPassword,
     setShowPassword,
     showPassword2,
