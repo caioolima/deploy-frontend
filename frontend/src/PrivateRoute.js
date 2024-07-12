@@ -1,20 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Navigate } from "react-router-dom";
 import { useAuth } from "./hooks/use-auth";
 
 const PrivateRoute = ({ children }) => {
-    const { user } = useAuth();
-    const [isLoading, setIsLoading] = useState(true);
+    const { user, loading } = useAuth();
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsLoading(false);
-        }, 1000); // Tempo de atraso em milissegundos (1000ms = 1 segundo)
+    if (loading) {
+        return <div></div>;
+    }
 
-        return () => clearTimeout(timer);
-    }, []);
-
-    return isLoading ?<div></div> : (user ? <Navigate to={`/profile/${user.id}`} replace /> : children);
+    return user ? <Navigate to={`/profile/${user.id}`} replace /> : children;
 };
 
 export default PrivateRoute;

@@ -11,11 +11,13 @@ const axiosInstance = axios.create({
 
 export function AuthProvider({ children }) {
     const [user, setUser] = useState();
+    const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
     
     const handleLogout = useCallback(() => {
         localStorage.removeItem("token");
         setUser(null);
+        setLoading(false);
         navigate("/home");
     }, [navigate]);
 
@@ -25,10 +27,11 @@ export function AuthProvider({ children }) {
         const fetchUserProfile = async () => {
             try {
                 const response = await axiosInstance.get("/profile");
-
                 setUser({ ...response.data, id: response.data._id });
             } catch (error) {
                 handleLogout();
+            } finally {
+                setLoading(false);
             }
         };
 
@@ -39,6 +42,7 @@ export function AuthProvider({ children }) {
             fetchUserProfile();
         } else {
             setUser(null);
+            setLoading(false);
         }
     }, [handleLogout]);
 
@@ -64,7 +68,7 @@ export function AuthProvider({ children }) {
 
     return (
         <AuthContext.Provider
-            value={{ user, signIn: handleLogin, signOut: handleLogout }}>
+            value={{ user, signIn: handleLogin, signOut: handleLogout, loading }}>
             {children}
         </AuthContext.Provider>
     );

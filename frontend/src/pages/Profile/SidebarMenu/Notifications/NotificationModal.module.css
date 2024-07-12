@@ -49,6 +49,16 @@
   text-align: center;
 }
 
+.notificationIcon .indicator {
+  position: absolute;
+  top: 5px; /* Ajuste a posição vertical conforme necessário */
+  right: 5px; /* Ajuste a posição horizontal conforme necessário */
+  width: 10px; /* Tamanho do ponto vermelho */
+  height: 10px;
+  background-color: red; /* Cor do ponto vermelho */
+  border-radius: 50%; /* Garante que o ponto seja circular */
+}
+
 .notificationList {
   list-style: none;
   padding: 0;
