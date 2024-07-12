@@ -1,6 +1,6 @@
 // src/pages/Profile/SidebarMenu/MobileMenu.jsx
 
-import { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import LanguageSelector from "./LanguageSelector.jsx";
@@ -9,15 +9,7 @@ import IconNotification from "./IconNotification.jsx";
 
 const MobileMenu = ({ isMenuOpen, closeMenu, handleViewChange, view, setIsMenuOpen }) => {
   const { t } = useTranslation();
-  useEffect(() => {
-    // Aplica overflow: hidden ao elemento html para remover o scroll
-    document.documentElement.style.overflow = "hidden";
 
-    // Cleanup: remove overflow: hidden ao desmontar o componente
-    return () => {
-      document.documentElement.style.overflowX = "auto";
-    };
-  }, []);
   return (
     <div className="mobile-menu">
       <div className="icon-notification">

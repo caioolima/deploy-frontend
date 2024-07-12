@@ -18,22 +18,9 @@ const SettingsModal = ({ isOpen, onClose, onChangeView, view }) => {
       }
     };
 
-    if (isOpen) {
-      // Desativa a rolagem vertical quando o modal está aberto
-      document.documentElement.style.overflowY = "hidden";
-      // Garante que a rolagem horizontal seja mantida (se necessário)
-      document.documentElement.style.overflowX = "hidden";
-      // Adiciona o manipulador de eventos para cliques fora do modal
-      document.addEventListener("mousedown", handleClickOutside);
-    } else {
-      // Restaura a rolagem vertical quando o modal está fechado
-      document.documentElement.style.overflowY = "auto";
-    }
-
     // Limpeza: remove o manipulador de eventos e restaura a rolagem vertical
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
-      document.documentElement.style.overflowY = "auto";
     };
   }, [isOpen, onClose]);
 
@@ -41,7 +28,11 @@ const SettingsModal = ({ isOpen, onClose, onChangeView, view }) => {
 
   return (
     <div className="settings-modal-overlay" onClick={onClose}>
-      <div className="settings-modal" ref={modalRef} onClick={(e) => e.stopPropagation()}>
+      <div
+        className="settings-modal"
+        ref={modalRef}
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="settings-modal-content">
           {/* Renderiza o botão de fechamento apenas na visualização do menu */}
           {view === "menu" && (
