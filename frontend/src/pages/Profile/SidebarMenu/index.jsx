@@ -1,3 +1,5 @@
+// src/pages/Profile/SidebarMenu/index.jsx
+
 import React, { useState, useEffect, useRef } from "react";
 import "./styles/style.css";
 import { useLocation, matchPath } from "react-router-dom";
@@ -14,7 +16,9 @@ import IconNotification from "./IconNotification.jsx";
 import IconCreateCommunity from "./IconCreateCommunity.jsx";
 import CreateCommunityModal from "../../Community/World Community/Create Community/CreateCommunityModal.jsx";
 import { useTranslation } from "react-i18next";
-import LanguageSelector from "./LanguageSelector.jsx";
+import SettingsModal from "./SettingsModal.jsx";
+import SettingsButton from "./IconsSettings";
+import MobileMenu from "./MobileMenu.jsx";
 
 const SidebarMenuItems = () => {
   const { t } = useTranslation();
@@ -27,13 +31,14 @@ const SidebarMenuItems = () => {
   const { handleProfileClick } = useGetdata();
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [view, setView] = useState("menu"); // Estado para gerenciar a visualização
+  const [view, setView] = useState("menu");
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
   const menuRef = useRef(null);
 
   const openMenu = () => {
     setIsMenuOpen(true);
-    setView("menu"); // Sempre mostrar o menu principal ao abrir
+    setView("menu");
   };
 
   const closeMenu = () => {
@@ -82,67 +87,13 @@ const SidebarMenuItems = () => {
   return (
     <div>
       {isMobile && isProfileOrFeedPage && (
-        <div className="mobile-menu" ref={menuRef}>
-          <div className="icon-notification">
-            <IconNotification />
-          </div>
-
-          {!isMenuOpen && (
-            <button className="menu-icon" onClick={openMenu}>
-              ☰
-            </button>
-          )}
-          {isMenuOpen && (
-            <div className="menu-dropdown">
-              {view === "menu" ? (
-                <>
-                  <button className="close-icon" onClick={closeMenu}>
-                    &lt;
-                  </button>
-                  <div className="options-menu-dropdown">
-                    <a href="#" onClick={() => handleViewChange("terms")}>
-                      {t("terms_of_service")}
-                    </a>
-                    <a href="#" onClick={() => handleViewChange("help")}>
-                      {t("help")}
-                    </a>
-                    <a href="#" onClick={() => handleViewChange("report")}>
-                      {t("Report an Issue")}
-                    </a>
-                    <button
-                      className="language-button"
-                      onClick={() => handleViewChange("language")}
-                    >
-                      {t("language")}
-                    </button>
-                  </div>
-                  <button className="button-exit">
-                    <ButtonExit />
-                  </button>
-                </>
-              ) : (
-                <div>
-                  <button
-                    className="close-icon"
-                    onClick={() => handleViewChange("menu")}
-                  >
-                    &lt;
-                  </button>
-                  <div className="details-view">
-                    {view === "terms" && <div>{t("terms_content")}</div>}
-                    {view === "help" && <div>{t("help_content")}</div>}
-                    {view === "report" && <div>{t("report_content")}</div>}
-                    {view === "language" && (
-                      <LanguageSelector
-                        closeMenu={() => handleViewChange("menu")}
-                      />
-                    )}
-                  </div>
-                </div>
-              )}
-            </div>
-          )}
-        </div>
+        <MobileMenu
+          isMenuOpen={isMenuOpen}
+          closeMenu={closeMenu}
+          handleViewChange={handleViewChange}
+          view={view}
+          setIsMenuOpen={setIsMenuOpen}
+        />
       )}
 
       <div className="sidebar">
@@ -175,12 +126,20 @@ const SidebarMenuItems = () => {
             {isCommunityPage && <IconCreateCommunity />}
             {isMyProfilePage && <IconPublish />}
             <ButtonProfile />
+            <SettingsButton onClick={() => setIsSettingsModalOpen(true)} />
             <ButtonExit />
           </>
         )}
 
         {isCreateCommunityModalOpen && <CreateCommunityModal />}
       </div>
+
+      <SettingsModal
+        isOpen={isSettingsModalOpen}
+        onClose={() => setIsSettingsModalOpen(false)}
+        onChangeView={handleViewChange}
+        view={view}
+      />
     </div>
   );
 };

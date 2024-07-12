@@ -118,6 +118,110 @@
   font-weight: bold;
 }
 
+.settings-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Cor semitransparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Garante que o overlay fique acima de outros elementos */
+}
+
+.settings-modal {
+  position: relative;
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  width: 90%;
+  max-width: 500px; /* Ajuste conforme necessário */
+  z-index: 1001; /* Garante que o modal fique acima do overlay */
+}
+.settings-modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.settings-modal .close-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.settings-modal .options-menu-dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.settings-modal .options-menu-dropdown a,
+.settings-modal .options-menu-dropdown button {
+  text-decoration: none;
+  color: #333;
+  padding: 10px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  width: 250px;
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
+}
+
+.settings-modal .options-menu-dropdown a:hover,
+.settings-modal .options-menu-dropdown button:hover {
+  background-color: #f0f0f0;
+  border-radius: 4px;
+}
+
+.settings-modal .details-view {
+  padding-top: 20px;
+}
+
+.settings-modal .details-view h3{
+  margin-bottom: 10px;
+}
+
+.settings-modal .back-icon-config{
+  display: inline-block;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  margin: -7px 0 10px;
+  max-width: 7%;
+}
+
+.settings-modal svg {
+  display: none;
+}
+
+.settings-modal span {
+  font-family: "Raleway", sans-serif;
+  font-size: 1rem;
+}
+.language-button-settings {
+  text-decoration: none;
+  color: #333;
+  padding: 10px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  width: 250px;
+  font-family: "Raleway", sans-serif;
+  font-size: 1rem;
+}
+
 @media screen and (max-width: 1000px) {
   .sidebar {
     height: 45px;
@@ -288,29 +392,6 @@
   .details-view {
     padding: 20px;
     border-radius: 5px;
-  }
-
-  .language-button {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    padding: 10px;
-    margin: 5px 0;
-    text-align: left;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .language-button:hover {
-    background-color: #333; /* Cor de fundo ao passar o mouse sobre o botão */
-  }
-
-  .language-button:focus {
-    outline: none; /* Remove o contorno padrão do botão em foco */
   }
 
   /* Estilo do botão de idioma no menu */

@@ -106,7 +106,11 @@ function App() {
       <Route path="/worldcommunity" element={<FirstWorldCountries />} />
       <Route
         path="/comunidade/:countryId/:communityId/chat"
-        element={  <LanguageProvider><ChatScreen /></LanguageProvider>}
+        element={
+          <LanguageProvider>
+            <ChatScreen />
+          </LanguageProvider>
+        }
       />
       <Route
         path="/community/:countryId/:communityId"
@@ -121,7 +125,6 @@ function App() {
       />
       <Route path="/perfect-photos" element={<PerfectPhotos />} />
       <Route path="/support-page" element={<SupportPage />}></Route>
-      <Route path="/support-page" element={<SupportPage />} />
       <Route path="/support/account" element={<AccountSupport />} />
       <Route path="/support/faq" element={<FAQ />} />
       <Route path="/support/feature-requests" element={<FeatureRequests />} />

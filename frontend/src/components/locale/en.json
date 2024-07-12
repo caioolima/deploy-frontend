@@ -535,7 +535,9 @@
     "xYears": "{{count}} years ago"
   },
   "select_language": "Select Language",
-  "language": "Language"
+  "language": "Language",
+  "settings_title": "Settings",
+  "settings_label": "Settings"
 }
   
 

@@ -523,5 +523,7 @@
     "xYears": "hace {{count}} años"
   },
   "select_language": "Seleccionar idioma",
-  "language": "Idioma"
+  "language": "Idioma",
+  "settings_title": "Configuración",
+  "settings_label": "Configuración"
 }
