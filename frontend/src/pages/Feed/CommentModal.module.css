@@ -49,21 +49,6 @@
   transform: scale(1.1);
 }
 
-.commentImageContainer {
-  height: auto;
-  background: #f7f7f7;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-bottom: 1px solid #ddd;
-}
-
-.commentImage {
-  max-width: 100%;
-  max-height: 400px;
-  object-fit: cover;
-}
-
 .commentInputContainer {
   padding: 20px;
 }
@@ -197,78 +182,3 @@
   color: #16bb1f;
 }
 
-/* Media Queries para responsividade */
-
-@media (max-width: 768px) {
-  .commentModalContent {
-    width: 95%;
-    max-width: none;
-    height: auto;
-  }
-
-  .commentImageContainer {
-    padding: 10px;
-  }
-
-  .commentImage {
-    max-height: 300px; /* Ajusta a altura máxima da imagem para dispositivos menores */
-  }
-
-  .commentTitle {
-    font-size: 1.25rem;
-  }
-
-  .commentList {
-    max-height: 250px; /* Ajusta a altura máxima da lista de comentários */
-  }
-
-  .profileImageFeed {
-    width: 35px; /* Ajusta o tamanho da imagem do perfil */
-    height: 35px;
-  }
-
-  .commentTextarea {
-    font-size: 0.9rem;
-  }
-
-  .submitCommentButton {
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .commentModalContent {
-    width: 100%;
-    height: auto;
-    border-radius: 0;
-  }
-
-  .commentImageContainer {
-    height: 250px;
-  }
-
-  .commentImage {
-    max-height: 100%;
-  }
-
-  .commentTitle {
-    font-size: 1.1rem;
-  }
-
-  .commentList {
-    max-height: 200px; /* Ajusta a altura máxima da lista de comentários */
-  }
-
-  .profileImageFeed {
-    width: 30px; /* Ajusta o tamanho da imagem do perfil */
-    height: 30px;
-  }
-
-  .commentTextarea {
-    font-size: 0.8rem;
-  }
-
-  .submitCommentButton {
-    font-size: 0.8rem;
-  }
-}

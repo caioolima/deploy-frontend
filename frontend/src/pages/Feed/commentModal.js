@@ -8,7 +8,6 @@ const CommentModal = ({ imageUrl, onClose, user }) => {
   const [commentText, setCommentText] = useState("");
   const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [imageLoaded, setImageLoaded] = useState(false);
   const { t, i18n } = useTranslation();
 
   const fetchComments = async () => {
@@ -50,10 +49,6 @@ const CommentModal = ({ imageUrl, onClose, user }) => {
     }
   }, [imageUrl]);
 
-  const handleImageLoad = () => {
-    setImageLoaded(true);
-  };
-
   const handleCommentChange = (e) => {
     setCommentText(e.target.value);
   };
@@ -90,86 +85,68 @@ const CommentModal = ({ imageUrl, onClose, user }) => {
         <span className={styles.closeCommentModal} onClick={onClose}>
           &times;
         </span>
-        <div className={styles.commentImageContainer}>
-          <img
-            src={imageUrl}
-            alt={t("comment_image_alt", { defaultValue: "Imagem da postagem" })}
-            className={styles.commentImage}
-            onLoad={handleImageLoad}
-            style={{ display: imageLoaded ? "block" : "none" }}
-          />
-          {!imageLoaded && (
-            <div
-              className={styles.loadingShimmer}
-              style={{ height: t("loading_shimmer_height") }}
-            ></div>
-          )}
-        </div>
         <div className={styles.commentInputContainer}>
           <h2 className={styles.commentTitle}>{t("comments")}</h2>
           <div className={styles.commentList}>
             <ul>
-              {imageLoaded &&
-                (loading ? (
+              {loading ? (
+                <li
+                  className={styles.loadingShimmer}
+                  style={{ height: "600px", marginBottom: "20px" }}
+                ></li>
+              ) : comments.length === 0 ? (
+                <li className={styles.noCommentsMessage}>
+                  <span>{t("leave_a_comment")}</span>
+                </li>
+              ) : (
+                comments.map((comment, index) => (
                   <li
-                    className={styles.loadingShimmer}
-                    style={{ height: "600px", marginBottom: "20px" }}
-                  ></li>
-                ) : comments.length === 0 ? (
-                  <li className={styles.noCommentsMessage}>
-                    <span>{t("leave_a_comment")}</span>
-                  </li>
-                ) : (
-                  comments.map((comment, index) => (
-                    <li
-                      key={index}
-                      className={`${styles.commentUserInfo} ${
-                        comment.userId.id === user.id ? styles.currentUser : ""
-                      }`}
-                    >
-                      <img
-                        src={comment.userId.profileImageUrl}
-                        alt={t("profile_image_alt", { defaultValue: "Profile image" })}
-                        className={styles.profileImageFeed}
-                      />
-                      <div className={styles.commentContent}>
-                        <div className={styles.usernameComment}>
-                          <span className={styles.usernameFeedPublication}>
-                            {comment.userId.username}
-                          </span>
-                        </div>
-                        <span className={styles.commentText}>
-                          {comment.text}
-                        </span>
-                        <span className={styles.commentTime}>
-                          {t("comment_time." + getCommentTimeKey(comment.postedAt), {
-                            count: getCommentTimeCount(comment.postedAt),
-                          })}
+                    key={index}
+                    className={`${styles.commentUserInfo} ${
+                      comment.userId.id === user.id ? styles.currentUser : ""
+                    }`}
+                  >
+                    <img
+                      src={comment.userId.profileImageUrl}
+                      alt={t("profile_image_alt", { defaultValue: "Profile image" })}
+                      className={styles.profileImageFeed}
+                    />
+                    <div className={styles.commentContent}>
+                      <div className={styles.usernameComment}>
+                        <span className={styles.usernameFeedPublication}>
+                          {comment.userId.username}
                         </span>
                       </div>
-                    </li>
-                  ))
-                ))}
+                      <span className={styles.commentText}>
+                        {comment.text}
+                      </span>
+                      <span className={styles.commentTime}>
+                        {t("comment_time." + getCommentTimeKey(comment.postedAt), {
+                          count: getCommentTimeCount(comment.postedAt),
+                        })}
+                      </span>
+                    </div>
+                  </li>
+                ))
+              )}
             </ul>
           </div>
-          {imageLoaded &&
-            <div className={styles.commentInputWrapper}>
-              <input
-                type="text"
-                placeholder={t("comment_input_placeholder")}
-                value={commentText}
-                onChange={handleCommentChange}
-                className={styles.commentTextarea}
-              />
-              <button
-                className={styles.submitCommentButton}
-                onClick={handleSubmitComment}
-                disabled={commentText.trim() === ""}
-              >
-                {t("publish")}
-              </button>
-            </div>
-          }
+          <div className={styles.commentInputWrapper}>
+            <input
+              type="text"
+              placeholder={t("comment_input_placeholder")}
+              value={commentText}
+              onChange={handleCommentChange}
+              className={styles.commentTextarea}
+            />
+            <button
+              className={styles.submitCommentButton}
+              onClick={handleSubmitComment}
+              disabled={commentText.trim() === ""}
+            >
+              {t("publish")}
+            </button>
+          </div>
         </div>
       </div>
     </div>

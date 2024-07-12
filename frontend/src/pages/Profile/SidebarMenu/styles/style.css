@@ -157,77 +157,207 @@
 }
 
 @media screen and (max-width: 768px) {
-  /* Estilos para o menu hamburguer em dispositivos móveis */
   .mobile-menu {
     position: absolute;
-    top: 10px; /* Distância do topo */
-    right: 20px; /* Distância da borda direita */
+    top: 10px;
+    left: 20px;
     display: flex;
     align-items: center;
-    gap: 20px; /* Espaçamento entre os itens */
-    font-family: "Raleway", sans-serif; /* Fonte moderna */
+    gap: 20px;
+    font-family: "Raleway", sans-serif;
+    width: 100%;
   }
 
   .menu-icon {
     background: none;
     border: none;
-    font-size: 2rem; /* Tamanho do ícone */
+    font-size: 2rem;
     cursor: pointer;
-    transition: color 0.3s, transform 0.3s; /* Transições suaves */
+    transition: color 0.3s, transform 0.3s;
     color: var(--color-dark);
   }
 
   /* Estilo para o ícone de notificação */
   .icon-notification svg {
-    font-size: 1.8rem; /* Tamanho do ícone */
-    transition: color 0.3s; /* Transição suave na cor */
+    font-size: 1.8rem;
   }
 
-  /* Estilo para o ícone de notificação */
+  .icon-notification {
+    background: none;
+    border: none;
+    color: #000;
+  }
   .icon-notification span {
     display: none;
   }
 
-  /* Estilo para o menu dropdown */
   .menu-dropdown {
-    position: absolute;
-    top: 50px; /* Ajuste a posição conforme necessário */
-    right: 0; /* Alinha o dropdown à direita do menu hamburguer */
-    background-color: var(--color-dark); /* Cor de fundo */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-dark);
     padding: 15px;
-    border-radius: 8px; /* Bordas arredondadas */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    border-radius: 0;
+    box-shadow: none;
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Espaçamento entre os itens */
-    width: 150px; /* Largura do dropdown */
+    gap: 10px;
+    z-index: 1000;
   }
 
-  /* Estilo para os botões no menu dropdown */
   .menu-dropdown button {
     background: none;
     border: none;
-    color: #fff; /* Cor do texto dos botões */
     cursor: pointer;
-    font-size: 1rem; /* Tamanho da fonte */
     text-align: left;
-    font-family: "Raleway", sans-serif; /* Fonte moderna */
+    font-family: "Raleway", sans-serif;
     padding: 10px;
-    border-radius: 4px; /* Bordas arredondadas */
-    transition: background-color 0.3s, color 0.3s; /* Transições suaves */
+    border-radius: 4px;
   }
 
-  .menu-dropdown button:hover {
+  .menu-dropdown svg {
+    display: none;
+  }
+
+  .options-menu-dropdown {
+    width: 200px;
+    margin-top: 50px;
+    color: var(--color-primary);
+    display: flex; /* Usar flexbox para layout vertical */
+    flex-direction: column; /* Organiza os itens em coluna */
+  }
+
+  .options-menu-dropdown a {
+    font-weight: bold;
+    color: var(--color-primary); /* Define a cor do texto dos links */
+    text-decoration: none; /* Remove o sublinhado dos links */
+    padding: 10px; /* Adiciona espaçamento interno aos links */
+    border-bottom: 1px solid #ccc; /* Adiciona uma borda inferior aos links */
+  }
+
+  .options-menu-dropdown a:hover {
+    background-color: rgba(
+      255,
+      255,
+      255,
+      0.1
+    ); /* Adiciona um fundo suave ao passar o mouse */
+  }
+
+  .button-exit {
+    background: none; /* Remove o fundo padrão */
+    border: none; /* Remove a borda padrão */
+    cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+    padding: 10px 15px; /* Espaçamento interno do botão */
+    margin-top: auto; /* Garante que o botão fique no final do menu */
+    width: 100px; /* Largura completa do botão */
+    align-items: center; /* Alinha o conteúdo verticalmente */
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
+    border-radius: 4px; /* Arredonda os cantos do botão */
+    transition: background-color 0.3s, color 0.3s; /* Transição suave para cor de fundo e texto */
+  }
+
+  .button-exit span {
+    color: #fff; /* Cor do texto */
+    font-size: 0.9rem;
+  }
+
+  .button-exit:hover {
     background-color: rgba(
       255,
       255,
       255,
       0.1
     ); /* Cor de fundo ao passar o mouse */
-    color: var(--color-details); /* Cor do texto ao passar o mouse */
   }
 
-  .menu-dropdown span {
-    margin-left: 10px;
+  .button-exit:focus {
+    outline: none; /* Remove o contorno padrão do botão em foco */
+  }
+
+  .close-icon {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    width: 30px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .details-view {
+    padding: 20px;
+    border-radius: 5px;
+  }
+
+  .language-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 10px;
+    margin: 5px 0;
+    text-align: left;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .language-button:hover {
+    background-color: #333; /* Cor de fundo ao passar o mouse sobre o botão */
+  }
+
+  .language-button:focus {
+    outline: none; /* Remove o contorno padrão do botão em foco */
+  }
+
+  /* Estilo do botão de idioma no menu */
+  .language-button {
+    background: none;
+    border: none;
+    color: var(--color-primary);
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 10px;
+    margin: 5px 0;
+    text-align: left;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .language-button:hover {
+    background-color: #333; /* Cor de fundo ao passar o mouse sobre o botão */
+  }
+
+  .language-button:focus {
+    outline: none; /* Remove o contorno padrão do botão em foco */
+  }
+
+  .language-selector h3 {
+    margin: 0 0 20px;
+    font-size: 18px;
+    color: var(--color-primary);
+  }
+
+  .language-selector button {
+    display: block;
+    background: none;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    font-size: 16px;
+    color: white;
+  }
+
+  .language-selector button.active {
+    font-weight: bold; /* Destaca o idioma selecionado */
+    color: var(--color-details); /* Cor para o idioma selecionado (opcional) */
   }
 }

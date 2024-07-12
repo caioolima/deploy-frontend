@@ -536,5 +536,7 @@
     "xMonths": "Há {{count}} meses",
     "aboutXYears": "Há cerca de {{count}} anos",
     "xYears": "Há {{count}} anos"
-  }
+  },
+  "select_language": "Selecione o idioma",
+  "language": "Idioma"
   }

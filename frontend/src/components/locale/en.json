@@ -533,7 +533,9 @@
     "xMonths": "{{count}} months ago",
     "aboutXYears": "about {{count}} years ago",
     "xYears": "{{count}} years ago"
-  }
+  },
+  "select_language": "Select Language",
+  "language": "Language"
 }
   
 

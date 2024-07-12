@@ -521,5 +521,7 @@
     "xMonths": "hace {{count}} meses",
     "aboutXYears": "hace aproximadamente {{count}} años",
     "xYears": "hace {{count}} años"
-  }
+  },
+  "select_language": "Seleccionar idioma",
+  "language": "Idioma"
 }
