@@ -125,6 +125,7 @@
     width: 95%;
     max-width: none;
     padding: 15px;
+    max-height: 80vh;
   }
 
   .closeButton {
@@ -167,6 +168,7 @@
     width: 90%;
     max-width: 600px;
     padding: 20px;
+    max-height: 70vh; /* Ajusta a altura máxima do modal em telas médias */
   }
 
   .titleNotification {
@@ -174,10 +176,21 @@
   }
 
   .notificationList {
-    max-height: 70vh;
+    max-height: 60vh;
   }
 
   .notificationItem {
     padding: 10px 0;
+  }
+}
+
+/* Para telas grandes */
+@media (min-width: 769px) {
+  .modalContent {
+    max-height: 70vh; /* Ajusta a altura máxima do modal em telas grandes */
+  }
+
+  .notificationList {
+    max-height: 60vh; /* Ajusta a altura máxima da lista de notificações em telas grandes */
   }
 }

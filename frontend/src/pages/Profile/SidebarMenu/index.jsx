@@ -126,7 +126,7 @@ const SidebarMenuItems = () => {
             {isCommunityPage && <IconCreateCommunity />}
             {isMyProfilePage && <IconPublish />}
             <ButtonProfile />
-            {isMyProfilePage && <SettingsButton onClick={() => setIsSettingsModalOpen(true)} />}
+            <SettingsButton onClick={() => setIsSettingsModalOpen(true)} />
             <ButtonExit />
           </>
         )}
@@ -134,8 +134,7 @@ const SidebarMenuItems = () => {
         {isCreateCommunityModalOpen && <CreateCommunityModal />}
       </div>
 
-      {/* Renderiza o modal apenas se não for um dispositivo móvel e estiver na página de perfil */}
-      {!isMobile && isMyProfilePage && isSettingsModalOpen && (
+      {!isMobile && (
         <SettingsModal
           isOpen={isSettingsModalOpen}
           onClose={() => setIsSettingsModalOpen(false)}
