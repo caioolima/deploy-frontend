@@ -1,5 +1,3 @@
-// src/pages/Profile/SidebarMenu/SettingsModal.jsx
-
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -12,27 +10,36 @@ const SettingsModal = ({ isOpen, onClose, onChangeView, view }) => {
   const modalRef = useRef(null); // Referência ao contêiner do modal
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (modalRef.current && !modalRef.current.contains(event.target)) {
-        onClose(); // Fecha o modal se o clique for fora do modal
-      }
+    const handleOpenModal = () => {
+      document.body.style.position = "fixed";
     };
 
-    // Limpeza: remove o manipulador de eventos e restaura a rolagem vertical
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+    const handleCloseModal = () => {
+      document.body.style.position = "static";
     };
-  }, [isOpen, onClose]);
+
+    if (isOpen) {
+      handleOpenModal();
+    } else {
+      handleCloseModal();
+    }
+
+    return () => {
+      handleCloseModal(); // Garante que o scroll seja restaurado ao desmontar o componente
+    };
+  }, [isOpen]);
+
+  const handleClickOutside = (event) => {
+    if (modalRef.current && !modalRef.current.contains(event.target)) {
+      onClose(); // Fecha o modal se o clique for fora do modal
+    }
+  };
 
   if (!isOpen) return null;
 
   return (
-    <div className="settings-modal-overlay" onClick={onClose}>
-      <div
-        className="settings-modal"
-        ref={modalRef}
-        onClick={(e) => e.stopPropagation()}
-      >
+    <div className="settings-modal-overlay" onClick={handleClickOutside}>
+      <div className="settings-modal" ref={modalRef}>
         <div className="settings-modal-content">
           {/* Renderiza o botão de fechamento apenas na visualização do menu */}
           {view === "menu" && (
