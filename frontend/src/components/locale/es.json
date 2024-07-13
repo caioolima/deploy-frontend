@@ -508,22 +508,17 @@
   "Imagem carregada:": "Imagen cargada:",
     "Feature request submitted successfully!": "¡Solicitud de funcionalidad enviada con éxito!",
   "Error submitting feature request. Please try again later.": "Error al enviar la solicitud de funcionalidad. Por favor, inténtalo de nuevo más tarde.",
-  "comment_time": {
-    "lessThanXMinutes": "hace {{count}} minutos",
-    "xMinutes": "hace aproximadamente {{count}} minutos",
-    "aboutXHours": "hace aproximadamente {{count}} horas",
-    "xHours": "hace {{count}} horas",
-    "aDay": "hace un día",
-    "xDays": "hace {{count}} días",
-    "aboutXWeeks": "hace aproximadamente {{count}} semanas",
-    "xWeeks": "hace {{count}} semanas",
-    "aboutXMonths": "hace aproximadamente {{count}} meses",
-    "xMonths": "hace {{count}} meses",
-    "aboutXYears": "hace aproximadamente {{count}} años",
-    "xYears": "hace {{count}} años"
-  },
+  "less_than_a_minute_ago": "hace menos de un minuto",
+  "minutes_ago": "hace {{minutes}} minutos",
+  "hours_ago": "hace {{hours}} horas",
+  "days_ago": "hace {{days}} días",
   "select_language": "Seleccionar idioma",
   "language": "Idioma",
   "settings_title": "Configuración",
-  "settings_label": "Configuración"
+  "settings_label": "Configuración",
+  "no_comments": "No hay comentarios.",
+  "enter_your_comment": "Ingrese su comentario...",
+  "error_fetching_comments": "Error al obtener comentarios",
+  "error_adding_comment": "Error al agregar comentario",
+  "profile_image": "Imagen de perfil"
 }

@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { formatDistanceToNow } from "date-fns";
-import { ptBR } from "date-fns/locale";
 import styles from "./CommentModal.module.css";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 const CommentModal = ({ imageUrl, onClose, user }) => {
+  const { t } = useTranslation();
   const [commentText, setCommentText] = useState("");
   const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { t, i18n } = useTranslation();
 
   const fetchComments = async () => {
     try {
@@ -23,7 +21,7 @@ const CommentModal = ({ imageUrl, onClose, user }) => {
         }
       );
       if (!response.ok) {
-        throw new Error("Erro ao obter comentários");
+        throw new Error(t("error_fetching_comments"));
       }
       const data = await response.json();
       setComments(data.comments);
@@ -70,12 +68,32 @@ const CommentModal = ({ imageUrl, onClose, user }) => {
         }
       );
       if (!response.ok) {
-        throw new Error("Erro ao adicionar comentário");
+        throw new Error(t("error_adding_comment"));
       }
       setCommentText("");
       fetchComments();
     } catch (error) {
       console.error(error);
+    }
+  };
+
+  // Função para calcular o tempo de postagem em português
+  const formatTimeAgo = (postedAt) => {
+    const now = new Date();
+    const postedDate = new Date(postedAt);
+    const diffMs = now - postedDate;
+    const diffSeconds = Math.round(diffMs / 1000);
+    if (diffSeconds < 60) {
+      return t("less_than_a_minute_ago");
+    } else if (diffSeconds < 3600) {
+      const minutes = Math.round(diffSeconds / 60);
+      return t("minutes_ago", { minutes });
+    } else if (diffSeconds < 86400) {
+      const hours = Math.round(diffSeconds / 3600);
+      return t("hours_ago", { hours });
+    } else {
+      const days = Math.round(diffSeconds / 86400);
+      return t("days_ago", { days });
     }
   };
 
@@ -90,25 +108,15 @@ const CommentModal = ({ imageUrl, onClose, user }) => {
           <div className={styles.commentList}>
             <ul>
               {loading ? (
-                <li
-                  className={styles.loadingShimmer}
-                  style={{ height: "600px", marginBottom: "20px" }}
-                ></li>
+                <li className={styles.loadingShimmer}></li>
               ) : comments.length === 0 ? (
-                <li className={styles.noCommentsMessage}>
-                  <span>{t("leave_a_comment")}</span>
-                </li>
+                <li className={styles.noCommentsMessage}>{t("no_comments")}</li>
               ) : (
                 comments.map((comment, index) => (
-                  <li
-                    key={index}
-                    className={`${styles.commentUserInfo} ${
-                      comment.userId.id === user.id ? styles.currentUser : ""
-                    }`}
-                  >
+                  <li key={index} className={styles.commentUserInfo}>
                     <img
                       src={comment.userId.profileImageUrl}
-                      alt={t("profile_image_alt", { defaultValue: "Profile image" })}
+                      alt={t("profile_image")}
                       className={styles.profileImageFeed}
                     />
                     <div className={styles.commentContent}>
@@ -117,13 +125,9 @@ const CommentModal = ({ imageUrl, onClose, user }) => {
                           {comment.userId.username}
                         </span>
                       </div>
-                      <span className={styles.commentText}>
-                        {comment.text}
-                      </span>
+                      <span className={styles.commentText}>{comment.text}</span>
                       <span className={styles.commentTime}>
-                        {t("comment_time." + getCommentTimeKey(comment.postedAt), {
-                          count: getCommentTimeCount(comment.postedAt),
-                        })}
+                        {formatTimeAgo(comment.postedAt)}
                       </span>
                     </div>
                   </li>
@@ -134,7 +138,7 @@ const CommentModal = ({ imageUrl, onClose, user }) => {
           <div className={styles.commentInputWrapper}>
             <input
               type="text"
-              placeholder={t("comment_input_placeholder")}
+              placeholder={t("enter_your_comment")}
               value={commentText}
               onChange={handleCommentChange}
               className={styles.commentTextarea}
@@ -151,52 +155,6 @@ const CommentModal = ({ imageUrl, onClose, user }) => {
       </div>
     </div>
   );
-};
-
-// Função para obter a chave de tradução para o tempo do comentário
-const getCommentTimeKey = (postedAt) => {
-  const now = new Date();
-  const postedDate = new Date(postedAt);
-  const diffInMinutes = Math.round((now - postedDate) / (1000 * 60));
-  const diffInHours = Math.round(diffInMinutes / 60);
-  const diffInDays = Math.round(diffInHours / 24);
-  const diffInWeeks = Math.round(diffInDays / 7);
-  const diffInMonths = Math.round(diffInDays / 30);
-  const diffInYears = Math.round(diffInDays / 365);
-
-  if (diffInMinutes < 1) return 'lessThanXMinutes';
-  if (diffInMinutes < 60) return 'xMinutes';
-  if (diffInHours < 24) return 'aboutXHours';
-  if (diffInHours < 48) return 'aDay';
-  if (diffInDays < 7) return 'xDays';
-  if (diffInDays < 30) return 'aboutXWeeks';
-  if (diffInDays < 365) return 'xWeeks';
-  if (diffInMonths < 12) return 'aboutXMonths';
-  return 'xYears';
-};
-
-// Função para obter a contagem de tempo do comentário
-const getCommentTimeCount = (postedAt) => {
-  const now = new Date();
-  const postedDate = new Date(postedAt);
-  const diffInMinutes = Math.round((now - postedDate) / (1000 * 60));
-  const diffInHours = Math.round(diffInMinutes / 60);
-  const diffInDays = Math.round(diffInHours / 24);
-  const diffInWeeks = Math.round(diffInDays / 7);
-  const diffInMonths = Math.round(diffInDays / 30);
-  const diffInYears = Math.round(diffInDays / 365);
-
-  return diffInMinutes < 60
-    ? diffInMinutes
-    : diffInHours < 24
-    ? diffInHours
-    : diffInDays < 7
-    ? diffInDays
-    : diffInWeeks < 4
-    ? diffInWeeks
-    : diffInMonths < 12
-    ? diffInMonths
-    : diffInYears;
 };
 
 export default CommentModal;

@@ -520,23 +520,18 @@
     "Imagem carregada:": "Uploaded image:",
       "Feature request submitted successfully!": "Feature request submitted successfully!",
   "Error submitting feature request. Please try again later.": "Error submitting feature request. Please try again later.",
-  "comment_time": {
-    "lessThanXMinutes": "{{count}} minutes ago",
-    "xMinutes": "about {{count}} minutes ago",
-    "aboutXHours": "about {{count}} hours ago",
-    "xHours": "{{count}} hours ago",
-    "aDay": "a day ago",
-    "xDays": "{{count}} days ago",
-    "aboutXWeeks": "about {{count}} weeks ago",
-    "xWeeks": "{{count}} weeks ago",
-    "aboutXMonths": "about {{count}} months ago",
-    "xMonths": "{{count}} months ago",
-    "aboutXYears": "about {{count}} years ago",
-    "xYears": "{{count}} years ago"
-  },
+  "less_than_a_minute_ago": "less than a minute ago",
+  "minutes_ago": "{{minutes}} minutes ago",
+  "hours_ago": "{{hours}} hours ago",
+  "days_ago": "{{days}} days ago",
   "select_language": "Select Language",
   "language": "Language",
   "settings_title": "Settings",
+  "enter_your_comment": "Enter your comment...",
+  "error_fetching_comments": "Error fetching comments",
+  "error_adding_comment": "Error adding comment",
+  "profile_image": "Profile Image",
+  "no_comments": "No comments.",
   "settings_label": "Settings"
 }
   

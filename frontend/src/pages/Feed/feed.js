@@ -223,17 +223,18 @@ const FeedPage = () => {
   };
 
   const openCommentModal = (imageUrl) => {
-    setScrollPosition(window.pageYOffset); // Armazena a posição de rolagem atual
+    setScrollPosition(window.pageYOffset); // Salva a posição de rolagem vertical atual
     setSelectedPostImageUrl(imageUrl);
     setCommentModalOpen(true);
-    document.body.style.position = "fixed";
+    document.documentElement.style.overflowY = "hidden"; // Fixa o scroll vertical para evitar rolagem
   };
-
+  
   const closeCommentModal = () => {
     setCommentModalOpen(false);
-    document.body.style.position = "static";
-    window.scrollTo(0, scrollPosition); // Restaura a posição de rolagem
+    document.documentElement.style.overflowY = "auto"; // Restaura o scroll vertical para auto (permitindo rolagem)
+    window.scrollTo(0, scrollPosition); // Restaura a posição de rolagem vertical
   };
+  
 
   const handleImageLoad = (postId) => {
     setImageLoadStatus((prevStatus) => ({

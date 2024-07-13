@@ -9,7 +9,7 @@ const IconNotification = () => {
   const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [userId, setUserId] = useState(null);
-  const [hasUnreadNotifications, setHasUnreadNotifications] = useState(false); // Estado para indicar notificações não lidas
+  const [hasUnreadNotifications, setHasUnreadNotifications] = useState(false);
   const { user } = useAuth();
 
   useEffect(() => {
@@ -44,11 +44,15 @@ const IconNotification = () => {
     }
   }, [userId]);
 
-  const handleNotificationModal = () => {
+  useEffect(() => {
+    // Atualiza o ícone de notificação baseado em hasUnreadNotifications
+    // Implemente conforme necessário para refletir o estado das notificações não lidas
+  }, [hasUnreadNotifications]);
+
+  const handleNotificationModal = async () => {
     setIsModalOpen(true);
     document.body.style.position = "fixed";
-    // Marcar notificações como lidas ao abrir o modal
-    markNotificationsAsRead();
+    await markNotificationsAsRead();
   };
 
   const handleCloseModal = () => {
@@ -59,10 +63,10 @@ const IconNotification = () => {
   const markNotificationsAsRead = async () => {
     try {
       await fetch(
-        `https://connecter-server-033a278d1512.herokuapp.com/notificationRoutes/${userId}/unread`,
-        { method: "PUT" } // Supondo que você use um método PUT para marcar notificações como lidas
+        `https://connecter-server-033a278d1512.herokuapp.com/notificationRoutes/${userId}/read`,
+        { method: "PUT" }
       );
-      setHasUnreadNotifications(false); // Após marcar como lidas, atualiza o estado para indicar que não há mais notificações não lidas
+      setHasUnreadNotifications(false);
     } catch (error) {
       console.error("Error marking notifications as read:", error);
     }
@@ -70,14 +74,20 @@ const IconNotification = () => {
 
   return (
     <>
-      <div className="notificationIcon">
+      <div className={`notificationIcon ${hasUnreadNotifications ? 'hasUnread' : ''}`}>
         <SidebarLink
           title={t("notification_title")}
-          icon={<FaBell />}
-          label={t("notification_label")}
+          icon={<FaBell style={{ color: hasUnreadNotifications ? 'var(--color-primary-focus)' : 'inherit' }} />}
+          label={
+            <span style={{ 
+              color: hasUnreadNotifications ? 'var(--color-primary-focus)' : 'inherit',
+              marginLeft: '0px'
+            }}>
+              {t("notification_label")}
+            </span>
+          }
           onClick={handleNotificationModal}
         />
-        {hasUnreadNotifications && <div className="indicator"></div>}
       </div>
       {userId && (
         <NotificationModal
