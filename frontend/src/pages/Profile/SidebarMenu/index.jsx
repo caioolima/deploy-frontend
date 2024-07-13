@@ -127,7 +127,7 @@ const SidebarMenuItems = () => {
             {isMyProfilePage && <IconPublish />}
             <ButtonProfile />
             <SettingsButton onClick={() => setIsSettingsModalOpen(true)} />
-            <ButtonExit />
+            <ButtonExit /> {/* Renderize diretamente o ButtonExit */}
           </>
         )}
 

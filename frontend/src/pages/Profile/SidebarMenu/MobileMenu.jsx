@@ -44,9 +44,9 @@ const MobileMenu = ({ isMenuOpen, closeMenu, handleViewChange, view, setIsMenuOp
                   {t("language")}
                 </button>
               </div>
-              <button className="button-exit">
+              <div className="button-exit">
                 <ButtonExit />
-              </button>
+              </div>
             </>
           ) : (
             <div>

@@ -40,11 +40,14 @@ const useGetdata = () => {
       if (storedBiography) {
         setBiography(storedBiography);
       } else {
-        const res = await fetch(`https://connecter-server-033a278d1512.herokuapp.com/users/${userId}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const res = await fetch(
+          `https://connecter-server-033a278d1512.herokuapp.com/users/${userId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
         if (res.ok) {
           const responseBody = await res.json();
           if (responseBody) {
@@ -90,15 +93,19 @@ const useGetdata = () => {
   const getGalleryImages = async () => {
     try {
       const token = localStorage.getItem("token");
+      if (!userId) {
+        console.error("userId não definido.");
+        return;
+      }
       const response = await fetch(
-        `https://connecter-server-033a278d1512.herokuapp.com/${userId}/gallery`, // Corrigindo a URL
+        `https://connecter-server-033a278d1512.herokuapp.com/${userId}/gallery`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         }
       );
-  
+
       if (response.ok) {
         const data = await response.json();
         setUserPhotos(data.images || []);
@@ -109,11 +116,14 @@ const useGetdata = () => {
       console.error("Erro ao obter as imagens da galeria:", error);
     }
   };
-  
+
   useEffect(() => {
-    getGalleryImages();
-  }, [setUserPhotos, userId]);
-  
+    // Verifica se userId está definido antes de fazer a requisição
+    if (userId) {
+      getGalleryImages();
+    }
+  }, [userId, setUserPhotos]);
+
   useEffect(() => {
     const fetchFollowingCount = async () => {
       try {
@@ -191,12 +201,15 @@ const useGetdata = () => {
 
   useEffect(() => {
     const isLastPhoto =
-      !userPhotos || userPhotos.length === 0 || currentImageIndex === userPhotos.length - 1;
+      !userPhotos ||
+      userPhotos.length === 0 ||
+      currentImageIndex === userPhotos.length - 1;
     setNextButtonDisabled(isLastPhoto);
   }, [userPhotos, currentImageIndex, setNextButtonDisabled]);
 
   useEffect(() => {
-    const isFirstPhoto = !userPhotos || userPhotos.length === 0 || currentImageIndex === 0;
+    const isFirstPhoto =
+      !userPhotos || userPhotos.length === 0 || currentImageIndex === 0;
     setPreviousButtonDisabled(isFirstPhoto);
   }, [userPhotos, currentImageIndex, setPreviousButtonDisabled]);
 

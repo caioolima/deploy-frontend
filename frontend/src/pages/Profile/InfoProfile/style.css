@@ -18,19 +18,17 @@
     padding-left: 20px;
 }
 
-/* Adicione isso ao seu arquivo style.css */
-
 /* Animação de carregamento */
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-  }
-  
-  /* Estilo para a animação de carregamento */
-  .loading-animation {
+}
+
+/* Estilo para a animação de carregamento */
+.loading-animation {
     animation: spin 1s linear infinite; /* Aplica a animação spin */
-  }
-  
+}
+
 .profile-photo-frame {
     position: relative;
     width: 150px;
@@ -111,34 +109,32 @@
 }
 
 .profile-info .follow-button {
-    /* Cor de fundo padrão */
     background-color: var(--color-details);
-    border: none; /* Sem borda */
+    border: none;
     color: white;
-    padding: 10px 20px; /* Espaçamento interno */
-    text-decoration: none; /* Sem decoração de texto */
-    font-size: 16px; /* Tamanho da fonte */
-    cursor: pointer; /* Cursor do mouse */
-    border-radius: 5px; /* Borda arredondada */
-    margin-left: 3px; /* Margem à esquerda */
-    transition: background-color 0.8s ease; /* Transição suave */
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 3px;
+    transition: background-color 0.8s ease;
     font-weight: bold !important;
     width: 60%;
     font-family: "Raleway", sans-serif;
 }
 
 .following {
-    /* Cor de fundo quando seguindo */
     background-color: #f70073 !important;
-    color: black !important; /* Cor do texto branco */
+    color: black !important;
 }
 
 .follow-button:hover {
-    background-color: var(--color-primary); /* Alterar a cor de fundo ao passar o mouse */
+    background-color: var(--color-primary);
 }
 
 .follow-button:active {
-    background-color: var(--color-primary); /* Alterar a cor de fundo quando pressionado */
+    background-color: var(--color-primary);
 }
 
 .custom-button {
@@ -161,161 +157,11 @@
     font-size: 15px;
 }
 
-@media screen and (max-width: 660px) {
-    .profile-photo-frame {
-        max-width: 25vw;
-        max-height: 25vw;
-    }
-    
-    .profile-header {
-        width: 100vw;
-        margin-top: 30px;
-    }
-    
-    .profile-info {
-        width: 70%;
-    }
-    
-    .user-info h1 {
-        font-size: 1.3rem;
-    }
-    
-    .cont-photos {
-        font-size: 12px;
-        font-weight: 400;
-        gap: 7px;
-    }
-    
-    .fullname {
-        font-size: 1rem;
-    }
-    
-    .edit-button {
-        padding: 4px 10px;
-        font-size: 13px;
-        padding: 10px;
-    }
-    
-    .profile-info .bio {
-        font-size: 0.8rem;
-    }
-    .profile-info .follow-button{
-        width: 50%;
-    }
-}
-
-.modal-modal-follow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1000;
-    background-color: rgba(0, 0, 0, 0.5); /* Adiciona um fundo escuro semi-transparente */
-}
-
-.modal-content-two {
-    background-color: rgb(0, 0, 0);
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 30%; /* Largura máxima ajustada */
-    max-height: 65vh;
-    width: 80%; /* Largura ajustada para centralizar */
-    margin-top: -100px;
-    overflow: hidden; /* Impede o overflow do conteúdo geral do modal */
-}
-
-.modal-content-two h3 {
-    margin-top: 0;
-    color: #f70073;
-    margin-top: 20px;
-    margin-bottom: 40px;
-    text-align: center;
-}
-
-.modal-content-two ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    color: #f0f0f0;
-    max-height: 50vh; /* Limita a altura da lista para adicionar scroll */
-    overflow-y: auto; /* Adiciona scroll vertical quando necessário */
-}
-
-.modal-content-two ul li {
-    margin-bottom: 10px;
-    cursor: pointer;
-    padding: 10px;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-}
-
-.closed-follow {
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    font-size: 24px;
-    color: #f0f0f0;
-    font-size: 40px;
-}
-
-.follower-user {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px; /* Adiciona um espaço entre os usuários */
-  }
-  
-  .follower-user .profile-link {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-  }
-  
-  .username-follower {
-    color: #fff;
-    font-weight: bold;
-  }
-
-.follower-avatar,
-.followee-avatar {
-    width: 50px; /* Tamanho ajustável */
-    height: 50px; /* Tamanho ajustável */
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 15px; /* Espaço à direita para separar a foto do nome de usuário */
-    margin-top: 5px;
-}
-
-.username-follower {
-    color: #fff;
-    font-weight: bold;
-  }
-.user-details {
-    display: flex;
-    flex-direction: column;
-    margin-left: 10px; /* Ajusta a distância entre a imagem e o nome de usuário */
-  }
-
-  .following-user {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px; /* Adiciona um espaço entre os usuários */
-  }
-  
-  .following-user .profile-link {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-  }
 @media screen and (max-width: 1100px) {
     .modal-content-two {
         max-width: 60%; /* Reduz ainda mais a largura máxima para telas muito pequenas */
     }
-    
+
     .follower-avatar,
     .followee-avatar {
         width: 40px; /* Reduz ainda mais o tamanho da foto do usuário para telas muito pequenas */
@@ -324,6 +170,48 @@
 }
 
 @media screen and (max-width: 660px) {
+    .profile-photo-frame {
+        max-width: 25vw;
+        max-height: 25vw;
+    }
+
+    .profile-header {
+        width: 100vw;
+        margin-top: 30px;
+    }
+
+    .profile-info {
+        width: 70%;
+    }
+
+    .user-info h1 {
+        font-size: 1.3rem;
+    }
+
+    .cont-photos {
+        font-size: 12px;
+        font-weight: 400;
+        gap: 7px;
+    }
+
+    .fullname {
+        font-size: 1rem;
+    }
+
+    .edit-button {
+        padding: 4px 10px;
+        font-size: 13px;
+        padding: 10px;
+    }
+
+    .profile-info .bio {
+        font-size: 0.8rem;
+    }
+
+    .profile-info .follow-button {
+        width: 50%;
+    }
+
     .modal-content-two {
         max-width: 95%; /* Reduz ainda mais a largura máxima para telas muito pequenas */
     }
