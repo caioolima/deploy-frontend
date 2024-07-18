@@ -1,30 +1,45 @@
-import { useEffect} from 'react';
-import axios from 'axios';
-import UseState from './useState';
+import { useEffect } from "react";
+import axios from "axios";
+import UseState from "./useState";
 
 const Function = () => {
-  const {    
-        t, initialState,
-        modalIsOpen, setIsOpen,
-        registrationMessage, setRegistrationMessage,
-        loginMessage, setLoginMessage,
-        formFields, setFormFields,
-        formErrors, setFormErrors,
-        loginFormEmail, setLoginFormEmail,
-        loginFormPassword, setLoginFormPassword,
-        registrationFormEmail, setRegistrationFormEmail,
-        registrationFormPassword, setRegistrationFormPassword,
-        shouldCloseModal, setShouldCloseModal,
-        showPassword, setShowPassword,
-        showPassword2, setShowPassword2,
-        showConfirmPassword, setShowConfirmPassword,
-        loginErrorMessage, setLoginErrorMessage,
-        navigate,
-        signIn,
-        eyeClosedIcon,
-        eyeOpenIcon
-    } = UseState()
-  
+  const {
+    t,
+    initialState,
+    modalIsOpen,
+    setIsOpen,
+    registrationMessage,
+    setRegistrationMessage,
+    loginMessage,
+    setLoginMessage,
+    formFields,
+    setFormFields,
+    formErrors,
+    setFormErrors,
+    loginFormEmail,
+    setLoginFormEmail,
+    loginFormPassword,
+    setLoginFormPassword,
+    registrationFormEmail,
+    setRegistrationFormEmail,
+    registrationFormPassword,
+    setRegistrationFormPassword,
+    shouldCloseModal,
+    setShouldCloseModal,
+    showPassword,
+    setShowPassword,
+    showPassword2,
+    setShowPassword2,
+    showConfirmPassword,
+    setShowConfirmPassword,
+    loginErrorMessage,
+    setLoginErrorMessage,
+    navigate,
+    signIn,
+    eyeClosedIcon,
+    eyeOpenIcon,
+  } = UseState();
+
   const handleLoginEmailChange = (event) => {
     setLoginFormEmail(event.target.value);
     setLoginErrorMessage(""); // Limpar a mensagem de erro ao digitar no campo de e-mail
@@ -258,17 +273,20 @@ const Function = () => {
         }
       }
 
-      const response = await axios.post("https://connecter-server-033a278d1512.herokuapp.com/auth/register", {
-        username: formFields.username,
-        firstName: formFields.firstName,
-        lastName: formFields.lastName,
-        phone: formFields.phone,
-        email: registrationFormEmail,
-        password: registrationFormPassword,
-        confirmPassword: formFields.confirmPassword,
-        dob: formFields.dob,
-        gender: formFields.gender,
-      });
+      const response = await axios.post(
+        "https://connecter-server-033a278d1512.herokuapp.com/auth/register",
+        {
+          username: formFields.username,
+          firstName: formFields.firstName,
+          lastName: formFields.lastName,
+          phone: formFields.phone,
+          email: registrationFormEmail,
+          password: registrationFormPassword,
+          confirmPassword: formFields.confirmPassword,
+          dob: formFields.dob,
+          gender: formFields.gender,
+        }
+      );
 
       if (response.data.success) {
         console.log("Cadastro bem-sucedido!");
@@ -278,11 +296,13 @@ const Function = () => {
         setRegistrationFormEmail("");
         setRegistrationFormPassword("");
 
-        // Aguarda 2 segundos antes de limpar a mensagem
+
         setTimeout(() => {
           setRegistrationMessage("");
-        }, 3000); // 2000 milissegundos = 2 segundos
-
+        }, 3000); 
+        
+        setShouldCloseModal(true);
+        resetFormFields();
         return;
       } else {
         setRegistrationMessage(t("registration_error_message"));
@@ -339,48 +359,63 @@ const Function = () => {
       return { available: false }; // Em caso de erro, considerar como não disponível
     }
   };
-  
+
   return {
     // function
-        handleLoginEmailChange,
-        handleLoginPasswordChange,
-        handleRegistrationEmailChange,
-        handleRegistrationPasswordChange,
-        resetFormFields,
-        handleOpenModal,
-        handleInputChange,
-        handleCloseModal,
-        handleForgotPasswordClick,
-        validateAge,
-        togglePasswordVisibility,
-        togglePasswordVisibility2,
-        toggleConfirmPasswordVisibility,
-        passwordInputType,
-        handleRegisterButtonClick,
-        handleLoginButtonClick,
-        checkFieldAvailability,
-  
-    // state
-        t, initialState,
-        modalIsOpen, setIsOpen,
-        registrationMessage, setRegistrationMessage,
-        loginMessage, setLoginMessage,
-        formFields, setFormFields,
-        formErrors, setFormErrors,
-        loginFormEmail, setLoginFormEmail,
-        loginFormPassword, setLoginFormPassword,
-        registrationFormEmail, setRegistrationFormEmail,
-        registrationFormPassword, setRegistrationFormPassword,
-        shouldCloseModal, setShouldCloseModal,
-        showPassword, setShowPassword,
-        showPassword2, setShowPassword2,
-        showConfirmPassword, setShowConfirmPassword,
-        loginErrorMessage, setLoginErrorMessage,
-        navigate,
-        signIn,
-        eyeClosedIcon,
-        eyeOpenIcon
-    }
-}
+    handleLoginEmailChange,
+    handleLoginPasswordChange,
+    handleRegistrationEmailChange,
+    handleRegistrationPasswordChange,
+    resetFormFields,
+    handleOpenModal,
+    handleInputChange,
+    handleCloseModal,
+    handleForgotPasswordClick,
+    validateAge,
+    togglePasswordVisibility,
+    togglePasswordVisibility2,
+    toggleConfirmPasswordVisibility,
+    passwordInputType,
+    handleRegisterButtonClick,
+    handleLoginButtonClick,
+    checkFieldAvailability,
 
-export default Function
+    // state
+    t,
+    initialState,
+    modalIsOpen,
+    setIsOpen,
+    registrationMessage,
+    setRegistrationMessage,
+    loginMessage,
+    setLoginMessage,
+    formFields,
+    setFormFields,
+    formErrors,
+    setFormErrors,
+    loginFormEmail,
+    setLoginFormEmail,
+    loginFormPassword,
+    setLoginFormPassword,
+    registrationFormEmail,
+    setRegistrationFormEmail,
+    registrationFormPassword,
+    setRegistrationFormPassword,
+    shouldCloseModal,
+    setShouldCloseModal,
+    showPassword,
+    setShowPassword,
+    showPassword2,
+    setShowPassword2,
+    showConfirmPassword,
+    setShowConfirmPassword,
+    loginErrorMessage,
+    setLoginErrorMessage,
+    navigate,
+    signIn,
+    eyeClosedIcon,
+    eyeOpenIcon,
+  };
+};
+
+export default Function;

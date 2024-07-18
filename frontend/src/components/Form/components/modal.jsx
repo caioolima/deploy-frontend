@@ -2,7 +2,8 @@ import React from "react";
 import Modal from "react-modal";
 import PhoneInput from "react-phone-number-input";
 import modalStyles from "./modalStyles";
-const modal = ({
+
+const ModalComponent = ({
   t,
   style,
   setFormErrors,
@@ -163,6 +164,7 @@ const modal = ({
                 <p className={style["error-message"]}>{formErrors.password}</p>
               )}
               <button
+                type="button" // Adicione este atributo
                 className={style["toggle-password-button-two"]}
                 onClick={togglePasswordVisibility2}
               >
@@ -186,6 +188,7 @@ const modal = ({
                 required
               />
               <button
+                type="button" // Adicione este atributo
                 className={style["toggle-password-button-three"]}
                 onClick={toggleConfirmPasswordVisibility}
               >
@@ -251,4 +254,4 @@ const modal = ({
   );
 };
 
-export default modal;
+export default ModalComponent;

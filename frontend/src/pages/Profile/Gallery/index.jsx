@@ -15,7 +15,9 @@ const Galeria = () => {
   const { userPhotos } = useMyContext();
   const { handlePublicationClick } = useEventsModals();
   const [savedPosts, setSavedPosts] = useState([]);
-  const [loadedImages, setLoadedImages] = useState(Array(userPhotos.length).fill(false));
+  const [loadedImages, setLoadedImages] = useState(
+    Array(userPhotos.length).fill(false)
+  );
   const [activeTab, setActiveTab] = useState("galeria");
   const [loadingSavedPosts, setLoadingSavedPosts] = useState(true); // Adiciona o estado de carregamento
   const { user } = useAuth();
@@ -58,7 +60,9 @@ const Galeria = () => {
       const fetchSavedPosts = async () => {
         setLoadingSavedPosts(true);
         try {
-          const response = await fetch(`https://connecter-server-033a278d1512.herokuapp.com/feedRoutes/savedPosts/${userId}`);
+          const response = await fetch(
+            `https://connecter-server-033a278d1512.herokuapp.com/feedRoutes/savedPosts/${userId}`
+          );
           if (!response.ok) {
             throw new Error("Failed to fetch saved posts");
           }
@@ -94,9 +98,19 @@ const Galeria = () => {
   return (
     <div className="gallery-container">
       <div className="tab-buttons">
-        <TabButton active={activeTab === "galeria"} onClick={() => toggleTab("galeria")}>gallery</TabButton>
+        <TabButton
+          active={activeTab === "galeria"}
+          onClick={() => toggleTab("galeria")}
+        >
+          gallery
+        </TabButton>
         {user && userId === user.id && (
-          <TabButton active={activeTab === "salvos"} onClick={() => toggleTab("salvos")}>saved</TabButton>
+          <TabButton
+            active={activeTab === "salvos"}
+            onClick={() => toggleTab("salvos")}
+          >
+            saved
+          </TabButton>
         )}
       </div>
       {activeTab === "galeria" ? (
@@ -111,18 +125,16 @@ const Galeria = () => {
           <EmptyMessage messageKey="no_photos" />
         )
       ) : (
-        userId === user.id && (
-          loadingSavedPosts ? (
-            <div className="loading-placeholder"></div>
-          ) : (
-            <SavedPostsGrid
-              savedPosts={savedPosts}
-              loadedImages={loadedImages}
-              handleImageLoaded={handleImageLoaded}
-              handlePublicationClick={handlePublicationClick}
-            />
-          )
-        )
+        userId === user.id &&
+        (loadingSavedPosts ? (
+          <div className="loading-placeholder"></div>
+        ) : (
+          <SavedPostsGrid
+            savedPosts={savedPosts}
+            loadedImages={loadedImages}
+            handleImageLoaded={handleImageLoaded}
+          />
+        ))
       )}
     </div>
   );

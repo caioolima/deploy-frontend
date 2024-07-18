@@ -2,7 +2,12 @@
 import React from "react";
 import EmptyMessage from "./EmptyMessage";
 
-const SavedPostsGrid = ({ savedPosts, loadedImages, handleImageLoaded, handlePublicationClick }) => {
+const SavedPostsGrid = ({
+  savedPosts,
+  loadedImages,
+  handleImageLoaded,
+  handlePublicationClick,
+}) => {
   return (
     <div className="photo-gallery">
       {savedPosts.length > 0 ? (
@@ -16,18 +21,15 @@ const SavedPostsGrid = ({ savedPosts, loadedImages, handleImageLoaded, handlePub
                   <div className="dot-loader"></div>
                 </div>
               )}
-              <a href={`/profile/${post.postOwnerId}`}>
-                <img
-                  src={post.imageUrl}
-                  alt="saved_post"
-                  style={{
-                    opacity: loadedImages[index] ? 1 : 0,
-                    transition: "opacity 0.5s",
-                  }}
-                  onLoad={() => handleImageLoaded(index)}
-                  onClick={() => handlePublicationClick(index)}
-                />
-              </a>
+
+              <img
+                src={post.imageUrl}
+                alt="saved_post"
+                style={{
+                  opacity: loadedImages[index] ? 1 : 0,
+                  transition: "opacity 0.5s",
+                }}
+              />
             </div>
           ))}
         </div>

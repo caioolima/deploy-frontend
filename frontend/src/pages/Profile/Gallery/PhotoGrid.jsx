@@ -8,13 +8,10 @@ const PhotoGrid = ({
   handleClick,
 }) => {
   return (
-    <div className="photo-grid">
-      {photos.map((photoData, index) => (
-        <div className="photo-item" key={index}>
-          <div
-            className="image-container-button"
-            onClick={() => handleClick(index)}
-          >
+    <div className="photo-gallery">
+      <div className="photo-grid">
+        {photos.map((photo, index) => (
+          <div className="photo-item" key={index}>
             {!loadedImages[index] && (
               <div className="loading-spinner">
                 <div className="dot-loader"></div>
@@ -23,17 +20,18 @@ const PhotoGrid = ({
               </div>
             )}
             <img
-              src={photoData.url}
-              alt="photo"
+              src={photo.url}
+              alt="user_photo"
               style={{
                 opacity: loadedImages[index] ? 1 : 0,
                 transition: "opacity 0.5s",
               }}
               onLoad={() => handleImageLoaded(index)}
+              onClick={() => handleClick(index)} // Passa o índice
             />
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };

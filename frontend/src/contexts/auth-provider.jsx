@@ -18,7 +18,6 @@ export function AuthProvider({ children }) {
         localStorage.removeItem("token");
         setUser(null);
         setLoading(false);
-        navigate("/home");
     }, [navigate]);
 
     useEffect(() => {

@@ -90,4 +90,4 @@ const form = ({
     )
 }
 
-export default form
+export default form;
