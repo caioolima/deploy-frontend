@@ -5,15 +5,14 @@ import EmptyMessage from "./EmptyMessage";
 const SavedPostsGrid = ({
   savedPosts,
   loadedImages,
-  handleImageLoaded,
-  handlePublicationClick,
+  handleImageLoaded
 }) => {
   return (
     <div className="photo-gallery">
       {savedPosts.length > 0 ? (
         <div className="photo-grid">
           {savedPosts.map((post, index) => (
-            <div className="photo-item" key={index}>
+            <div className="photo-item-saved" key={index}>
               {!loadedImages[index] && (
                 <div className="loading-spinner">
                   <div className="dot-loader"></div>
@@ -29,6 +28,7 @@ const SavedPostsGrid = ({
                   opacity: loadedImages[index] ? 1 : 0,
                   transition: "opacity 0.5s",
                 }}
+                onLoad={() => handleImageLoaded(index)}
               />
             </div>
           ))}

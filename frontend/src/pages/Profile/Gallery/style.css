@@ -82,6 +82,7 @@
   width: 100%;
   height:320px;
   object-fit: cover;
+  cursor: pointer;
 }
 
 .image-container-button {
@@ -102,6 +103,18 @@
   width: 100%;
   height: 320px;
   position: relative;
+}
+
+.photo-item-saved {
+  width: 100%;
+  height: 320px;
+  position: relative;
+}
+
+.photo-item-saved img {
+  width: 100%;
+  height:320px;
+  object-fit: cover;
 }
 
 /* Adicione esta regra de estilo para remover a aparência de botão */
