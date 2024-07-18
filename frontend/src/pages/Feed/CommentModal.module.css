@@ -77,6 +77,13 @@
   margin-bottom: 15px;
 }
 
+.disabledButton {
+  background: #b0b0b0;
+  cursor: not-allowed;
+  opacity: 0.7; /* Diminui a opacidade para indicar que está desabilitado */
+  border: 1px solid #888; /* Opcional: adiciona uma borda mais clara */
+}
+
 .profileImageFeed {
   width: 40px;
   height: 40px;

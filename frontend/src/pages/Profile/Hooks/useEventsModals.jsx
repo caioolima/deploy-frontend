@@ -91,7 +91,7 @@ const useEventsModals = () => {
 
   const handleSignOut = () => {
     signOut();
-    navigate("/home");
+    window.location.href = "/home";
   };
 
   const handleEditClick = () => {

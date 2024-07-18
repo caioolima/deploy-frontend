@@ -29,8 +29,10 @@ const IconNotification = () => {
             throw new Error("Network response was not ok");
           }
           const data = await response.json();
-          if (data.success && data.notifications.length > 0) {
-            setHasUnreadNotifications(true);
+          if (data.success) {
+            // Verificar se há notificações não lidas e se são feitas por outros usuários
+            const unreadNotifications = data.notifications.filter(notification => notification.username !== user.username);
+            setHasUnreadNotifications(unreadNotifications.length > 0);
           } else {
             setHasUnreadNotifications(false);
           }
@@ -42,12 +44,7 @@ const IconNotification = () => {
 
       checkUnreadNotifications();
     }
-  }, [userId]);
-
-  useEffect(() => {
-    // Atualiza o ícone de notificação baseado em hasUnreadNotifications
-    // Implemente conforme necessário para refletir o estado das notificações não lidas
-  }, [hasUnreadNotifications]);
+  }, [userId, user?.username]);
 
   const handleNotificationModal = async () => {
     setIsModalOpen(true);

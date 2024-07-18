@@ -7,8 +7,11 @@ const CommentModal = ({ imageUrl, onClose, user }) => {
   const [commentText, setCommentText] = useState("");
   const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [commentsLoaded, setCommentsLoaded] = useState(false);
 
   const fetchComments = async () => {
+    setLoading(true);
     try {
       const response = await fetch(
         `https://connecter-server-033a278d1512.herokuapp.com/feedRoutes/comments`,
@@ -25,26 +28,29 @@ const CommentModal = ({ imageUrl, onClose, user }) => {
       }
       const data = await response.json();
       setComments(data.comments);
-      setLoading(false);
-      localStorage.setItem(
-        `comments-${imageUrl}`,
-        JSON.stringify(data.comments)
-      );
+      localStorage.setItem(`comments-${imageUrl}`, JSON.stringify(data.comments));
       localStorage.setItem(`commentsLoaded-${imageUrl}`, "true");
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
   useEffect(() => {
-    const isCommentsLoaded = localStorage.getItem(`commentsLoaded-${imageUrl}`);
-    const storedComments = localStorage.getItem(`comments-${imageUrl}`);
-    if (isCommentsLoaded && storedComments) {
-      setComments(JSON.parse(storedComments));
-      setLoading(false);
-    } else {
-      fetchComments();
-    }
+    const loadComments = () => {
+      const isCommentsLoaded = localStorage.getItem(`commentsLoaded-${imageUrl}`);
+      const storedComments = localStorage.getItem(`comments-${imageUrl}`);
+      if (isCommentsLoaded && storedComments) {
+        setComments(JSON.parse(storedComments));
+        setCommentsLoaded(true);
+        setLoading(false);
+      } else {
+        fetchComments();
+      }
+    };
+
+    loadComments();
   }, [imageUrl]);
 
   const handleCommentChange = (e) => {
@@ -52,6 +58,8 @@ const CommentModal = ({ imageUrl, onClose, user }) => {
   };
 
   const handleSubmitComment = async () => {
+    if (commentText.trim() === "" || isSubmitting) return;
+    setIsSubmitting(true);
     try {
       const response = await fetch(
         "https://connecter-server-033a278d1512.herokuapp.com/feedRoutes/comment",
@@ -71,13 +79,21 @@ const CommentModal = ({ imageUrl, onClose, user }) => {
         throw new Error(t("error_adding_comment"));
       }
       setCommentText("");
-      fetchComments();
+      await fetchComments(); // Atualize a lista de comentários após a publicação
     } catch (error) {
       console.error(error);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
-  // Função para calcular o tempo de postagem em português
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleSubmitComment();
+    }
+  };
+
   const formatTimeAgo = (postedAt) => {
     const now = new Date();
     const postedDate = new Date(postedAt);
@@ -141,14 +157,16 @@ const CommentModal = ({ imageUrl, onClose, user }) => {
               placeholder={t("enter_your_comment")}
               value={commentText}
               onChange={handleCommentChange}
+              onKeyDown={handleKeyDown}
               className={styles.commentTextarea}
+              disabled={isSubmitting}
             />
             <button
-              className={styles.submitCommentButton}
+              className={`${styles.submitCommentButton} ${isSubmitting ? styles.disabledButton : ''}`}
               onClick={handleSubmitComment}
-              disabled={commentText.trim() === ""}
+              disabled={commentText.trim() === "" || isSubmitting}
             >
-              {t("publish")}
+              {isSubmitting ? t("publishing") : t("publish")}
             </button>
           </div>
         </div>
