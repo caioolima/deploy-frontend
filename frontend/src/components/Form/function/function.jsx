@@ -283,12 +283,6 @@ const Function = () => {
           setRegistrationMessage("");
         }, 3000); // 2000 milissegundos = 2 segundos
 
-        // Aguarda mais 2 segundos antes de fechar o modal
-        setTimeout(() => {
-          setShouldCloseModal(true);
-          resetFormFields(); // Atualize o estado para indicar que o modal deve ser fechado
-        }, 4000); // 4000 milissegundos = 4 segundos (2 segundos para a mensagem + 2 segundos para fechar o modal)
-
         return;
       } else {
         setRegistrationMessage(t("registration_error_message"));
