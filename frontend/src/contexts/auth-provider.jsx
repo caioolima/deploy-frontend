@@ -28,8 +28,12 @@ export function AuthProvider({ children }) {
     setUser(null);
     setLoading(false);
 
-    // Redirecionar o usuário para a página inicial
-    navigate("/home");
+    // Redirecionar o usuário para a página inicial e limpar o histórico de navegação
+    navigate("/home", { replace: true });
+
+    // Limpar o histórico de navegação para garantir que o usuário não possa voltar à página anterior
+    window.history.pushState(null, "", "/home");
+    window.history.go(0);
   }, [navigate]);
 
   useEffect(() => {
