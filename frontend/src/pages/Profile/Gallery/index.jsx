@@ -19,9 +19,9 @@ const Galeria = () => {
     Array(userPhotos.length).fill(false)
   );
   const [activeTab, setActiveTab] = useState("galeria");
-  const [loadingSavedPosts, setLoadingSavedPosts] = useState(true); // Adiciona o estado de carregamento
   const { user } = useAuth();
   const { userId } = useParams();
+  const [loadingSavedPosts, setLoadingSavedPosts] = useState(true);
 
   useEffect(() => {
     // Aplica overflow: hidden ao elemento html para remover o scroll
@@ -50,16 +50,16 @@ const Galeria = () => {
   }, [userPhotos]);
 
   useEffect(() => {
-    // Recupera posts salvos do localStorage
-    const savedPostsFromStorage = localStorage.getItem("savedPosts");
-    if (savedPostsFromStorage) {
-      setSavedPosts(JSON.parse(savedPostsFromStorage));
-      setLoadingSavedPosts(false);
-    } else {
-      // Caso não haja posts no localStorage, busca do servidor
-      const fetchSavedPosts = async () => {
-        setLoadingSavedPosts(true);
-        try {
+    const fetchSavedPosts = async () => {
+      setLoadingSavedPosts(true);
+      try {
+        // Verifica se os posts salvos estão no localStorage
+        const savedPostsFromStorage = localStorage.getItem(`savedPosts_${userId}`);
+        if (savedPostsFromStorage) {
+          setSavedPosts(JSON.parse(savedPostsFromStorage));
+          setLoadingSavedPosts(false);
+        } else {
+          // Fazer uma requisição para obter as publicações salvas
           const response = await fetch(
             `https://connecter-server-033a278d1512.herokuapp.com/feedRoutes/savedPosts/${userId}`
           );
@@ -68,18 +68,20 @@ const Galeria = () => {
           }
           const data = await response.json();
           setSavedPosts(data.savedPosts);
-          // Armazena os posts no localStorage
-          localStorage.setItem("savedPosts", JSON.stringify(data.savedPosts));
-        } catch (error) {
-          console.error("Error fetching saved posts:", error);
-        } finally {
+
+          // Armazena os posts salvos no localStorage
+          localStorage.setItem(`savedPosts_${userId}`, JSON.stringify(data.savedPosts));
           setLoadingSavedPosts(false);
         }
-      };
-
-      if (activeTab === "salvos" && user && userId === user.id) {
-        fetchSavedPosts();
+      } catch (error) {
+        console.error("Error fetching saved posts:", error);
+        setLoadingSavedPosts(false);
       }
+    };
+
+    // Se a guia ativa for 'salvos' e o userId corresponder ao user.id, buscar as publicações salvas
+    if (activeTab === "salvos" && user && userId === user.id) {
+      fetchSavedPosts();
     }
   }, [activeTab, userId, user]);
 
@@ -125,16 +127,14 @@ const Galeria = () => {
           <EmptyMessage messageKey="no_photos" />
         )
       ) : (
-        userId === user.id &&
-        (loadingSavedPosts ? (
-          <div className="loading-placeholder"></div>
-        ) : (
+        userId === user.id && (
           <SavedPostsGrid
             savedPosts={savedPosts}
             loadedImages={loadedImages}
             handleImageLoaded={handleImageLoaded}
+            loadingSavedPosts={loadingSavedPosts} // Passa o estado de carregamento
           />
-        ))
+        )
       )}
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./FeatureRequests.module.css";
 import { useTranslation } from "react-i18next";
 import Footer from "../../../components/Footer/footer.jsx";
@@ -52,6 +52,16 @@ const FeatureRequests = () => {
       console.error('Error:', error);
     }
   };
+
+  useEffect(() => {
+    // Aplica overflow: hidden ao elemento html para remover o scroll
+    document.documentElement.style.overflowX = "hidden";
+
+    // Cleanup: remove overflow: hidden ao desmontar o componente
+    return () => {
+      document.documentElement.style.overflowX = "auto";
+    };
+  }, []);
 
   return (
     <div className={styles.pageContainer}>

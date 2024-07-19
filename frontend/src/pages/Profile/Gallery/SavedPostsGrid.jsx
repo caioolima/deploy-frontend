@@ -1,12 +1,22 @@
-// SavedPostsGrid.js
 import React from "react";
+import { useTranslation } from "react-i18next"; 
 import EmptyMessage from "./EmptyMessage";
 
 const SavedPostsGrid = ({
   savedPosts,
   loadedImages,
-  handleImageLoaded
+  handleImageLoaded,
+  loadingSavedPosts, 
 }) => {
+  const { t } = useTranslation(); 
+  if (loadingSavedPosts) {
+    return (
+      <div className="loading-message-posts-saved">
+        <p>{t('loading_saved_posts')}</p> 
+      </div>
+    );
+  }
+
   return (
     <div className="photo-gallery">
       {savedPosts.length > 0 ? (

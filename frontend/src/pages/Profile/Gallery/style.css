@@ -175,3 +175,10 @@
     transform: scale(0);
   }
 }
+
+.loading-message-posts-saved {
+  text-align: center;
+  font-size: 1.2em;
+  color: #555; /* Você pode ajustar a cor conforme necessário */
+  padding: 20px;
+}

@@ -533,7 +533,9 @@
   "error_adding_comment": "Error adding comment",
   "profile_image": "Profile Image",
   "no_comments": "No comments.",
-  "settings_label": "Settings"
+  "settings_label": "Settings",
+  "Comunidade": "Community",
+  "loading_saved_posts": "Loading saved posts..."
 }
   
 

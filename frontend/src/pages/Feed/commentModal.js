@@ -8,7 +8,6 @@ const CommentModal = ({ imageUrl, onClose, user }) => {
   const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [commentsLoaded, setCommentsLoaded] = useState(false);
 
   const fetchComments = async () => {
     setLoading(true);
@@ -29,7 +28,7 @@ const CommentModal = ({ imageUrl, onClose, user }) => {
       const data = await response.json();
       setComments(data.comments);
       localStorage.setItem(`comments-${imageUrl}`, JSON.stringify(data.comments));
-      localStorage.setItem(`commentsLoaded-${imageUrl}`, "true");
+      localStorage.setItem(`commentsTimestamp-${imageUrl}`, new Date().toISOString());
     } catch (error) {
       console.error(error);
     } finally {
@@ -39,12 +38,22 @@ const CommentModal = ({ imageUrl, onClose, user }) => {
 
   useEffect(() => {
     const loadComments = () => {
-      const isCommentsLoaded = localStorage.getItem(`commentsLoaded-${imageUrl}`);
       const storedComments = localStorage.getItem(`comments-${imageUrl}`);
-      if (isCommentsLoaded && storedComments) {
-        setComments(JSON.parse(storedComments));
-        setCommentsLoaded(true);
-        setLoading(false);
+      const storedTimestamp = localStorage.getItem(`commentsTimestamp-${imageUrl}`);
+
+      // If comments and timestamp are present and valid
+      if (storedComments && storedTimestamp) {
+        const now = new Date();
+        const lastFetched = new Date(storedTimestamp);
+        const diffMinutes = Math.round((now - lastFetched) / 60000); // Convert milliseconds to minutes
+
+        // Fetch new comments if the stored data is older than 5 minutes
+        if (diffMinutes > 5) {
+          fetchComments();
+        } else {
+          setComments(JSON.parse(storedComments));
+          setLoading(false);
+        }
       } else {
         fetchComments();
       }
@@ -124,7 +133,7 @@ const CommentModal = ({ imageUrl, onClose, user }) => {
           <div className={styles.commentList}>
             <ul>
               {loading ? (
-                <li className={styles.loadingShimmer}></li>
+                <li className={styles.loadingMessage}>{t("Loading")}</li>
               ) : comments.length === 0 ? (
                 <li className={styles.noCommentsMessage}>{t("no_comments")}</li>
               ) : (

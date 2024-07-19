@@ -536,5 +536,7 @@
   "error_adding_comment": "Erro ao adicionar comentário",
   "profile_image": "Imagem de perfil",
   "settings_title": "Configurações",
-  "settings_label": "Configurações"
-  }
+  "settings_label": "Configurações",
+  "Comunidade": "Comunidade",
+  "loading_saved_posts": "Carregando posts salvos..."
+}
