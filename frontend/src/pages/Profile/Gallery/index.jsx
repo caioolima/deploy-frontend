@@ -53,28 +53,28 @@ const Galeria = () => {
     const fetchSavedPosts = async () => {
       setLoadingSavedPosts(true);
       try {
+        // Fazer uma requisição para obter as publicações salvas
+        const response = await fetch(
+          `https://connecter-server-033a278d1512.herokuapp.com/feedRoutes/savedPosts/${userId}`
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch saved posts");
+        }
+        const data = await response.json();
+
+        // Atualiza os posts salvos no estado e no localStorage
+        setSavedPosts(data.savedPosts);
+        localStorage.setItem(`savedPosts_${userId}`, JSON.stringify(data.savedPosts));
+        setLoadingSavedPosts(false);
+      } catch (error) {
+        console.error("Error fetching saved posts:", error);
+
         // Verifica se os posts salvos estão no localStorage
         const savedPostsFromStorage = localStorage.getItem(`savedPosts_${userId}`);
         if (savedPostsFromStorage) {
           setSavedPosts(JSON.parse(savedPostsFromStorage));
-          setLoadingSavedPosts(false);
-        } else {
-          // Fazer uma requisição para obter as publicações salvas
-          const response = await fetch(
-            `https://connecter-server-033a278d1512.herokuapp.com/feedRoutes/savedPosts/${userId}`
-          );
-          if (!response.ok) {
-            throw new Error("Failed to fetch saved posts");
-          }
-          const data = await response.json();
-          setSavedPosts(data.savedPosts);
-
-          // Armazena os posts salvos no localStorage
-          localStorage.setItem(`savedPosts_${userId}`, JSON.stringify(data.savedPosts));
-          setLoadingSavedPosts(false);
         }
-      } catch (error) {
-        console.error("Error fetching saved posts:", error);
+
         setLoadingSavedPosts(false);
       }
     };
