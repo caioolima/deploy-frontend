@@ -22,12 +22,10 @@ const Galeria = () => {
   const { user } = useAuth();
   const { userId } = useParams();
   const [loadingSavedPosts, setLoadingSavedPosts] = useState(true);
+  const [dataLoaded, setDataLoaded] = useState(false);
 
   useEffect(() => {
-    // Aplica overflow: hidden ao elemento html para remover o scroll
     document.documentElement.style.overflowX = "hidden";
-
-    // Cleanup: remove overflow: hidden ao desmontar o componente
     return () => {
       document.documentElement.style.overflowX = "auto";
     };
@@ -53,7 +51,6 @@ const Galeria = () => {
     const fetchSavedPosts = async () => {
       setLoadingSavedPosts(true);
       try {
-        // Fazer uma requisição para obter as publicações salvas
         const response = await fetch(
           `https://connecter-server-033a278d1512.herokuapp.com/feedRoutes/savedPosts/${userId}`
         );
@@ -61,27 +58,49 @@ const Galeria = () => {
           throw new Error("Failed to fetch saved posts");
         }
         const data = await response.json();
+        console.log("Fetched saved posts:", data.savedPosts);
 
-        // Atualiza os posts salvos no estado e no localStorage
-        setSavedPosts(data.savedPosts);
-        localStorage.setItem(`savedPosts_${userId}`, JSON.stringify(data.savedPosts));
+        // Obtém os posts salvos do localStorage
+        const savedPostsFromStorage = localStorage.getItem(`savedPosts_${userId}`);
+        const savedPostsData = savedPostsFromStorage ? JSON.parse(savedPostsFromStorage) : [];
+
+        // Verifica se os posts recebidos são diferentes dos posts no localStorage
+        const postsAreDifferent = JSON.stringify(data.savedPosts) !== JSON.stringify(savedPostsData);
+
+        if (postsAreDifferent) {
+          // Atualiza o localStorage e o estado somente se houver uma mudança
+          localStorage.setItem(`savedPosts_${userId}`, JSON.stringify(data.savedPosts));
+          setSavedPosts(data.savedPosts);
+          console.log("Posts updated and saved to localStorage.");
+        } else {
+          setSavedPosts(savedPostsData);
+          console.log("Posts are the same as localStorage.");
+        }
+
+        setDataLoaded(true);
         setLoadingSavedPosts(false);
       } catch (error) {
         console.error("Error fetching saved posts:", error);
-
-        // Verifica se os posts salvos estão no localStorage
+        // Carrega posts do localStorage em caso de erro
         const savedPostsFromStorage = localStorage.getItem(`savedPosts_${userId}`);
         if (savedPostsFromStorage) {
           setSavedPosts(JSON.parse(savedPostsFromStorage));
+          setDataLoaded(true);
         }
-
         setLoadingSavedPosts(false);
       }
     };
 
-    // Se a guia ativa for 'salvos' e o userId corresponder ao user.id, buscar as publicações salvas
     if (activeTab === "salvos" && user && userId === user.id) {
       fetchSavedPosts();
+    } else if (activeTab === "salvos") {
+      // Se a aba é 'salvos' mas o usuário não está logado ou o userId não corresponde
+      const savedPostsFromStorage = localStorage.getItem(`savedPosts_${userId}`);
+      if (savedPostsFromStorage) {
+        setSavedPosts(JSON.parse(savedPostsFromStorage));
+        setDataLoaded(true);
+      }
+      setLoadingSavedPosts(false);
     }
   }, [activeTab, userId, user]);
 
@@ -132,7 +151,7 @@ const Galeria = () => {
             savedPosts={savedPosts}
             loadedImages={loadedImages}
             handleImageLoaded={handleImageLoaded}
-            loadingSavedPosts={loadingSavedPosts} // Passa o estado de carregamento
+            loadingSavedPosts={!dataLoaded && loadingSavedPosts}
           />
         )
       )}

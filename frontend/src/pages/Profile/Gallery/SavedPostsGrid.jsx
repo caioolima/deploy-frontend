@@ -1,25 +1,22 @@
 import React from "react";
-import { useTranslation } from "react-i18next"; 
+import { useTranslation } from "react-i18next";
 import EmptyMessage from "./EmptyMessage";
 
 const SavedPostsGrid = ({
   savedPosts,
   loadedImages,
   handleImageLoaded,
-  loadingSavedPosts, 
+  loadingSavedPosts,
 }) => {
-  const { t } = useTranslation(); 
-  if (loadingSavedPosts) {
-    return (
-      <div className="loading-message-posts-saved">
-        <p>{t('loading_saved_posts')}</p> 
-      </div>
-    );
-  }
+  const { t } = useTranslation();
 
   return (
     <div className="photo-gallery">
-      {savedPosts.length > 0 ? (
+      {loadingSavedPosts ? (
+        <div className="loading-message-posts-saved">
+          <p>{t('loading_saved_posts')}</p>
+        </div>
+      ) : savedPosts.length > 0 ? (
         <div className="photo-grid">
           {savedPosts.map((post, index) => (
             <div className="photo-item-saved" key={index}>
