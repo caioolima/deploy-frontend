@@ -101,6 +101,7 @@ const useEventsModals = () => {
     setNewBiography(biography); // Define a biografia atual no campo de edição
     setUsernameError(""); // Limpa o estado de erro de nome de usuário
     setPhoneError("");
+    document.body.style.position = "fixed";
   };
 
   useEffect(() => {

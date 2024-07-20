@@ -11,16 +11,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 10px;
+  overflow: hidden;
 }
 
 .modal-content-edit {
   background-color: white;
   width: 80%;
   max-width: 600px;
-  padding: 20px;
+  max-height: 90%;
+  padding: 25px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
+  overflow-y: auto;
   position: relative;
 }
 
@@ -42,7 +45,6 @@
 
 .text-edit {
   margin-bottom: 20px;
-  margin: 30px auto;
 }
 
 .text-edit label {
@@ -52,7 +54,8 @@
 }
 
 .edit-input,
-.text-edit input {
+.text-edit input,
+.text-edit textarea {
   width: 100%;
   padding: 10px;
   font-size: 16px;
@@ -62,7 +65,7 @@
 }
 
 .edit-input {
-  resize: none; /* Impede o redimensionamento pelo usuário */
+  resize: none;
 }
 
 .bio_text_edit {
@@ -76,8 +79,7 @@
 }
 
 .save-button-container {
-  /* Estilo para o container do botão */
-  margin-top: 20px; /* Ajuste conforme necessário */
+  margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -102,11 +104,10 @@
 }
 
 .save-button.disabled {
-  /* Estilo para o botão desabilitado */
-  background-color: #ccc; /* Cor de fundo mais clara para indicar desabilitado */
-  color: #666; /* Cor de texto mais clara para indicar desabilitado */
-  cursor: not-allowed; /* Cursor indicando que o botão não pode ser clicado */
-  opacity: 0.6; /* Opacidade reduzida para indicar desabilitado */
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
 .delete-account-button {
@@ -142,7 +143,7 @@
   margin-bottom: 10px;
 }
 
-.confirm-delete-button{
+.confirm-delete-button {
   margin-top: 10px;
   padding: 10px 20px;
   border: 1px solid #ccc;
@@ -180,11 +181,69 @@
 }
 
 .phone-input.error_message {
-  border-color: red; /* Define a cor da borda para indicar erro */
+  border-color: red;
+}
+
+@media (max-width: 1024px) {
+  .modal-content-edit {
+    width: 85%;
+    padding: 18px;
+  }
+
+  .modal-close-edit-button {
+    font-size: 22px;
+  }
+
+  .save-button, .delete-account-button {
+    font-size: 15px;
+    padding: 11px 22px;
+  }
+
+  .confirm-delete-button, .cancel-button-bio {
+    font-size: 15px;
+    padding: 11px 22px;
+  }
 }
 
 @media (max-width: 600px) {
   .modal-content-edit {
     width: 90%;
+    padding: 15px;
+  }
+
+  .modal-close-edit-button {
+    font-size: 20px;
+  }
+
+  .save-button, .delete-account-button {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+
+  .confirm-delete-button, .cancel-button-bio {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-content-edit {
+    width: 95%;
+    max-height: 90%;
+    padding: 10px;
+  }
+
+  .modal-close-edit-button {
+    font-size: 18px;
+  }
+
+  .save-button, .delete-account-button {
+    font-size: 12px;
+    padding: 8px 16px;
+  }
+
+  .confirm-delete-button, .cancel-button-bio {
+    font-size: 12px;
+    padding: 8px 16px;
   }
 }
