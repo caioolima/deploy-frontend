@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useMyContext } from "../../../contexts/profile-provider";
 import { useParams, useLocation } from "react-router-dom";
 import { useAuth } from "../../../hooks/use-auth";
@@ -30,6 +30,9 @@ const useGetdata = () => {
   const { userId } = useParams();
   const { user } = useAuth();
   const location = useLocation();
+
+  const [galleryLoaded, setGalleryLoaded] = useState(false); // Flag para verificar se a galeria já foi carregada
+  const [galleryError, setGalleryError] = useState(false);
 
   const getDataUser = useCallback(async () => {
     try {
@@ -90,7 +93,9 @@ const useGetdata = () => {
     setUserDataLoaded,
   ]);
 
-  const getGalleryImages = async () => {
+  const getGalleryImages = useCallback(async () => {
+    if (galleryLoaded) return; // Evita múltiplas requisições se a galeria já foi carregada
+  
     try {
       const token = localStorage.getItem("token");
       if (!userId) {
@@ -98,31 +103,39 @@ const useGetdata = () => {
         return;
       }
       const response = await fetch(
-        `https://connecter-server-033a278d1512.herokuapp.com/${userId}/gallery`,
+        `http://localhost:3001/${userId}/gallery`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         }
       );
-
+  
       if (response.ok) {
         const data = await response.json();
-        setUserPhotos(data.images || []);
+        if (data.images.length > 0) {
+          setUserPhotos(data.images);
+        } else {
+          setUserPhotos([]); // Define um array vazio se não houver imagens
+        }
+        setGalleryLoaded(true); // Marca como carregado
       } else {
         console.error("Falha ao obter as imagens da galeria:", response.status);
+        setGalleryError(true); // Marca como erro se não conseguir obter imagens
       }
     } catch (error) {
       console.error("Erro ao obter as imagens da galeria:", error);
+      setGalleryError(true);
     }
-  };
+  }, [userId, setUserPhotos, galleryLoaded]);
+  
 
   useEffect(() => {
     // Verifica se userId está definido antes de fazer a requisição
-    if (userId) {
+    if (userId && !galleryLoaded) {
       getGalleryImages();
     }
-  }, [userId, setUserPhotos]);
+  }, [userId, galleryLoaded, getGalleryImages]);
 
   useEffect(() => {
     const fetchFollowingCount = async () => {

@@ -58,7 +58,6 @@ const Galeria = () => {
           throw new Error("Failed to fetch saved posts");
         }
         const data = await response.json();
-        console.log("Fetched saved posts:", data.savedPosts);
 
         // Adiciona o índice original aos posts
         const postsWithIndex = data.savedPosts.map((post, index) => ({
@@ -70,7 +69,6 @@ const Galeria = () => {
         const sortedPosts = postsWithIndex.sort(
           (a, b) => b.originalIndex - a.originalIndex
         );
-        console.log("Sorted posts by index:", sortedPosts);
 
         // Obtém os posts salvos do localStorage
         const savedPostsFromStorage = localStorage.getItem(

@@ -50,7 +50,7 @@ const InfoProfile = () => {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      console.log("Clique fora do modal");
+
       if (modalRef.current && !modalRef.current.contains(event.target)) {
         setShowFollowersModal(false);
         setShowFollowingModal(false);
