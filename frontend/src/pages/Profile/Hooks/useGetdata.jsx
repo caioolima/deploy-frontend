@@ -103,7 +103,7 @@ const useGetdata = () => {
         return;
       }
       const response = await fetch(
-        `http://localhost:3001/${userId}/gallery`,
+        `https://connecter-server-033a278d1512.herokuapp.com/${userId}/gallery`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
