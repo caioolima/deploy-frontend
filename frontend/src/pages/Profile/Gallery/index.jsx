@@ -60,17 +60,37 @@ const Galeria = () => {
         const data = await response.json();
         console.log("Fetched saved posts:", data.savedPosts);
 
+        // Adiciona o índice original aos posts
+        const postsWithIndex = data.savedPosts.map((post, index) => ({
+          ...post,
+          originalIndex: index,
+        }));
+
+        // Ordena os posts por índice original (do mais recente para o mais antigo)
+        const sortedPosts = postsWithIndex.sort(
+          (a, b) => b.originalIndex - a.originalIndex
+        );
+        console.log("Sorted posts by index:", sortedPosts);
+
         // Obtém os posts salvos do localStorage
-        const savedPostsFromStorage = localStorage.getItem(`savedPosts_${userId}`);
-        const savedPostsData = savedPostsFromStorage ? JSON.parse(savedPostsFromStorage) : [];
+        const savedPostsFromStorage = localStorage.getItem(
+          `savedPosts_${userId}`
+        );
+        const savedPostsData = savedPostsFromStorage
+          ? JSON.parse(savedPostsFromStorage)
+          : [];
 
         // Verifica se os posts recebidos são diferentes dos posts no localStorage
-        const postsAreDifferent = JSON.stringify(data.savedPosts) !== JSON.stringify(savedPostsData);
+        const postsAreDifferent =
+          JSON.stringify(sortedPosts) !== JSON.stringify(savedPostsData);
 
         if (postsAreDifferent) {
           // Atualiza o localStorage e o estado somente se houver uma mudança
-          localStorage.setItem(`savedPosts_${userId}`, JSON.stringify(data.savedPosts));
-          setSavedPosts(data.savedPosts);
+          localStorage.setItem(
+            `savedPosts_${userId}`,
+            JSON.stringify(sortedPosts)
+          );
+          setSavedPosts(sortedPosts);
           console.log("Posts updated and saved to localStorage.");
         } else {
           setSavedPosts(savedPostsData);
@@ -82,7 +102,9 @@ const Galeria = () => {
       } catch (error) {
         console.error("Error fetching saved posts:", error);
         // Carrega posts do localStorage em caso de erro
-        const savedPostsFromStorage = localStorage.getItem(`savedPosts_${userId}`);
+        const savedPostsFromStorage = localStorage.getItem(
+          `savedPosts_${userId}`
+        );
         if (savedPostsFromStorage) {
           setSavedPosts(JSON.parse(savedPostsFromStorage));
           setDataLoaded(true);
@@ -95,7 +117,9 @@ const Galeria = () => {
       fetchSavedPosts();
     } else if (activeTab === "salvos") {
       // Se a aba é 'salvos' mas o usuário não está logado ou o userId não corresponde
-      const savedPostsFromStorage = localStorage.getItem(`savedPosts_${userId}`);
+      const savedPostsFromStorage = localStorage.getItem(
+        `savedPosts_${userId}`
+      );
       if (savedPostsFromStorage) {
         setSavedPosts(JSON.parse(savedPostsFromStorage));
         setDataLoaded(true);

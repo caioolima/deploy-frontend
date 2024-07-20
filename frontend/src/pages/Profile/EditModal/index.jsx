@@ -5,7 +5,7 @@ import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { useMyContext } from "../../../contexts/profile-provider";
 import useModalEdit from "../Hooks/useModalEdit.jsx";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 const EditModal = () => {
   const {
@@ -61,7 +61,11 @@ const EditModal = () => {
   };
 
   const handleSaveEdits = () => {
-    if (newBiography === "") {
+    // Verifica se a biografia foi alterada
+    const biographyChanged = newBiography !== initialState.initialBiography;
+
+    // Se a biografia foi alterada e está vazia, mostra o modal de confirmação de exclusão
+    if (biographyChanged && newBiography === "") {
       openConfirmDeleteModal();
     } else {
       handleSaveEdit();

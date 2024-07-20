@@ -10,6 +10,8 @@ const SavedPostsGrid = ({
 }) => {
   const { t } = useTranslation();
 
+  console.log("Rendering saved posts:", savedPosts);
+
   return (
     <div className="photo-gallery">
       {loadingSavedPosts ? (
@@ -46,5 +48,6 @@ const SavedPostsGrid = ({
     </div>
   );
 };
+
 
 export default SavedPostsGrid;
