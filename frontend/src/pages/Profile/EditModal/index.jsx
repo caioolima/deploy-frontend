@@ -46,18 +46,22 @@ const EditModal = () => {
 
   const openConfirmDeleteModal = () => {
     setShowConfirmDeleteModal(true);
+    document.body.style.position = "fixed";
   };
 
   const closeConfirmDeleteModal = () => {
     setShowConfirmDeleteModal(false);
+    document.body.style.position = "static";
   };
 
   const openConfirmDeleteAccountModal = () => {
     setShowConfirmDeleteAccountModal(true);
+    document.body.style.position = "fixed";
   };
 
   const closeConfirmDeleteAccountModal = () => {
     setShowConfirmDeleteAccountModal(false);
+    document.body.style.position = "static";
   };
 
   const handleSaveEdits = () => {

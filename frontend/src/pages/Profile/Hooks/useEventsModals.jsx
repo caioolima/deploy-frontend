@@ -94,6 +94,7 @@ const useEventsModals = () => {
   };
 
   const handleEditClick = () => {
+    document.body.style.position = "fixed";
     setEditMode(true);
     setNewUsername(username);
     setModalFullName(fullName);

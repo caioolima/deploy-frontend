@@ -239,7 +239,6 @@
   border-radius: 10px;
   max-width: 30%; /* Largura máxima ajustada */
   max-height: 65vh;
-  overflow-y: auto;
   width: 80%; /* Largura ajustada para centralizar */
   margin-top: -100px;
 }
@@ -256,7 +255,9 @@
   list-style-type: none;
   padding: 0;
   margin: 0;
+  overflow-y: auto;
   color: #f0f0f0;
+  max-height: 30vh;
 }
 
 .modal-content-two ul li {

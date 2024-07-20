@@ -67,18 +67,21 @@ const InfoProfile = () => {
   const handleShowFollowers = () => {
     if (numberOfFollowers > 0) {
       setShowFollowersModal(true);
+      document.body.style.position = "fixed";
     }
   };
 
   const handleShowFollowing = () => {
     if (numberOfFollowing > 0) {
       setShowFollowingModal(true);
+      document.body.style.position = "fixed";
     }
   };
 
   const handleCloseModal = () => {
     setShowFollowersModal(false);
     setShowFollowingModal(false);
+    document.body.style.position = "static";
   };
 
   const formatNumber = (num) => {
