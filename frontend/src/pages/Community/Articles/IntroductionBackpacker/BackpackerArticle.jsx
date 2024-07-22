@@ -51,13 +51,13 @@ const BackpackerArticle = () => {
           <h2 className={styles.subtitle}>{t("backpacker_heading_3")}</h2>
           <div className={styles.imageContainer}>
             <img
-              src="https://img.freepik.com/fotos-gratis/uma-pessoa-caminhando-no-pico-da-montanha-explorando-a-beleza-da-natureza-na-solidao-gerada-pela-inteligencia-artificial_24640-131315.jpg?w=1480&t=st=1719357311~exp=1719357911~hmac=bd6cefcd4d3c51d7362353549e46270a781096416838f02d38555ca99777947f"
+              src="https://res.cloudinary.com/worldpackers/image/upload/c_fill,f_auto,q_auto,w_1024/v1/guides/article_cover/ovh4nihan2fu5ci6ehxh"
               alt="Backpacker"
               className={styles.image}
             />
-            <a href="https://br.freepik.com/fotos-gratis/uma-pessoa-caminhando-no-pico-da-montanha-explorando-a-beleza-da-natureza-na-solidao-gerada-pela-inteligencia-artificial_76319033.htm#query=mochileiro&position=5&from_view=keyword&track=sph&uuid=69001da9-5f7c-4b8a-b4e8-cdbaed52ff81">
+            <a href="https://www.worldpackers.com/pt-BR/articles/mochileiros-brasileiros">
               <p className={styles.imageAttribution}>
-                {t("photo_by")} (Freepik)
+                {t("photo_by")} (worldpackers)
               </p>
             </a>
           </div>

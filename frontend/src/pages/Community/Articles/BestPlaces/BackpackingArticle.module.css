@@ -36,6 +36,26 @@
 
 /* Media Queries para dispositivos específicos */
 
+/* Media Queries para dispositivos específicos */
+
+/* Para telas de 1280px x 800px (como o Nest Hub Max) */
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .locationsGrid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+  }
+
+  .title {
+    font-size: 2.5em;
+  }
+
+  .articleContainer {
+    width: 70%;
+    margin: auto;
+    margin-right: 100px;
+  }
+}
+
 /* Tablet */
 @media (max-width: 1024px) {
   .locationsGrid {
@@ -69,23 +89,6 @@
   .articleContainer {
     width: 90%;
     margin: auto;
-  }
-}
-
-/* MacBook */
-@media (min-width: 1280px) {
-  .locationsGrid {
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 50px;
-  }
-
-  .articleContainer {
-    width: 70%;
-    margin: auto 280px;
-  }
-
-  .title {
-    font-size: 2.8em;
   }
 }
 
