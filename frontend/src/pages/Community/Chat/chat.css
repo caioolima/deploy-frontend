@@ -19,9 +19,10 @@
   position: -webkit-sticky;
   position: sticky;
   top: 0;
+  margin-bottom: 80px;
 }
 .chat-name {
-  margin: 20px auto;
+  margin-top: 50px;
   padding: 10px 0;
   color: var(--color-details); /* Cor primária para o nome do chat */
   font-size: 30px;
@@ -39,7 +40,8 @@
 .message {
   max-width: 80%;
   color: var(--color-dark);
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+  margin-top: 50px;
   padding: 15px;
   border-radius: 8px;
   font-family: "Raleway", sans-serif;
@@ -114,7 +116,7 @@
   margin-bottom: 20px;
   border-radius: 20px; /* Borda arredondada para mensagens do lado direito */
   margin-right: 0; /* Remove a margem à direita para as mensagens do lado direito */
-  margin-left: 12px;
+  margin-left: 120px;
   position: relative;
 }
 /* Adicionando a cauda do balão de fala para mensagens do lado esquerdo */
@@ -139,11 +141,11 @@
 .name-info-chat {
   position: absolute; /* Define o posicionamento absoluto para o nome do usuário */
   bottom: 100%; /* Ajusta a posição vertical do nome do usuário */
-  margin-bottom: 5px; /* Adiciona margem entre o nome do usuário e o conteúdo da mensagem */
+  margin-bottom: -5px; /* Adiciona margem entre o nome do usuário e o conteúdo da mensagem */
   font-size: 14px; /* Tamanho da fonte */
   font-weight: 600; /* Peso da fonte */
   color: #333; /* Cor do texto */
-  margin-bottom: 5px; /* Espaçamento inferior */
+  margin-left: 90px;
 }
 
 /* Adiciona uma margem ao nome de usuário para separá-lo do conteúdo da mensagem */

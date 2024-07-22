@@ -1,21 +1,25 @@
 import "./style.css";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useMyContext } from "../../../contexts/profile-provider";
 import usePhotoModal from "../Hooks/usePhotoModal";
-import { useTranslation } from "react-i18next"; // Importe o hook useTranslation
+import { useTranslation } from "react-i18next";
 
 const ChangePhotoModal = () => {
-  const { t } = useTranslation(); // Usa o hook useTranslation para tradução
+  const { t } = useTranslation();
   const { profileImage, uploadProgress, isEditMode } = useMyContext();
 
   const { closeModal, removeImage, handleImageChange, changeImage } =
     usePhotoModal();
 
   const [tempSelectedImage, setTempSelectedImage] = useState(null);
+  const fileInputRef = useRef(null); // Referência ao campo de input
 
   const handleBackButtonClick = () => {
     if (tempSelectedImage) {
       setTempSelectedImage(null);
+      if (fileInputRef.current) {
+        fileInputRef.current.value = ""; // Limpa o campo de input de arquivo
+      }
     } else {
       closeModal();
     }
@@ -23,7 +27,11 @@ const ChangePhotoModal = () => {
 
   const handleConfirmButtonClick = async () => {
     if (tempSelectedImage) {
-      changeImage(); // Aguarda o término do upload da imagem
+      await changeImage(); // Aguarda a conclusão do upload da imagem
+      setTempSelectedImage(null);
+      if (fileInputRef.current) {
+        fileInputRef.current.value = ""; // Limpa o campo de input de arquivo
+      }
       closeModal();
     }
   };
@@ -65,6 +73,7 @@ const ChangePhotoModal = () => {
                     URL.createObjectURL(event.target.files[0])
                   );
                 }}
+                ref={fileInputRef} // Atribui a referência ao input de arquivo
               />
               {profileImage ? t("change_photo") : t("add_photo")}
             </label>
