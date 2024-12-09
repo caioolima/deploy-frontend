@@ -453,7 +453,7 @@ const Function = () => {
   useEffect(() => {
     // Estabelece a conexão WebSocket
     const ws = new WebSocket(
-      "wss://websocket-deploy.onrender.com/"
+      "wss://websocket-deploy.onrender.com/status/"
     );
     let pingInterval; // Variável para armazenar o intervalo do ping
 
@@ -481,7 +481,6 @@ const Function = () => {
       clearInterval(pingInterval); // Limpa o intervalo quando o componente é desmontado
     };
   }, [userId, communityId]);
-  
 
   useEffect(() => {
     if (ws) {
