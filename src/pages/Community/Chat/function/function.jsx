@@ -451,71 +451,47 @@ const Function = () => {
   }, [messages]);
 
   useEffect(() => {
-    // Estabelece a conexão WebSocket
-    const ws = new WebSocket(
-      "wss://websocket-deploy.onrender.com/"
-    );
-    let pingInterval; // Variável para armazenar o intervalo do ping
+    const establishWebSocketConnection = () => {
+      const ws = new WebSocket("wss://websocket-deploy.onrender.com/");
+      let pingInterval;
 
-    ws.onopen = () => {
-      console.log("Conexão WebSocket estabelecida");
-      setWs(ws);
+      ws.onopen = () => {
+        console.log("Conexão WebSocket estabelecida");
+        setWs(ws);
 
-      // Configura o intervalo para enviar pings a cada 30 segundos
-      pingInterval = setInterval(() => {
-        if (ws.readyState === WebSocket.OPEN) {
-          ws.send(JSON.stringify({ type: "ping" }));
-        }
-      }, 30000); // 30 segundos
+        // Enviar pings a cada 30 segundos
+        pingInterval = setInterval(() => {
+          if (ws.readyState === WebSocket.OPEN) {
+            ws.send(JSON.stringify({ type: "ping" }));
+          }
+        }, 30000); // 30 segundos
+
+        // Quando o WebSocket é fechado ou ocorre um erro, tenta reconectar
+        ws.onclose = () => {
+          console.log("Conexão WebSocket fechada. Tentando reconectar...");
+          clearInterval(pingInterval); // Limpa o intervalo de ping
+          // Tenta reconectar após 5 segundos
+          setTimeout(establishWebSocketConnection, 5000);
+        };
+
+        ws.onerror = (error) => {
+          console.error("Erro no WebSocket:", error);
+          ws.close();
+        };
+      };
+
+      return ws;
     };
 
-    ws.onclose = () => {
-      console.log("Conexão WebSocket fechada");
-      clearInterval(pingInterval); // Limpa o intervalo quando a conexão é fechada
-    };
+    const ws = establishWebSocketConnection();
 
+    // Limpeza ao desmontar o componente
     return () => {
       if (ws) {
         ws.close();
       }
-      clearInterval(pingInterval); // Limpa o intervalo quando o componente é desmontado
     };
   }, [userId, communityId]);
-
-  useEffect(() => {
-    const connectWebSocket = () => {
-      const newWs = new WebSocket("wss://websocket-deploy.onrender.com/");
-  
-      newWs.onopen = () => {
-        console.log("WebSocket reconectado com sucesso");
-        setWs(newWs);
-      };
-  
-      newWs.onclose = () => {
-        console.error("WebSocket desconectado. Tentando reconectar em 5 segundos...");
-        setTimeout(connectWebSocket, 5000); // Tenta reconectar após 5 segundos
-      };
-  
-      newWs.onerror = (error) => {
-        console.error("Erro no WebSocket:", error);
-        newWs.close(); // Fecha a conexão ao detectar erro
-      };
-  
-      newWs.onmessage = (event) => {
-        // Lógica para lidar com mensagens recebidas
-        console.log("Mensagem recebida:", event.data);
-      };
-    };
-  
-    connectWebSocket();
-  
-    return () => {
-      if (ws) {
-        ws.close();
-      }
-    };
-  }, []);
-  
 
   useEffect(() => {
     if (ws) {
