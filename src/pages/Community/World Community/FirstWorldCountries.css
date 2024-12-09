@@ -1,0 +1,21 @@
+.main-content {
+  min-height: calc(
+    100vh - 80px
+  ); /* Adjust height based on your footer's height */
+  padding-bottom: 100px; /* Same as the footer's height */
+  position: relative;
+}
+
+.container-cards {
+  display: flex;
+  flex-direction: column;
+  margin-left: 180px;
+  padding: 0 40px;
+  flex-grow: 1;
+}
+
+@media (width <= 1000px) {
+  .container-cards {
+    margin-left: 0;
+  }
+}

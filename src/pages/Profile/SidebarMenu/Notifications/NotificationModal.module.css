@@ -1,0 +1,196 @@
+/* Estilo geral do modal */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Sobreposição semitransparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Garante que o overlay esteja acima de outros elementos */
+}
+
+.modalContent {
+  background: var(--color-dark);
+  color: white;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  padding: 20px;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  max-height: 80vh;
+  overflow: hidden;
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.closeButton:hover {
+  color: var(--color-alert);
+}
+
+.titleNotification {
+  margin-top: 0;
+  font-size: 24px;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.notificationList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 350px; /* Ajusta a altura máxima da lista de notificações */
+  overflow-y: auto; /* Adiciona rolagem somente à lista de notificações */
+}
+
+.notificationItem {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--color-gray);
+  padding: 10px 0;
+  transition: background 0.3s;
+}
+
+.notificationItem:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.notificationImage {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover; /* Garantir que a imagem mantenha a proporção correta */
+  margin-right: 10px;
+}
+
+.notificationContent {
+  display: flex;
+  align-items: center;
+  flex: 1; /* Permite que o conteúdo ocupe o espaço restante */
+}
+
+.notificationContent p {
+  margin: 10px;
+}
+
+.notificationNo {
+  color: var(--color-gray); /* Cor cinza para texto */
+  font-size: 1.2rem; /* Tamanho da fonte */
+  text-align: center; /* Centraliza o texto */
+  padding: 20px; /* Espaçamento interno */
+  border-radius: 8px; /* Bordas arredondadas */
+  margin: 20px; /* Espaçamento externo */
+  font-family: "Raleway", sans-serif;
+}
+
+.notificationContent strong {
+  color: var(--color-primary);
+}
+
+.notificationTimestamp {
+  color: var(--color-gray);
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.loading,
+.error {
+  text-align: center;
+  font-size: 16px;
+}
+
+.error {
+  color: var(--color-alert);
+}
+
+/* Media Queries para Responsividade */
+
+/* Para dispositivos móveis */
+@media (max-width: 600px) {
+  .modalContent {
+    width: 95%;
+    max-width: none;
+    padding: 15px;
+    max-height: 80vh;
+  }
+
+  .closeButton {
+    font-size: 20px;
+    top: 5px;
+    right: 5px;
+  }
+
+  .titleNotification {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .notificationList {
+    max-height: 60vh;
+  }
+
+  .notificationItem {
+    padding: 8px 0;
+  }
+
+  .notificationImage {
+    width: 40px;
+    height: 35px;
+    object-fit: cover;
+  }
+
+  .notificationContent p {
+    margin: 8px;
+  }
+
+  .notificationNo {
+    font-size: 1rem;
+  }
+}
+
+/* Para tablets e telas médias */
+@media (max-width: 768px) {
+  .modalContent {
+    width: 90%;
+    max-width: 600px;
+    padding: 20px;
+    max-height: 70vh; /* Ajusta a altura máxima do modal em telas médias */
+  }
+
+  .titleNotification {
+    font-size: 22px;
+  }
+
+  .notificationList {
+    max-height: 60vh;
+  }
+
+  .notificationItem {
+    padding: 10px 0;
+  }
+}
+
+/* Para telas grandes */
+@media (min-width: 769px) {
+  .modalContent {
+    max-height: 70vh; /* Ajusta a altura máxima do modal em telas grandes */
+  }
+
+  .notificationList {
+    max-height: 60vh; /* Ajusta a altura máxima da lista de notificações em telas grandes */
+  }
+}

@@ -1,0 +1,278 @@
+/* Estilos para o contêiner */
+.country-details-container {
+  max-width: 650px; /* Ajusta a largura máxima */
+  margin: 15vh auto; /* Centraliza horizontalmente e adiciona margem superior */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza verticalmente */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  height: 500px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  position: relative; /* Adiciona posição relativa para alinhar a bandeira */
+  background-color: #fff;
+  z-index: 1000;
+  height: auto;
+}
+
+.flag {
+  position: absolute; /* Mantém o fluxo normal do documento */
+  top: 0;
+  left: 0;
+  width: 100vw; /* 100% da largura da viewport */
+  height: 100vh; /* 100% da altura da viewport */
+  background-size: cover; /* Garante que a imagem de fundo cubra toda a tela */
+  background-position: center; /* Centraliza a imagem de fundo */
+}
+
+/* Estilos para o título */
+.country-details-title {
+  padding: 15px 2px;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Estilos para o ID do país */
+.country-id {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+/* Estilos para o título das regras da comunidade */
+.community-rules-title {
+  font-size: 20px;
+  padding: 10px 5px;
+  margin-bottom: 50px;
+}
+
+/* Estilos para a lista de regras */
+.community-rules-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+/* Estilos para os itens da lista */
+.community-rules-list li {
+  position: relative;
+  margin-bottom: 20px;
+  margin-left: 10px;
+}
+
+/* Estilos para os marcadores */
+.community-rules-list li::before {
+  content: "";
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--color-primary); /* Cor do marcador */
+}
+
+/* Estilos para o botão de participar da comunidade */
+.join-button {
+  background-color: var(--color-details);
+  color: #fff;
+  border: none;
+  padding: 12px 24px; /* Aumenta o padding para maior destaque */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px; /* Tamanho da fonte */
+  transition: background-color 0.3s ease; /* Adiciona uma transição suave */
+  font-family: "Raleway", sans-serif;
+}
+
+.join-button:hover {
+  background-color: var(
+    --color-details-hover
+  ); /* Cor mais escura ao passar o mouse */
+}
+
+/* Estilos para a mensagem de já participando */
+.already-joined-message {
+  font-size: 18px;
+  color: var(--color-details);
+}
+
+/* Estilos para a bandeira do Brasil */
+.country-details-container::before {
+  background-image: url("./flags/brasil.jpeg");
+}
+
+/* Estilos para a bandeira da Alemanha */
+.country-details-container::before {
+  background-image: url("./flags/alemanha.png");
+}
+
+/* Estilos para a bandeira da Alemanha */
+.country-details-container::before {
+  background-image: url("./flags/japao.png");
+}
+
+/* Estilos para a bandeira da Alemanha */
+.country-details-container::before {
+  background-image: url("./flags/itália.jpg");
+}
+
+/* Estilos para a bandeira da Alemanha */
+.country-details-container::before {
+  background-image: url("./flags/china.jpg");
+}
+
+/* community.css */
+.leave-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  position: fixed; /* ou absolute, dependendo da necessidade */
+  top: 10px; /* ajuste conforme necessário */
+  right: 10px; /* ajuste conforme necessário */
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
+}
+
+.leave-button:hover {
+  background-color: darkred;
+}
+
+@media (max-width: 1024px) {
+  .country-details-container {
+    max-width: 650px; /* Ajusta a largura máxima */
+    padding: 15px; /* Reduz o padding */
+    height: auto; /* Permite altura dinâmica */
+    margin-left: 270px;
+  }
+
+  .join-button,
+  .leave-button {
+    padding: 10px 20px; /* Ajusta o padding dos botões */
+    font-size: 14px; /* Reduz o tamanho da fonte dos botões */
+  }
+
+  .country-details-title {
+    font-size: 22px; /* Reduz o tamanho da fonte do título */
+  }
+
+  .country-id,
+  .already-joined-message {
+    font-size: 16px; /* Reduz o tamanho da fonte do ID do país e mensagem */
+  }
+
+  .community-rules-title {
+    font-size: 18px; /* Reduz o tamanho da fonte do título das regras */
+  }
+
+  .community-rules-list li {
+    font-size: 14px; /* Reduz o tamanho da fonte das regras */
+  }
+}
+
+/* Para telas menores que 900px */
+@media (max-width: 950px) {
+  .country-details-container {
+    max-width: 650px; /* Ajusta a largura máxima */
+    padding: 10px; /* Ajusta o padding */
+    height: 400px; /* Permite altura dinâmica */
+    margin: 15vh auto; /* Centraliza horizontalmente e ajusta a margem superior */
+  }
+
+  .join-button,
+  .leave-button {
+    padding: 8px 16px; /* Ajusta o padding dos botões */
+    font-size: 13px; /* Reduz o tamanho da fonte dos botões */
+  }
+
+  .country-details-title {
+    font-size: 20px; /* Reduz o tamanho da fonte do título */
+  }
+
+  .country-id,
+  .already-joined-message {
+    font-size: 14px; /* Reduz o tamanho da fonte do ID do país e mensagem */
+  }
+
+  .community-rules-title {
+    font-size: 16px; /* Reduz o tamanho da fonte do título das regras */
+  }
+
+  .community-rules-list li {
+    font-size: 12px; /* Reduz o tamanho da fonte das regras */
+  }
+}
+
+/* Para telas menores que 768px */
+@media (max-width: 768px) {
+  .country-details-container {
+    max-width: 500px; /* Ajusta a largura máxima */
+    padding: 10px; /* Reduz o padding */
+    height: auto; /* Permite altura dinâmica */
+    margin-left: 0;
+    margin: 20vh auto; /* Ajusta a margem */
+  }
+
+  .join-button,
+  .leave-button {
+    padding: 8px 16px; /* Ajusta o padding dos botões */
+    font-size: 12px; /* Reduz o tamanho da fonte dos botões */
+  }
+
+  .country-details-title {
+    font-size: 20px; /* Reduz o tamanho da fonte do título */
+  }
+
+  .country-id,
+  .already-joined-message {
+    font-size: 14px; /* Reduz o tamanho da fonte do ID do país e mensagem */
+  }
+
+  .community-rules-title {
+    font-size: 16px; /* Reduz o tamanho da fonte do título das regras */
+  }
+
+  .community-rules-list li {
+    font-size: 12px; /* Reduz o tamanho da fonte das regras */
+  }
+}
+
+/* Para telas menores que 480px */
+@media (max-width: 480px) {
+  .country-details-container {
+    max-width: 320px; /* Ajusta a largura máxima */
+    padding: 8px; /* Reduz o padding */
+    height: 370px; /* Permite altura dinâmica */
+    margin-left: 0;
+    margin: 15vh auto; /* Ajusta a margem */
+  }
+
+  .join-button,
+  .leave-button {
+    padding: 6px 12px; /* Ajusta o padding dos botões */
+    font-size: 10px; /* Reduz o tamanho da fonte dos botões */
+  }
+
+  .country-details-title {
+    font-size: 18px; /* Reduz o tamanho da fonte do título */
+  }
+
+  .country-id,
+  .already-joined-message {
+    font-size: 12px; /* Reduz o tamanho da fonte do ID do país e mensagem */
+  }
+
+  .community-rules-title {
+    font-size: 14px; /* Reduz o tamanho da fonte do título das regras */
+  }
+
+  .community-rules-list li {
+    font-size: 10px; /* Reduz o tamanho da fonte das regras */
+  }
+}

@@ -1,0 +1,249 @@
+/* style.module.css */
+
+.modal-edit {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.modal-content-edit {
+  background-color: white;
+  width: 80%;
+  max-width: 600px;
+  max-height: 90%;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  position: relative;
+}
+
+.modal-close-edit-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #000000;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.modal-close-edit-button:hover {
+  color: #333;
+}
+
+.text-edit {
+  margin-bottom: 20px;
+}
+
+.text-edit label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.edit-input,
+.text-edit input,
+.text-edit textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: "Raleway", sans-serif;
+}
+
+.edit-input {
+  resize: none;
+}
+
+.bio_text_edit {
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.black-text {
+  color: #333;
+  font-size: 14px;
+}
+
+.save-button-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.save-button {
+  background-color: var(--color-primary-focus);
+  color: var(--color-dark);
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
+}
+
+.save-button:hover {
+  background-color: var(--color-dark);
+  color: var(--color-primary-focus);
+}
+
+.save-button.disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.delete-account-button {
+  background-color: transparent;
+  color: var(--color-alert);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  font-family: "Raleway", sans-serif;
+}
+
+.delete-account-button:hover {
+  background-color: var(--color-dark);
+}
+
+.confirm-delete-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.confirm-delete-modal p {
+  margin-bottom: 10px;
+}
+
+.confirm-delete-button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: var(--color-primary-focus);
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+  font-family: "Raleway", sans-serif;
+}
+
+.confirm-delete-button:hover {
+  background-color: var(--color-dark);
+  color: var(--color-primary-focus);
+}
+
+.cancel-button-bio {
+  background-color: transparent;
+  color: #666;
+  margin-left: 10px;
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: color 0.3s ease;
+  font-family: "Raleway", sans-serif;
+}
+
+.cancel-button-bio:hover {
+  color: var(--color-alert);
+  font-weight: bold;
+}
+
+.phone-input.error_message {
+  border-color: red;
+}
+
+@media (max-width: 1024px) {
+  .modal-content-edit {
+    width: 85%;
+    padding: 18px;
+  }
+
+  .modal-close-edit-button {
+    font-size: 22px;
+  }
+
+  .save-button, .delete-account-button {
+    font-size: 15px;
+    padding: 11px 22px;
+  }
+
+  .confirm-delete-button, .cancel-button-bio {
+    font-size: 15px;
+    padding: 11px 22px;
+  }
+}
+
+@media (max-width: 600px) {
+  .modal-content-edit {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .modal-close-edit-button {
+    font-size: 20px;
+  }
+
+  .save-button, .delete-account-button {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+
+  .confirm-delete-button, .cancel-button-bio {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-content-edit {
+    width: 95%;
+    max-height: 90%;
+    padding: 10px;
+  }
+
+  .modal-close-edit-button {
+    font-size: 18px;
+  }
+
+  .save-button, .delete-account-button {
+    font-size: 12px;
+    padding: 8px 16px;
+  }
+
+  .confirm-delete-button, .cancel-button-bio {
+    font-size: 12px;
+    padding: 8px 16px;
+  }
+}

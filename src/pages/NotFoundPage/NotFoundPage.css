@@ -1,0 +1,43 @@
+/* NotFoundPage.css */
+
+.logo_term {
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 4em;
+  margin-top: 30px;
+}
+
+.logo_term a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.logo_term:hover {
+  text-decoration: none;
+  color: #000000;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 20px 0;
+}
+.not-found-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.not-found-content {
+  text-align: center;
+}
+
+.not-found-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.not-found-content p {
+  font-size: 1.5rem;
+}

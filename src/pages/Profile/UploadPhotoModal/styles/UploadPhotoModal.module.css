@@ -1,0 +1,123 @@
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+.publishModal {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  position: relative;
+  width: 90%;
+  max-width: 450px;
+  overflow-y: hidden;
+  margin: auto;
+}
+
+.closeButtonPublish {
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 40px;
+  font-weight: bold;
+  color: #000000;
+  position: absolute;
+  background-color: transparent;
+  transition: background-color 0.3s;
+  font-family: Arial, sans-serif;
+  top: 0;
+  right: 7px;
+  width: 7%;
+  height: 3%;
+}
+
+.chosenImageField {
+  margin-top: 30px;
+}
+
+.imageWrapper {
+  width: 100%;
+  height: auto;
+  max-width: 600px;
+  max-height: 398px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 8px;
+  margin: auto;
+}
+
+.chosenImage {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.publishButton {
+  background-color: var(--color-details);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin: 20px 15px;
+  font-family: "Raleway", sans-serif;
+  font-size: 16px;
+}
+
+.publishButton:hover {
+  background-color: var(--color-details-hover);
+}
+
+.captionInput {
+  margin-top: 20px;
+}
+
+.captionInput input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: "Raleway", sans-serif;
+  font-size: 16px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.captionInput input[type="text"]:focus {
+  border-color: var(--color-details);
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.customFileUpload {
+  margin: 50px 20px;
+}
+
+.customFileUpload input[type="file"] {
+  display: none;
+}
+
+.customFileUpload label {
+  display: inline-block;
+  background-color: var(--color-details);
+  color: #fff;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-family: "Raleway", sans-serif;
+}
+
+.customFileUpload label:hover {
+  background-color: var(--color-details-hover);
+}

@@ -1,0 +1,70 @@
+/* PerfectPhotosArticle.module.css */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.article {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 30px;
+  margin-bottom: 80px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.title {
+  font-size: 2.5rem;
+  color: #353535; /* Branco para o título */
+  margin-bottom: 30px;
+}
+
+.sectionTitle {
+  font-size: 2em;
+  color: #666565; /* Branco para os títulos das seções */
+  margin-bottom: 30px;
+}
+
+.paragraph {
+  font-size: 1.4rem;
+  line-height: 2;
+  color: #949393; /* Cinza claro para o texto */
+  margin-bottom: 30px;
+}
+
+.imageContainer {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.image {
+  max-width: 100%;
+}
+
+.imageAttribution {
+  font-size: 1.0rem;
+  color: #666666; /* Cinza para o texto de atribuição */
+}
+
+.conclusion {
+  font-size: 1.2rem;
+  font-style: italic;
+  text-align: center;
+  margin-top: 50px;
+  font-weight: bolder;
+  color: var(--color-gray); /* Cinza claro para a conclusão */
+}
+
+.quoteAuthor {
+  font-style: italic;
+  font-weight: 200;
+  color: #8e8d8d; /* Branco para o nome do autor */
+  display: block;
+  font-weight: 300;
+  margin-top: 10px;
+}

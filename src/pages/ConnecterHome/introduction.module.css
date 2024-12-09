@@ -1,0 +1,398 @@
+.abc {
+  position: relative;
+  text-align: center;
+  color: #fff;
+  font-family: "Raleway", sans-serif;
+}
+
+.abcd {
+  font-size: clamp(2.2rem, 3.5cqi, 3.5rem);
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: black;
+}
+
+.backgroundImage {
+  max-width: 100%;
+  height: 88.5vh;
+  background-image: url("../../assets/backpackercommunity.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  text-align: left;
+}
+
+.introContent {
+  margin-left: 35px;
+  padding: 5px;
+  width: 60%;
+}
+
+@media (max-width: 800px) {
+  .backgroundImage {
+    text-align: center;
+    justify-content: center;
+    height: 700px;
+  }
+
+  .introContent {
+    width: 100%;
+    margin: 0px;
+  }
+}
+
+.introInfo .introH2 {
+  font-size: 2.2rem;
+  width: 100%;
+  text-align: left;
+  color: #fff;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+  margin: auto;
+  border-radius: 5px;
+}
+
+.introP {
+  font-size: 1.4rem;
+  margin: 10px auto;
+  margin-bottom: 30px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 5px;
+}
+
+@media (max-width: 800px) {
+  .introInfo .introH2 {
+    font-size: 1.8rem;
+    text-align: left;
+    width: 90%;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  .introP {
+    font-size: 1rem;
+    text-align: left;
+    width: 90%;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    border-radius: 5px;
+  }
+}
+
+.vamosNessaButton {
+  background-color: #fff;
+  color: var(--color-primary-focus);
+  border: 2px solid var(--color-primary-focus);
+  border-radius: 20px;
+  padding: 10px 30px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s ease;
+  font-family: "Raleway", sans-serif;
+}
+
+.vamosNessaButton:hover {
+  background-color: var(--color-primary-focus);
+  color: #fff;
+  border: 2px solid var(--color-primary-focus);
+}
+
+.vamosNessaButton:active {
+  transform: scale(0.95);
+}
+
+.exploreInfo .mainTitle {
+  color: #000;
+  text-align: center;
+  margin-top: 60px;
+  font-size: 2rem;
+  font-family: "Raleway", sans-serif;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.exploreInfo .subTitle {
+  color: #000;
+  text-align: center;
+  margin-top: 60px;
+  font-size: 2rem;
+  font-family: "Raleway", sans-serif;
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+.exploreInfo .subTitle::before,
+.exploreInfo .subTitle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background-color: var(--color-details);
+}
+
+.exploreInfo .subTitle::before {
+  left: -30px;
+  clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+}
+
+.exploreInfo .subTitle::after {
+  right: -30px;
+  clip-path: polygon(100% 0%, 0% 50%, 100% 100%);
+}
+
+.stepsContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin: 50px auto;
+  position: relative;
+}
+
+@media (max-width: 650px) {
+  .lines {
+    display: none;
+  }
+
+  .line {
+    display: none;
+  }
+}
+
+@media (max-width: 586px) {
+  .stepsContainer {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+}
+
+.lines {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 65%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.line {
+  width: 20%;
+  height: 2px;
+  background-color: var(--color-dark);
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+  margin: 5px;
+}
+
+.stepNumber {
+  width: 50px;
+  height: 50px;
+  background-color: var(--color-primary-focus);
+  color: #fff;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 0;
+}
+
+.stepText {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 1.3rem;
+  color: #000;
+  width: 80%;
+}
+
+.connectWithTravelers {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.connectWithTravelers {
+  position: relative;
+  width: 100%;
+  height: 57.2vh;
+}
+
+.backgroundImage2 {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-image: url("../../assets/backpacker-community.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  filter: blur(2px);
+}
+
+.connectTextH2 {
+  color: #fff;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  text-align: center;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+}
+
+.connectTextP {
+  color: #fff;
+  font-size: 1.3rem;
+  margin: 0;
+  margin-top: 20px;
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  text-align: center;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+}
+
+@media (min-width: 601px) and (max-width: 1200px) {
+  .connectTextH2 {
+    top: 35%;
+    width: 90%;
+  }
+
+  .connectTextP {
+    top: 40%;
+  }
+}
+
+@media (max-width: 768px) {
+  .connectTextH2 {
+    font-size: 2rem;
+    margin-top: 50px;
+  }
+
+  .connectTextP {
+    font-size: 1rem;
+    top: 55%;
+    width: 80%;
+  }
+
+  .stepText {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+  .exploreInfo .mainTitle {
+    font-size: 1.6rem;
+  }
+  .exploreInfo .subTitle {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .abcd {
+
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: black;
+    
+  }
+
+  .exploreInfo .mainTitle {
+    width: 95%;
+    font-size: 1.3rem;
+  }
+
+  .exploreInfo .subTitle {
+    font-size: 1.3rem;
+    width: 70%;
+  }
+
+  .stepText {
+    width: 100%;
+    font-size: 0.86rem;
+  }
+
+  .connectTextH2 {
+    font-size: 1.8rem;
+    width: 100%;
+    margin-bottom: 80px;
+  }
+
+  .connectTextP {
+    font-size: 1rem;
+    width: 80%;
+  }
+
+  .backgroundImage2 {
+    height: 60vh;
+  }
+}
+
+.ctaSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-primary-focus);
+  padding: 20px;
+}
+
+.ctaContent p {
+  color: #000;
+  font-size: 1.8rem;
+  text-align: center;
+  margin: auto 20px;
+  font-weight: bold;
+}
+
+.vamoComigoButton {
+  background-color: var(--color-details);
+  color: #fff;
+  font-size: 1.2rem;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  outline: none;
+  font-weight: bold;
+  font-family: "Raleway", sans-serif;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.vamoComigoButton:hover {
+  background-color: var(--color-details-hover);
+}
+
+.vamoComigoButton:active {
+  transform: scale(0.95);
+}

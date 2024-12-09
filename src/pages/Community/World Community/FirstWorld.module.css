@@ -1,0 +1,111 @@
+/* FirstWorldCountries.module.css */
+.customSlider {
+  width: 100%; /* Ajuste a largura conforme necessário */
+  margin: 50px auto; /* Centralize o slider */
+  margin-bottom: 50px;
+  max-width: 600px;
+}
+
+.CommunityTitle {
+  font-size: 1.5rem;
+  color: var(--color-dark);
+  text-align: center;
+  margin-bottom: 20px;
+  margin: auto;
+  margin-top: 50px;
+}
+.hrTop {
+  border: none;
+  border-top: 2px solid var(--color-details);
+  width: 58%;
+  margin: 10px auto;
+}
+
+/* Estilos para as setas do Slider */
+.customArrow {
+  width: 40px; /* Largura das setas */
+  height: 40px; /* Altura das setas */
+  background-color: var(--color-dark); /* Cor de fundo */
+  color: white; /* Cor do ícone */
+  border-radius: 50%; /* Borda arredondada para forma circular */
+  font-size: 20px; /* Tamanho do ícone */
+  line-height: 55px; /* Alinhamento vertical do ícone */
+  z-index: 1; /* Z-index para manter sobre o conteúdo */
+  position: absolute; /* Posição absoluta para posicionamento */
+  top: 50%; /* Centraliza verticalmente */
+  transform: translateY(-50%); /* Ajusta para centralizar verticalmente */
+  cursor: pointer; /* Cursor ao passar */
+  display: flex; /* Torna o conteúdo flexível */
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+}
+
+.customArrow.prev {
+  left: -50px; /* Posição da seta "prev" */
+}
+
+.customArrow.next {
+  right: -50px; /* Posição da seta "next" */
+}
+
+.customArrow.prev:hover,
+.customArrow.next:hover {
+  background-color: var(--color-primary-focus); /* Cor de fundo ao passar */
+}
+
+.loadingMessage {
+  text-align: center;
+  font-size: 16px;
+  margin-top: 20px;
+  color: var(--color-dark);
+  font-weight: bold;
+}
+
+/* Telas grandes */
+@media (min-width: 1200px) { 
+
+  .hrTop {
+    width: 50%;
+  }
+}
+
+/* Telas pequenas */
+@media (max-width: 767px) {
+  .customSlider {
+    width: 100%; /* Ajuste a largura conforme necessário */
+  }
+
+  .hrTop {
+    width: 90%;
+  }
+
+  .CommunityTitle {
+    font-size: 1.2rem; /* Ajuste o tamanho da fonte */
+    margin-top: 50px; /* Ajuste a margem superior */
+  }
+
+  .customArrow {
+    display: none;
+  }
+}
+
+/* Telas muito pequenas */
+@media (max-width: 480px) {
+  .customSlider {
+    width: 100%; /* Ajuste a largura conforme necessário */
+  }
+
+  .hrTop {
+    width: 100%;
+  }
+
+  .CommunityTitle {
+    font-size: 1rem; /* Ajuste o tamanho da fonte */
+    margin-top: 50px; /* Ajuste a margem superior */
+  }
+
+  .customArrow {
+    display: none;
+  }
+}
+

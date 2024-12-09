@@ -1,0 +1,211 @@
+/* TopLikedPosts.module.css */
+
+/* Contêiner principal do carrossel */
+.topLikedContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.topLikedTitle {
+  font-size: 2rem;
+  color: var(--color-dark);
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.hrTop {
+  border: none;
+  border-top: 2px solid var(--color-details);
+  width: 60%;
+  margin: 10px auto;
+}
+
+.postWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 700px; /* Largura máxima para o carrossel */
+  margin-top: 20px;
+}
+
+.carousel {
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+
+.postItem {
+  position: relative;
+  flex: 0 0 auto;
+  width: 33.33%; /* 3 itens por vez */
+  padding: 0 10px; /* Espaçamento entre os itens */
+  box-sizing: border-box;
+}
+
+.postImage {
+  width: 100%;
+  height: 200px; /* Altura ajustável conforme necessidade */
+  object-fit: cover;
+  border-radius: 10px 10px 0 0; /* Arredondamento apenas nos cantos superiores */
+  transition: transform 0.3s ease;
+}
+
+.postDetails {
+  padding: 15px;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 0 0 10px 10px;
+  height: auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  margin-bottom: 20px;
+}
+
+.profileImage {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: auto;
+}
+
+.profileImagenone {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: auto;
+  background-color: var(--color-dark);
+  color: var(--color-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.postUser {
+  font-weight: bold;
+  margin: 10px 0;
+  color: var(--color-dark);
+}
+
+.postLikes {
+  color: var(--color-dark);
+  margin: 10px 0;
+}
+
+.postButton {
+  background-color: var(--color-primary-focus);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.postButton:hover {
+  color: var(--color-primary-focus);
+  background-color: var(--color-dark);
+}
+
+.noPostsMessage,
+.loadingMessage {
+  text-align: center;
+  font-size: 16px;
+  margin-top: 20px;
+  color: var(--color-dark);
+  font-weight: bold;
+}
+
+/* Estilos para as setas do Slider */
+.customArrow {
+  width: 40px; /* Largura das setas */
+  height: 40px; /* Altura das setas */
+  background-color: var(--color-dark); /* Cor de fundo */
+  color: white; /* Cor do ícone */
+  border-radius: 50%; /* Borda arredondada para forma circular */
+  font-size: 20px; /* Tamanho do ícone */
+  line-height: 55px; /* Alinhamento vertical do ícone */
+  z-index: 1; /* Z-index para manter sobre o conteúdo */
+  position: absolute; /* Posição absoluta para posicionamento */
+  top: 50%; /* Centraliza verticalmente */
+  transform: translateY(-50%); /* Ajusta para centralizar verticalmente */
+  cursor: pointer; /* Cursor ao passar */
+  display: flex; /* Torna o conteúdo flexível */
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+}
+
+.customArrow.prev {
+  left: -50px; /* Posição da seta "prev" */
+}
+
+.customArrow.next {
+  right: -50px; /* Posição da seta "next" */
+}
+
+.customArrow.prev:hover,
+.customArrow.next:hover {
+  background-color: var(--color-primary-focus); /* Cor de fundo ao passar */
+}
+
+@media screen and (min-width: 1200px) {
+  .postItem {
+    width: 33.33%; /* Exibe 3 itens por vez em telas grandes */
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .postItem {
+    width: 50%; /* Exibe 2 itens por vez em telas médias */
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .postItem {
+    width: 100%; /* Exibe 1 item por vez em telas pequenas */
+    padding: 0;
+  }
+
+  .carousel {
+    width: 100%;
+  }
+
+  .carouselButton {
+    font-size: 1.2rem;
+    padding: 8px;
+  }
+
+  .topLikedTitle {
+    font-size: 1.5rem;
+    margin-top: 20px;
+  }
+
+  .hrTop {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .postWrapper {
+    width: 80%;
+  }
+  .carouselButton {
+    font-size: 1.2rem;
+    padding: 8px;
+  }
+
+  .topLikedTitle {
+    font-size: 1.2rem;
+    margin-top: 20px;
+  }
+
+  .hrTop {
+    width: 100%;
+  }
+  .customArrow {
+    display: none; /* Oculta as setas */
+  }
+}

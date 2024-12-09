@@ -1,0 +1,154 @@
+
+.logoTerm {
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 4em;
+  margin-top: 30px;
+}
+
+.logoTerm a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.logoTerm:hover {
+  text-decoration: none;
+  color: #000000;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 20px 0;
+}
+
+/* Estilo do contêiner principal */
+.privacyContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+}
+
+/* Estilo do contêiner da política de privacidade */
+.privacyPolicyContainer {
+  max-width: 800px;
+  width: 80%;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  margin-bottom: 80px;
+}
+
+/* Estilo do cabeçalho */
+.privacyPolicyContainer h1 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 50px;
+}
+
+.privacyPolicyContainer p {
+  margin-bottom: 30px;
+}
+
+/* Estilo da data */
+.date {
+  color: #666;
+  margin-bottom: 30px;
+}
+
+/* Estilo do botão de pergunta */
+.privacyQuestion {
+  font-family: "Raleway", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: var(--color-details);
+  color: #ffffff;
+  padding: 15px;
+  margin: 15px 0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Estilo da seta no botão */
+.arrow {
+  transition: transform 0.3s ease;
+}
+
+/* Estilo da resposta visível */
+.privacyAnswer {
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+/* Estilo das seções e conteúdo */
+.privacySection {
+  margin-top: 20px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.privacyContent {
+  color: #666;
+}
+
+/* Estilo do link na resposta */
+.privacyAnswer a {
+  color: var(--color-details);
+}
+
+/* Ajustes na seta */
+.arrow {
+  margin-left: 10px;
+}
+
+.arrow.up {
+  transform: rotate(90deg);
+}
+
+@media screen and (max-width: 600px) {
+  .privacyPolicyContainer {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .privacyPolicyContainer h1 {
+    font-size: 20px;
+    margin-bottom: 25px;
+  }
+
+  .privacyQuestion {
+    font-size: 14px;
+    padding: 12px;
+    margin: 12px 0;
+    margin-bottom: 50px;
+  }
+
+  .arrow {
+    margin-left: 8px;
+  }
+
+  .privacyAnswer {
+    padding: 8px;
+    margin-top: 10px;
+  }
+
+  .privacySection {
+    margin-top: 12px;
+    margin-bottom: 25px;
+  }
+
+  .privacyContent {
+    font-size: 14px;
+    margin-bottom: 50px;
+  }
+}

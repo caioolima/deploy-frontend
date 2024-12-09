@@ -1,0 +1,58 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,400;0,500;0,600;0,700;1,500;1,600&display=swap");
+
+/*---- footer.css ----*/
+
+.footer {
+  /* ↑ Estilo do footer. */
+  text-align: center; /* ← Alinha os textos. */
+  color: white; /* ← Cor da fonte. */
+  background: var(--color-dark); /* ← Cor de fundo. */
+  padding: 20px; /* ← Espaçamento interior. */
+  width: 100vw; /* ← Largura total. */
+  display: block;
+}
+
+.footer-terms a {
+  /* ↑ Estilo do texto de termos. */
+  font-size: 13px;
+  margin-bottom: 20px;
+  text-decoration: none;
+  padding: 20px; /* ← Espaçamento interno. */
+}
+
+.footer-terms a:hover {
+  /* ↑ Se o mouse estiver sob os termos. */
+  text-decoration: underline;
+}
+
+.footer-info {
+  /* ↑ Informações de direitos autorais. */
+  font-size: 13px;
+  padding: 10px;
+}
+
+.footer-copy{
+  color: #fff;
+}
+
+.language-buttons button {
+  /* ↑ Estilo para o os alteradores de linguagem. */
+  background-color: transparent;
+  border: none;
+  color: white; /* ← ou a cor desejada para o texto */
+  text-decoration: none;
+  cursor: pointer; /* ← Ponteiro do mouse personalizado. */
+  padding: 10px; /* ← Espaçamento interno entre os botões */
+  font-family: "Raleway", sans-serif;
+}
+
+.language-buttons button:last-child {
+  /* ↑ último botão. */
+  margin-right: 0; /* ← Remove a margem do último botão */
+}
+
+.language-buttons button.active {
+  /* ↑ Adicione estilos específicos para o botão ativo se desejar */
+  font-weight: bold;
+}

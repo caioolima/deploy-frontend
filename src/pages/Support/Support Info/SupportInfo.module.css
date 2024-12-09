@@ -1,0 +1,102 @@
+.supportInfo {
+  padding: 40px;
+  border-radius: 8px;
+  text-align: center; /* Centraliza o conteúdo */
+  margin: 0 auto; /* Centraliza horizontalmente */
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  max-width: 1000px; /* Define largura máxima para evitar que o conteúdo se espalhe demais */
+}
+
+.supportInfo h2 {
+  color: var(--color-details); /* Cor do título */
+  font-size: 24px;
+  margin-bottom: 20px;
+  margin: 0 auto; /* Centraliza horizontalmente */
+}
+
+.supportInfo p {
+  color: var(--color-dark); /* Cor do texto */
+  margin-top: 20px;
+  margin-bottom: 40px;
+  font-size: 18px;
+}
+
+.supportInfo .links {
+  display: flex;
+  flex-wrap: wrap; /* Permite que os links quebrem para a próxima linha em telas menores */
+  justify-content: center; /* Centraliza os links */
+  gap: 20px;
+  margin-top: 20px;
+  max-width: 700px;
+}
+
+.supportInfo .link {
+  flex: 1;
+  text-align: center;
+  padding: 20px;
+  background-color: var(--color-primary-focus);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.supportInfo .link:hover {
+  background-color: var(--color-primary); /* Cor de fundo ao passar o mouse */
+}
+
+.supportInfo .link span {
+  color: white;
+  font-weight: bold;
+  display: block;
+  margin-top: 15px;
+}
+
+.supportInfo .link p {
+  color: white;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.supportInfo .icon {
+  width: 60px;
+  height: 60px;
+  display: block;
+  margin: auto;
+  color: var(--color-dark); /* Cor do ícone */
+  filter: drop-shadow(0 0 9px rgba(190, 190, 190, 0.3)); /* Sombreamento */
+}
+
+/* Media queries para responsividade */
+@media screen and (max-width: 768px) {
+  .supportInfo {
+    padding: 20px;
+  }
+
+  .supportInfo h2 {
+    font-size: 20px;
+  }
+
+  .supportInfo p {
+    font-size: 16px;
+  }
+
+  .supportInfo .links {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  .supportInfo .link {
+    flex: 0 1 calc(50% - 20px);
+    margin-bottom: 10px;
+    height: 200px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .supportInfo .link {
+    flex: 0 1 100%;
+  }
+}

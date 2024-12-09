@@ -1,0 +1,191 @@
+.logoTerm {
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 4em;
+  margin-top: 30px;
+}
+
+.logoTerm a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.logoTerm:hover {
+  text-decoration: none;
+  color: #000000;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 20px 0;
+}
+
+.container {
+  max-width: 90%;
+  margin: auto;
+  padding: 20px;
+}
+
+.mainHeading {
+  color: #333;
+  font-size: 50px;
+  margin-bottom: 20px;
+  margin: 0 auto;
+}
+
+.mainParagraph {
+  color: #555;
+  font-weight: 800;
+  font-size: 20px;
+
+  margin-top: 80px;
+  margin-bottom: 30px;
+}
+
+.sectionHeading {
+  color: #333;
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.imageContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.imageContainer .imageWithText {
+  width: 50%;
+  margin: 10px;
+  position: relative;
+  text-align: left;
+  overflow: hidden;
+  transition: transform 0.3s, filter 0.3s;
+}
+
+.imageContainer .imageWithText:hover {
+  filter: brightness(1);
+  transform: scale(1.05);
+}
+
+.imageContainer img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 15px;
+  transition: transform 0.3s;
+  border-radius: 10px;
+}
+
+.imageContainer img:hover {
+  transform: scale(1.03);
+}
+
+.p {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.subp {
+  margin-top: 3%;
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .container {
+    margin-right: 0;
+    margin: auto;
+  }
+
+  .mainHeading {
+    font-size: 30px;
+    margin-left: 5%;
+    margin-bottom: 55px;
+  }
+
+  .mainParagraph {
+    font-size: 16px;
+    margin-left: 5%;
+    margin-top: 15px;
+  }
+
+  .sectionHeading {
+    font-size: 18px;
+    margin-left: 5%;
+    margin-bottom: 5px;
+  }
+
+  .imageContainer {
+    flex-direction: column; /* Alterando a direção do flex para coluna */
+  }
+
+  .imageContainer .imageWithText {
+    width: 80%; /* Largura total para ocupar a largura da tela */
+    margin: 10px 0; /* Adicionando margem entre as imagens */
+    margin-left: 10%;
+    margin-bottom: 5%;
+  }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+  .imageContainer .imageWithText {
+    width: 40%; /* Reduzindo a largura para 40% em telas maiores, mantendo-as lado a lado */
+    margin-left: 3%;
+  }
+  .mainHeading {
+    font-size: 30px;
+    margin-left: 5%;
+    margin-bottom: 55px;
+  }
+
+  .mainParagraph {
+    font-size: 16px;
+    margin-left: 5%;
+    margin-top: 15px;
+  }
+
+  .sectionHeading {
+    font-size: 18px;
+    margin-left: 5%;
+    margin-bottom: 5px;
+  }
+  .container {
+    margin-bottom: 66px;
+  }
+}
+
+@media only screen and (min-width: 901px) {
+  .imageContainer {
+    flex-direction: row; /* Restaurando a direção do flex para linha em telas maiores */
+  }
+
+  .imageContainer .imageWithText {
+    width: 20%; /* Mantendo a largura como 20% para manter as imagens lado a lado */
+    margin: 10px 0;
+    margin-left: 2%;
+  }
+  .mainHeading {
+    font-size: 30px;
+    margin-left: 5%;
+    margin-bottom: 55px;
+  }
+
+  .mainParagraph {
+    font-size: 16px;
+    margin-left: 5%;
+    margin-top: 15px;
+  }
+
+  .sectionHeading {
+    font-size: 18px;
+    margin-left: 5%;
+    margin-bottom: 5px;
+  }
+
+  .container {
+    margin-bottom: 85px;
+  }
+}

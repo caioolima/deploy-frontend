@@ -1,0 +1,143 @@
+/* TopFollowedUsers.module.css */
+
+.topLikedTitle {
+  font-size: 1.5rem;
+  color: var(--color-black);
+  text-align: center;
+  margin-top: 50px;
+}
+
+.hrTop {
+  border: none;
+  border-top: 2px solid var(--color-details);
+  width: 60%;
+  margin: 10px auto;
+}
+
+.usersContainer {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.usersList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto; /* Centraliza a lista de usuários */
+  justify-content: center; /* Garante que os itens dentro da lista estejam centralizados */
+  margin-bottom: 50px;
+}
+
+.userItem {
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  width: 200px;
+}
+
+.userItem:hover {
+  transform: translateY(-5px);
+}
+
+.profileImage {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: auto;
+  display: block;
+}
+
+.profileImagenone {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: auto;
+  display: block;
+  background-color: rgb(0, 0, 0);
+  color: gray;
+}
+
+.userName {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--color-dark);
+}
+
+.followersCount {
+  font-size: 0.9rem;
+  color: var(--color-dark);
+}
+
+.profileLink {
+  text-decoration: none;
+}
+
+.signButton {
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin: 20px auto;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
+  background-color: var(--color-primary-focus);
+}
+
+.signButton:hover {
+  background-color: var(--color-dark);
+  color: var(--color-primary-focus);
+}
+
+.noFollowers {
+  font-size: 1.2rem;
+  color: var(--color-alert);
+  text-align: center;
+  width: 100%;
+  font-weight: bold;
+}
+
+.loadingMessage {
+  text-align: center;
+  color: var(--color-dark);
+  font-size: 16px;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+/* TopFollowedUsers.module.css */
+
+@media (max-width: 600px) {
+  .usersList {
+    display: flex;
+    overflow-x: auto;
+    padding: 10px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .userItem {
+    flex: 0 0 auto;
+    margin-right: 10px;
+    scroll-snap-align: start;
+    width: 150px; /* Ajuste conforme necessário */
+  }
+
+  .usersContainer {
+    padding: 10px;
+    overflow: hidden;
+  }
+  .topLikedTitle {
+    font-size: 1rem;
+    margin-top: 50px;
+  }
+  .hrTop {
+    width: 100%;
+  }
+}

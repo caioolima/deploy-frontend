@@ -1,0 +1,198 @@
+.commentModal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Escurece o fundo */
+  z-index: 1000;
+}
+
+.commentModalContent {
+  background: #fff;
+  width: 90%;
+  max-width: 800px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  animation: slideIn 0.3s ease-out;
+  position: relative;
+  max-height: 92vh;
+  overflow-y: auto;
+}
+
+.closeCommentModal {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 2px solid #fff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.closeCommentModal:hover {
+  background-color: #fff;
+  color: #f00;
+  transform: scale(1.1);
+}
+
+.commentInputContainer {
+  padding: 20px;
+}
+
+.commentTitle {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.commentList {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
+.commentList ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.commentUserInfo {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.disabledButton {
+  background: #b0b0b0;
+  cursor: not-allowed;
+  opacity: 0.7; /* Diminui a opacidade para indicar que está desabilitado */
+  border: 1px solid #888; /* Opcional: adiciona uma borda mais clara */
+}
+
+.loadingMessage {
+  font-size: 16px;
+  color: #666;
+  text-align: center;
+  padding: 10px 0;
+  font-weight: bold;
+}
+
+.profileImageFeed {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.commentContent {
+  background: #f0f0f0;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.usernameComment {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.usernameFeedPublication {
+  font-weight: bold;
+  color: #555;
+}
+
+.commentText {
+  color: #333;
+}
+
+.commentTime {
+  display: block;
+  font-size: 0.8rem;
+  color: #999;
+  margin-top: 5px;
+}
+
+.noCommentsMessage {
+  text-align: center;
+  color: #999;
+}
+
+.commentInputWrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.commentTextarea {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-family: "Raleway", sans-serif;
+}
+
+.submitCommentButton {
+  padding: 10px 20px;
+  background: #16bb1f;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-family: "Raleway", sans-serif;
+}
+
+.submitCommentButton:hover {
+  background: #0d7813;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.loadingShimmer {
+  animation: shimmer 1.5s infinite linear;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.currentUser .commentContent {
+  background: #e6ffe6;
+}
+
+.currentUser .usernameFeedPublication {
+  color: #16bb1f;
+}

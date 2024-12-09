@@ -1,0 +1,107 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 4em;
+  margin-top: 30px;
+}
+
+.logo a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.logo a:hover {
+  text-decoration: none;
+  color: #000000;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 20px 0;
+}
+
+.faqContainer {
+  flex: 1;
+  display: flex; /* Usar flexbox para centralizar */
+  justify-content: center; /* Centralizar horizontalmente */
+  align-items: center; /* Centralizar verticalmente */
+  padding: 20px;
+}
+
+.faq {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: "Raleway", sans-serif;
+  text-align: center;
+  width: 600px; /* Definir largura fixa */
+  max-width: 100%; /* Garantir que não exceda a largura da tela em dispositivos menores */
+}
+
+.faq h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.faqItem {
+  margin: 20px 0;
+}
+
+.faqItem button {
+  font-family: "Raleway", sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  background-color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.faqItem button h3 {
+  font-size: 18px;
+  margin: 0;
+  color: var(--color-primary-focus);
+}
+
+.faqItem button span {
+  font-size: 24px;
+  transition: transform 0.3s ease;
+}
+
+.faqItem p {
+  margin-top: 10px;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: left; /* Ajustar o alinhamento do texto */
+}
+
+.faqItem button:hover {
+  background-color: #f0f0f0;
+}
+
+.faqItem button:focus {
+  background-color: #e0e0e0;
+}
+
+.faqItem button[aria-expanded="true"] span {
+  transform: rotate(90deg);
+}
+
+.footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  margin-top: auto; /* Garantir que o footer esteja na parte inferior */
+}
