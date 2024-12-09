@@ -483,6 +483,41 @@ const Function = () => {
   }, [userId, communityId]);
 
   useEffect(() => {
+    const connectWebSocket = () => {
+      const newWs = new WebSocket("wss://websocket-deploy.onrender.com/");
+  
+      newWs.onopen = () => {
+        console.log("WebSocket reconectado com sucesso");
+        setWs(newWs);
+      };
+  
+      newWs.onclose = () => {
+        console.error("WebSocket desconectado. Tentando reconectar em 5 segundos...");
+        setTimeout(connectWebSocket, 5000); // Tenta reconectar após 5 segundos
+      };
+  
+      newWs.onerror = (error) => {
+        console.error("Erro no WebSocket:", error);
+        newWs.close(); // Fecha a conexão ao detectar erro
+      };
+  
+      newWs.onmessage = (event) => {
+        // Lógica para lidar com mensagens recebidas
+        console.log("Mensagem recebida:", event.data);
+      };
+    };
+  
+    connectWebSocket();
+  
+    return () => {
+      if (ws) {
+        ws.close();
+      }
+    };
+  }, []);
+  
+
+  useEffect(() => {
     if (ws) {
       ws.onmessage = (event) => {
         let newMessage;
