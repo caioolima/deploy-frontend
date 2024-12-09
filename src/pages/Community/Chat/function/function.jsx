@@ -451,45 +451,34 @@ const Function = () => {
   }, [messages]);
 
   useEffect(() => {
-    const establishWebSocketConnection = () => {
-      const ws = new WebSocket("wss://websocket-deploy.onrender.com/");
-      let pingInterval;
+    // Estabelece a conexão WebSocket
+    const ws = new WebSocket(
+      "wss://websocket-deploy.onrender.com/"
+    );
+    let pingInterval; // Variável para armazenar o intervalo do ping
 
-      ws.onopen = () => {
-        console.log("Conexão WebSocket estabelecida");
-        setWs(ws);
+    ws.onopen = () => {
+      console.log("Conexão WebSocket estabelecida");
+      setWs(ws);
 
-        // Enviar pings a cada 30 segundos
-        pingInterval = setInterval(() => {
-          if (ws.readyState === WebSocket.OPEN) {
-            ws.send(JSON.stringify({ type: "ping" }));
-          }
-        }, 30000); // 30 segundos
-
-        // Quando o WebSocket é fechado ou ocorre um erro, tenta reconectar
-        ws.onclose = () => {
-          console.log("Conexão WebSocket fechada. Tentando reconectar...");
-          clearInterval(pingInterval); // Limpa o intervalo de ping
-          // Tenta reconectar após 5 segundos
-          setTimeout(establishWebSocketConnection, 5000);
-        };
-
-        ws.onerror = (error) => {
-          console.error("Erro no WebSocket:", error);
-          ws.close();
-        };
-      };
-
-      return ws;
+      // Configura o intervalo para enviar pings a cada 30 segundos
+      pingInterval = setInterval(() => {
+        if (ws.readyState === WebSocket.OPEN) {
+          ws.send(JSON.stringify({ type: "ping" }));
+        }
+      }, 30000); // 30 segundos
     };
 
-    const ws = establishWebSocketConnection();
+    ws.onclose = () => {
+      console.log("Conexão WebSocket fechada");
+      clearInterval(pingInterval); // Limpa o intervalo quando a conexão é fechada
+    };
 
-    // Limpeza ao desmontar o componente
     return () => {
       if (ws) {
         ws.close();
       }
+      clearInterval(pingInterval); // Limpa o intervalo quando o componente é desmontado
     };
   }, [userId, communityId]);
 
