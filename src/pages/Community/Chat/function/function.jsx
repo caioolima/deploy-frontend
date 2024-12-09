@@ -483,6 +483,66 @@ const Function = () => {
   }, [userId, communityId]);
 
   useEffect(() => {
+    const connectWebSocket = () => {
+      const newWs = new WebSocket("wss://websocket-deploy.onrender.com/");
+
+      newWs.onopen = () => {
+        console.log("WebSocket reconectado com sucesso");
+        setWs(newWs);
+      };
+
+      newWs.onclose = () => {
+        console.error("WebSocket desconectado. Tentando reconectar em 5 segundos...");
+        setTimeout(connectWebSocket, 5000); // Tenta reconectar após 5 segundos
+      };
+
+      newWs.onerror = (error) => {
+        console.error("Erro no WebSocket:", error);
+        newWs.close(); // Fecha a conexão ao detectar erro
+      };
+
+      newWs.onmessage = (event) => {
+        // Lógica para lidar com mensagens recebidas
+        console.log("Mensagem recebida:", event.data);
+      };
+    };
+
+    connectWebSocket();
+
+    return () => {
+      if (ws) {
+        ws.close();
+      }
+    };
+  }, []);
+
+  let inactivityTimeout;
+
+  const resetInactivityTimeout = () => {
+    clearTimeout(inactivityTimeout);
+    inactivityTimeout = setTimeout(() => {
+      if (ws.readyState === WebSocket.OPEN) {
+        ws.close(); // Fecha o WebSocket após período de inatividade
+        console.log("WebSocket fechado devido à inatividade do usuário");
+      }
+    }, 5 * 60 * 1000); // 5 minutos
+  };
+
+  useEffect(() => {
+    window.addEventListener("mousemove", resetInactivityTimeout);
+    window.addEventListener("keydown", resetInactivityTimeout);
+
+    resetInactivityTimeout(); // Configura o timer inicialmente
+
+    return () => {
+      window.removeEventListener("mousemove", resetInactivityTimeout);
+      window.removeEventListener("keydown", resetInactivityTimeout);
+      clearTimeout(inactivityTimeout); // Limpa o timer ao desmontar
+    };
+  }, []);
+
+
+  useEffect(() => {
     if (ws) {
       ws.onmessage = (event) => {
         let newMessage;
